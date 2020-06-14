@@ -9,6 +9,7 @@ it(`Render Main`, () => {
         genrePromo={`Drama`}
         yearPromo={2014}
         filmList={[`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`]}
+        onTitleFilmClick={() => {}}
       />
   ).toJSON();
 
