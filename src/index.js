@@ -7,7 +7,6 @@ const Settings = {
   TITLE_PROMO: `The Grand Budapest Hotel`,
   GENRE_PROMO: `Drama`,
   YEAR_PROMO: 2014,
-  FILM_LIST: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`]
 };
 
 ReactDom.render(
