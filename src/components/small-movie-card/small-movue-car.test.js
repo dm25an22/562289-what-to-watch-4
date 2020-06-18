@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app";
+import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 
 const mock = [
   {
@@ -17,15 +17,14 @@ const mock = [
   },
 ];
 
-it(`Render App`, () => {
+
+it(`Render SmallMovieCard`, () => {
   const tree = renderer.create(
-      <App
-        titlePromo={`The Grand Budapest Hotel`}
-        genrePromo={`Drama`}
-        yearPromo={2014}
+      <SmallMovieCard
         films={mock}
+        onMouseOver={() => {}}
       />
-  ).toJSON();
+  );
 
   expect(tree).toMatchSnapshot();
 });
