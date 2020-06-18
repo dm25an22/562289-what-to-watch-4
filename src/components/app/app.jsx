@@ -1,18 +1,43 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import Main from "../main/main.jsx";
+import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 
-const App = ({titlePromo, genrePromo, yearPromo, films}) => {
-  return (
-    <Main
-      titlePromo={titlePromo}
-      genrePromo={genrePromo}
-      yearPromo={yearPromo}
-      films={films}
-    />
-  );
-};
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-movie-page">
+            <MoviePage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+
+  _renderApp() {
+    const {titlePromo, genrePromo, yearPromo, films} = this.props;
+    return (
+      <Main
+        titlePromo={titlePromo}
+        genrePromo={genrePromo}
+        yearPromo={yearPromo}
+        films={films}
+      />
+    );
+  }
+
+}
 
 App.propTypes = {
   titlePromo: PropTypes.string.isRequired,
