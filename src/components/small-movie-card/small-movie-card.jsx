@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SmallMovieCard = ({films, onMouseOver}) => {
+const SmallMovieCard = ({films, onCardMouseOver, onTitleClick}) => {
   return (
     films.map((film, index) => (
       <article
         key={String(new Date() + Math.random())}
         onMouseOver={() => {
-          onMouseOver(index);
+          onCardMouseOver(index);
         }}
         className="small-movie-card catalog__movies-card">
 
@@ -15,7 +15,14 @@ const SmallMovieCard = ({films, onMouseOver}) => {
           <img src={film.src} alt={film.title} width="280" height="175" />
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
+          <a
+            onClick={(evt) => {
+              evt.preventDefault();
+              onTitleClick();
+            }}
+            className="small-movie-card__link"
+            href="movie-page.html">{film.title}
+          </a>
         </h3>
       </article>
     ))
@@ -27,7 +34,8 @@ SmallMovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  onMouseOver: PropTypes.func.isRequired
+  onCardMouseOver: PropTypes.func.isRequired,
+  onTitleClick: PropTypes.func.isRequired
 };
 
 export default SmallMovieCard;

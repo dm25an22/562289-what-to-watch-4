@@ -22,12 +22,17 @@ const mock = [
   },
 ];
 
+
 describe(`SmallMovieCard`, () => {
-  it(`Should onMous on small card`, () => {
-    const onMousOverHandler = jest.fn();
+  it(`Should onMous on card and click on title card`, () => {
+    const onCardMouseOver = jest.fn();
+    const onTitleClick = jest.fn();
+    const prevention = jest.fn();
+
     const tree = shallow(
         <SmallMovieCard
-          onMouseOver={onMousOverHandler}
+          onTitleClick={onTitleClick}
+          onCardMouseOver={onCardMouseOver}
           films={mock}
         />
     );
@@ -35,7 +40,14 @@ describe(`SmallMovieCard`, () => {
     const filmCard = tree.find(`.small-movie-card`);
     filmCard.forEach((it) => it.props().onMouseOver());
 
+    const filmTitle = tree.find(`.small-movie-card__link`);
+    filmTitle.forEach((it) => it.props().onClick({preventDefault: prevention}));
+
+    expect(onTitleClick).toHaveBeenCalledTimes(mock.length);
+    expect(prevention).toHaveBeenCalledTimes(mock.length);
+
     expect(filmCard.length).toBe(mock.length);
-    expect(onMousOverHandler).toHaveBeenCalledTimes(mock.length);
+    expect(onCardMouseOver).toHaveBeenCalledTimes(mock.length);
   });
+
 });

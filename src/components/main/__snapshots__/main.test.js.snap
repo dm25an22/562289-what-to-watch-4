@@ -277,6 +277,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Fantastic Beasts
             </a>
@@ -302,6 +303,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -327,6 +329,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Macbeth
             </a>

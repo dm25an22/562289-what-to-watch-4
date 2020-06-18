@@ -11,6 +11,7 @@ class MovieList extends PureComponent {
       currentCard: -1
     };
 
+    this.clickTitleHandler = this.clickTitleHandler.bind(this);
     this.mousOverSmallCardHandler = this.mousOverSmallCardHandler.bind(this);
   }
 
@@ -19,10 +20,15 @@ class MovieList extends PureComponent {
       <div className="catalog__movies-list">
         <SmallMovieCard
           films={this.props.films}
-          onMouseOver={this.mousOverSmallCardHandler}
+          onCardMouseOver={this.mousOverSmallCardHandler}
+          onTitleClick={this.clickTitleHandler}
         />
       </div>
     );
+  }
+
+  clickTitleHandler() {
+    return;
   }
 
   mousOverSmallCardHandler(value) {

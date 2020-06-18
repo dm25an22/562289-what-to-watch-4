@@ -22,6 +22,7 @@ it(`Render MovieList`, () => {
       <MovieList
         films={mock}
         onMouseover={() => {}}
+        onCardMouseOver = {() => {}}
       />
   );
 
