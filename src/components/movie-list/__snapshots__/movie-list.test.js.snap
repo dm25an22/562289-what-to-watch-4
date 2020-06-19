@@ -10,6 +10,7 @@ exports[`Render MovieList 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Fantastic Beasts"
@@ -36,6 +37,7 @@ exports[`Render MovieList 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Bohemian Rhapsody"
@@ -62,6 +64,7 @@ exports[`Render MovieList 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Macbeth"

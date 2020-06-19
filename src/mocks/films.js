@@ -1,67 +1,5 @@
 const COUNT_FILMS = 8;
 
-const getRandomNumber = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const getRandomRating = () => {
-  const firstNumber = getRandomNumber(0, 10);
-  return Number(`${firstNumber}.${firstNumber !== 10 && firstNumber !== 0 ? getRandomNumber(0, 9) : 0}`);
-};
-
-const getDescriptionRating = (rating) => {
-
-  switch (true) {
-    case rating < 3:
-      return `Bad`;
-
-    case rating >= 3 && rating < 5:
-      return `Normal`;
-
-    case rating >= 5 && rating < 8:
-      return `Good`;
-
-    case rating >= 8 && rating < 10:
-      return `Very good`;
-
-    case rating >= 10:
-      return `Awesome`;
-  }
-
-  return `Unknown`;
-};
-
-const getRandomItem = (arr) => {
-  return arr[getRandomNumber(0, arr.length - 1)];
-};
-
-const getRandomArrWithUniqeItems = (arr) => {
-  const copyArr = [...arr];
-  const result = [];
-  for (let i = 0; i < getRandomNumber(2, arr.length - 1); i++) {
-    result.push(copyArr.splice(getRandomNumber(0, copyArr.length - 1), 1)[0]);
-  }
-
-  return result;
-};
-
-
-const producers = [
-  `Edward Janney`,
-  `Sabra Jones`,
-  `Tom Ruegger`,
-  `Ron Senkowski`,
-  `Kelly Leonard`,
-  `Matthew Daniels`,
-  `Olivia Luccardi`,
-  `P. J. Wolfson`,
-  `Yance Ford`,
-  `Allen Estrin`,
-  `Jenno Topping`,
-];
-
 const text = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
   took a galley of type and scrambled it to make a type specimen book.`;
@@ -166,6 +104,68 @@ const actorsList = [
   `Devin Albert`,
   `Eddie Albert`,
 ];
+
+const producers = [
+  `Edward Janney`,
+  `Sabra Jones`,
+  `Tom Ruegger`,
+  `Ron Senkowski`,
+  `Kelly Leonard`,
+  `Matthew Daniels`,
+  `Olivia Luccardi`,
+  `P. J. Wolfson`,
+  `Yance Ford`,
+  `Allen Estrin`,
+  `Jenno Topping`,
+];
+
+const getRandomNumber = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const getRandomRating = () => {
+  const firstNumber = getRandomNumber(0, 10);
+  return Number(`${firstNumber}.${firstNumber !== 10 && firstNumber !== 0 ? getRandomNumber(0, 9) : 0}`);
+};
+
+const getDescriptionRating = (rating) => {
+
+  switch (true) {
+    case rating < 3:
+      return `Bad`;
+
+    case rating >= 3 && rating < 5:
+      return `Normal`;
+
+    case rating >= 5 && rating < 8:
+      return `Good`;
+
+    case rating >= 8 && rating < 10:
+      return `Very good`;
+
+    case rating >= 10:
+      return `Awesome`;
+  }
+
+  return `Unknown`;
+};
+
+const getRandomItem = (arr) => {
+  return arr[getRandomNumber(0, arr.length - 1)];
+};
+
+const getRandomArrWithUniqeItems = (arr) => {
+  const copyArr = [...arr];
+  const result = [];
+  for (let i = 0; i < getRandomNumber(2, arr.length - 1); i++) {
+    result.push(copyArr.splice(getRandomNumber(0, copyArr.length - 1), 1)[0]);
+  }
+
+  return result;
+};
+
 
 const generateMock = () => {
   const ratingNumber = getRandomRating();

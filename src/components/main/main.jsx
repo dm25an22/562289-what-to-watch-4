@@ -61,10 +61,10 @@ const promoSection = (titlePromo, genrePromo, yearPromo) => {
   );
 };
 
-const Main = ({titlePromo, genrePromo, yearPromo, films}) => {
+const Main = ({titlePromo, genrePromo, yearPromo, onSmallCardClick, films}) => {
   return (
     <>
-    {promoSection(titlePromo, genrePromo, yearPromo)};
+    {promoSection(titlePromo, genrePromo, yearPromo)}
 
     <div className="page-content">
       <section className="catalog">
@@ -103,7 +103,10 @@ const Main = ({titlePromo, genrePromo, yearPromo, films}) => {
           </li>
         </ul>
 
-        <MovieList films={films} />
+        <MovieList
+          films={films}
+          onSmallCardClick={onSmallCardClick}
+        />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -135,7 +138,8 @@ Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  onSmallCardClick: PropTypes.func.isRequired
 };
 
 export default Main;

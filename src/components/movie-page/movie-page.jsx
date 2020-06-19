@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes, { shape } from "prop-types";
+import PropTypes from "prop-types";
 
 const MoviePage = ({film}) => {
   const {
     title,
     bigPoster,
     moviePoster,
-    src,
     genre,
     year,
     description,
@@ -114,7 +113,7 @@ const MoviePage = ({film}) => {
   );
 };
 
-MoviePage.propType = {
+MoviePage.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,

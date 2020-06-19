@@ -11,7 +11,6 @@ class MovieList extends PureComponent {
       currentCard: -1
     };
 
-    this.clickTitleHandler = this.clickTitleHandler.bind(this);
     this.mousOverSmallCardHandler = this.mousOverSmallCardHandler.bind(this);
   }
 
@@ -21,14 +20,10 @@ class MovieList extends PureComponent {
         <SmallMovieCard
           films={this.props.films}
           onCardMouseOver={this.mousOverSmallCardHandler}
-          onTitleClick={this.clickTitleHandler}
+          onSmallCardClick={this.props.onSmallCardClick}
         />
       </div>
     );
-  }
-
-  clickTitleHandler() {
-    return;
   }
 
   mousOverSmallCardHandler(value) {
@@ -43,7 +38,8 @@ MovieList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  onSmallCardClick: PropTypes.func.isRequired
 };
 
 export default MovieList;

@@ -6,6 +6,12 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentFilm: -1
+    };
+
+    this.clickSmallCardHandler = this.clickSmallCardHandler.bind(this);
   }
 
   render() {
@@ -25,16 +31,30 @@ class App extends PureComponent {
     );
   }
 
+  clickSmallCardHandler(index) {
+    return this.setState({currentFilm: index});
+  }
+
   _renderApp() {
     const {titlePromo, genrePromo, yearPromo, films} = this.props;
-    return (
-      <Main
-        titlePromo={titlePromo}
-        genrePromo={genrePromo}
-        yearPromo={yearPromo}
-        films={films}
-      />
-    );
+
+    if (this.state.currentFilm >= 0) {
+      return (
+        <MoviePage
+          film={this.props.films[this.state.currentFilm]}
+        />);
+    } else {
+      return (
+        <Main
+          titlePromo={titlePromo}
+          genrePromo={genrePromo}
+          yearPromo={yearPromo}
+          films={films}
+          onSmallCardClick={this.clickSmallCardHandler}
+        />
+      );
+    }
+
   }
 
 }
