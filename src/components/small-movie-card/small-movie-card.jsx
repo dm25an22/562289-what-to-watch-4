@@ -5,7 +5,7 @@ const SmallMovieCard = ({films, onCardMouseOver, onTitleClick}) => {
   return (
     films.map((film, index) => (
       <article
-        key={String(new Date() + Math.random())}
+        key={film.title}
         onMouseOver={() => {
           onCardMouseOver(index);
         }}
