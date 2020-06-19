@@ -8,7 +8,7 @@ const getRandomNumber = (min, max) => {
 
 const getRandomRating = () => {
   const firstNumber = getRandomNumber(0, 10);
-  return `${firstNumber}.${firstNumber !== 10 && firstNumber !== 0 ? getRandomNumber(0, 10) : 0}`;
+  return Number(`${firstNumber}.${firstNumber !== 10 && firstNumber !== 0 ? getRandomNumber(0, 9) : 0}`);
 };
 
 const getDescriptionRating = (rating) => {
@@ -37,6 +37,16 @@ const getRandomItem = (arr) => {
   return arr[getRandomNumber(0, arr.length - 1)];
 };
 
+const getRandomArrWithUniqeItems = (arr) => {
+  const copyArr = [...arr];
+  const result = [];
+  for (let i = 0; i < getRandomNumber(2, arr.length - 1); i++) {
+    result.push(copyArr.splice(getRandomNumber(0, copyArr.length - 1), 1)[0]);
+  }
+
+  return result;
+};
+
 
 const producers = [
   `Edward Janney`,
@@ -52,57 +62,82 @@ const producers = [
   `Jenno Topping`,
 ];
 
-const text = `Something`;
+const text = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+ Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+  took a galley of type and scrambled it to make a type specimen book.`;
 
 const films = [
   {
     title: `Fantastic Beasts`,
     src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Kids & Family`
   },
   {
     title: `Bohemian Rhapsody`,
     src: `img/bohemian-rhapsody.jpg`,
-
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Dramas`
   },
   {
     title: `Macbeth`,
     src: `img/macbeth.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Thrillers`
   },
   {
     title: `Revenant`,
     src: `img/revenant.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Thrillers`
   },
   {
     title: `Johnny English`,
     src: `img/johnny-english.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Kids & Family`
   },
   {
     title: `War of the Worlds`,
     src: `img/war-of-the-worlds.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Thrillers`
   },
   {
     title: `Seven Years in Tibet`,
-    src: `img/seven-years-in-tibet.jpg`
+    src: `img/seven-years-in-tibet.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Documentary`
   },
   {
     title: `Snatch`,
-    src: `img/snatch.jpg`
+    src: `img/snatch.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Romance`
   },
   {
     title: `Mindhunter`,
-    src: `img/mindhunter.jpg`
+    src: `img/mindhunter.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Horror`
   },
   {
     title: `Pulp Fiction`,
-    src: `img/pulp-fiction.jpg`
+    src: `img/pulp-fiction.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Crime`
   },
   {
     title: `What we do in the shadows`,
-    src: `img/what-we-do-in-the-shadows.jpg`
+    src: `img/what-we-do-in-the-shadows.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Sci-Fi`
   },
   {
     title: `Shutter Island`,
-    src: `img/shutter-island.jpg`
+    src: `img/shutter-island.jpg`,
+    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
+    genre: `Comedies`
   }
 ];
 
@@ -132,7 +167,6 @@ const actorsList = [
   `Eddie Albert`,
 ];
 
-
 const generateMock = () => {
   const ratingNumber = getRandomRating();
   const ratingString = getDescriptionRating(ratingNumber);
@@ -140,13 +174,17 @@ const generateMock = () => {
 
   return {
     title: randomFilm.title,
+    moviePoster: `img/the-grand-budapest-hotel-poster.jpg`,
+    bigPoster: randomFilm.bigPoster,
     src: randomFilm.src,
+    genre: randomFilm.genre,
+    year: getRandomNumber(1995, 2017),
     description: text,
     rating: ratingNumber,
     descriptionRating: ratingString,
     quantityVotes: getRandomNumber(5, 300),
-    Producer: getRandomItem(producers),
-    listActors: [`1`, `2`, `3`]
+    producer: getRandomItem(producers),
+    listActors: getRandomArrWithUniqeItems(actorsList)
   };
 };
 
@@ -155,7 +193,5 @@ const createMock = (countFilms) => {
     .fill()
     .map(generateMock);
 };
-
-console.table(createMock(COUNT_FILMS));
 
 export default createMock(COUNT_FILMS);

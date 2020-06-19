@@ -3,8 +3,6 @@ import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-
-
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -17,8 +15,10 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-movie-page">
-            <MoviePage />
+          <Route exact path="/dev-film-page">
+            <MoviePage
+              film={this.props.films[0]}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
