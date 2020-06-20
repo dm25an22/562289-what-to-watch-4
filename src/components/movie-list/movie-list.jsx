@@ -35,10 +35,7 @@ class MovieList extends PureComponent {
 }
 
 MovieList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
-  }).isRequired).isRequired,
+  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   onSmallCardClick: PropTypes.func.isRequired
 };
 

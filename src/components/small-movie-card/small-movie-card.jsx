@@ -5,19 +5,18 @@ const SmallMovieCard = ({films, onCardMouseOver, onSmallCardClick}) => {
   return (
     films.map((film, index) => (
       <article
-        key={String(new Date() + Math.random())}
+        key={film.title + index}
         onMouseOver={() => {
           onCardMouseOver(index);
         }}
         className="small-movie-card catalog__movies-card">
 
         <div
-          onClick={(evt) => {
-            evt.preventDefault();
+          onClick={() => {
             onSmallCardClick(index);
           }}
           className="small-movie-card__image">
-          <img src={film.src} alt={film.title} width="280" height="175" />
+          <img src={film.smallCardImg} alt={film.title} width="280" height="175" />
         </div>
         <h3 className="small-movie-card__title">
           <a
@@ -37,8 +36,8 @@ const SmallMovieCard = ({films, onCardMouseOver, onSmallCardClick}) => {
 SmallMovieCard.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
-  }).isRequired).isRequired,
+    smallCardImg: PropTypes.string.isRequired
+  })).isRequired,
   onCardMouseOver: PropTypes.func.isRequired,
   onSmallCardClick: PropTypes.func.isRequired
 };

@@ -139,7 +139,6 @@ Array [
       </div>
     </div>
   </section>,
-  ";",
   <div
     className="page-content"
   >
@@ -294,7 +293,7 @@ Array [
             onClick={[Function]}
           >
             <img
-              alt="Bohemian Rhapsody"
+              alt="Title"
               height="175"
               src="img/bohemian-rhapsody.jpg"
               width="280"
@@ -308,7 +307,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Bohemian Rhapsody
+              Title
             </a>
           </h3>
         </article>
@@ -321,7 +320,7 @@ Array [
             onClick={[Function]}
           >
             <img
-              alt="Macbeth"
+              alt="Title"
               height="175"
               src="img/macbeth.jpg"
               width="280"
@@ -335,7 +334,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Macbeth
+              Title
             </a>
           </h3>
         </article>

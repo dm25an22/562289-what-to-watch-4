@@ -8,73 +8,61 @@ const films = [
   {
     title: `Fantastic Beasts`,
     src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Kids & Family`
   },
   {
     title: `Bohemian Rhapsody`,
     src: `img/bohemian-rhapsody.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Dramas`
   },
   {
     title: `Macbeth`,
     src: `img/macbeth.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Thrillers`
   },
   {
     title: `Revenant`,
     src: `img/revenant.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Thrillers`
   },
   {
     title: `Johnny English`,
     src: `img/johnny-english.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Kids & Family`
   },
   {
     title: `War of the Worlds`,
     src: `img/war-of-the-worlds.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Thrillers`
   },
   {
     title: `Seven Years in Tibet`,
     src: `img/seven-years-in-tibet.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Documentary`
   },
   {
     title: `Snatch`,
     src: `img/snatch.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Romance`
   },
   {
     title: `Mindhunter`,
     src: `img/mindhunter.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Horror`
   },
   {
     title: `Pulp Fiction`,
     src: `img/pulp-fiction.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Crime`
   },
   {
     title: `What we do in the shadows`,
     src: `img/what-we-do-in-the-shadows.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Sci-Fi`
   },
   {
     title: `Shutter Island`,
     src: `img/shutter-island.jpg`,
-    bigPoster: `img/bg-the-grand-budapest-hotel.jpg`,
     genre: `Comedies`
   }
 ];
@@ -174,9 +162,9 @@ const generateMock = () => {
 
   return {
     title: randomFilm.title,
-    moviePoster: `img/the-grand-budapest-hotel-poster.jpg`,
-    bigPoster: randomFilm.bigPoster,
-    src: randomFilm.src,
+    moviePoster: `https://picsum.photos/300/450`,
+    bigPoster: `https://picsum.photos/1900/550`,
+    smallCardImg: randomFilm.src,
     genre: randomFilm.genre,
     year: getRandomNumber(1995, 2017),
     description: text,

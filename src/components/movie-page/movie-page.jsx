@@ -118,7 +118,6 @@ MoviePage.propTypes = {
     title: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,
     moviePoster: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,

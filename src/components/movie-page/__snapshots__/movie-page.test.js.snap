@@ -11,7 +11,7 @@ exports[`Render MoviePage 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="Title"
+        alt="Fantastic Beasts"
         src="img/the-grand-budapest-hotel-poster.jpg"
       />
     </div>
@@ -71,7 +71,7 @@ exports[`Render MoviePage 1`] = `
         <h2
           className="movie-card__title"
         >
-          Title
+          Fantastic Beasts
         </h2>
         <p
           className="movie-card__meta"
@@ -144,7 +144,7 @@ exports[`Render MoviePage 1`] = `
         className="movie-card__poster movie-card__poster--big"
       >
         <img
-          alt="Title poster"
+          alt="Fantastic Beasts poster"
           height="327"
           src="img/the-grand-budapest-hotel-poster.jpg"
           width="218"
