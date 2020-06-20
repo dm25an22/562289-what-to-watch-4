@@ -1,3 +1,4 @@
+
 const COUNT_FILMS = 8;
 
 const text = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -183,3 +184,4 @@ const createMock = (countFilms) => {
 };
 
 export default createMock(COUNT_FILMS);
+

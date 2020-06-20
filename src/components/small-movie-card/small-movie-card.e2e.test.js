@@ -3,7 +3,6 @@ import {shallow} from "enzyme";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
 
-
 describe(`SmallMovieCard`, () => {
   it(`Should onMous on card and click on title card`, () => {
     const onCardMouseOver = jest.fn();

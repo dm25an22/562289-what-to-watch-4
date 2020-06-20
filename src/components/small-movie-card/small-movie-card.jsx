@@ -10,7 +10,6 @@ const SmallMovieCard = ({films, onCardMouseOver, onSmallCardClick}) => {
           onCardMouseOver(index);
         }}
         className="small-movie-card catalog__movies-card">
-
         <div
           onClick={() => {
             onSmallCardClick(index);

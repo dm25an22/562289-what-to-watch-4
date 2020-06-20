@@ -64,6 +64,7 @@ App.propTypes = {
   genrePromo: PropTypes.string.isRequired,
   yearPromo: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+
 };
 
 export default App;
