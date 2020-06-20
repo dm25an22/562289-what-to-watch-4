@@ -1,31 +1,16 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import SmallMovieCard from "./small-movie-card.jsx";
-
-const mock = [
-  {
-    title: `Fantastic Beasts`,
-    src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
-  },
-  {
-    title: `Bohemian Rhapsody`,
-    src: `img/bohemian-rhapsody.jpg`
-  },
-  {
-    title: `Macbeth`,
-    src: `img/macbeth.jpg`
-  },
-];
-
+import {mockFilms} from "../../mocks/mock-for-tests";
 
 it(`Render SmallMovieCard`, () => {
   const tree = renderer.create(
       <SmallMovieCard
-        films={mock}
+        films={mockFilms}
         onCardMouseOver={() => {}}
-        onTitleClick={() => {}}
+        onSmallCardClick={() => {}}
       />
-  );
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

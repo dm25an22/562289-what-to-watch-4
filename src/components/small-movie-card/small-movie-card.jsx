@@ -1,24 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SmallMovieCard = ({films, onCardMouseOver, onTitleClick}) => {
+const SmallMovieCard = ({films, onCardMouseOver, onSmallCardClick}) => {
   return (
     films.map((film, index) => (
       <article
-        key={film.title}
+        key={film.title + index}
         onMouseOver={() => {
           onCardMouseOver(index);
         }}
         className="small-movie-card catalog__movies-card">
-
-        <div className="small-movie-card__image">
-          <img src={film.src} alt={film.title} width="280" height="175" />
+        <div
+          onClick={() => {
+            onSmallCardClick(index);
+          }}
+          className="small-movie-card__image">
+          <img src={film.smallCardImg} alt={film.title} width="280" height="175" />
         </div>
         <h3 className="small-movie-card__title">
           <a
             onClick={(evt) => {
               evt.preventDefault();
-              onTitleClick();
+              onSmallCardClick(index);
             }}
             className="small-movie-card__link"
             href="movie-page.html">{film.title}
@@ -32,10 +35,10 @@ const SmallMovieCard = ({films, onCardMouseOver, onTitleClick}) => {
 SmallMovieCard.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
-  }).isRequired).isRequired,
+    smallCardImg: PropTypes.string.isRequired
+  })).isRequired,
   onCardMouseOver: PropTypes.func.isRequired,
-  onTitleClick: PropTypes.func.isRequired
+  onSmallCardClick: PropTypes.func.isRequired
 };
 
 export default SmallMovieCard;

@@ -1,15 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app";
+import MoviePage from "./movie-page.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
 
-it(`Render App`, () => {
+it(`Render MoviePage`, () => {
   const tree = renderer.create(
-      <App
-        titlePromo={`The Grand Budapest Hotel`}
-        genrePromo={`Drama`}
-        yearPromo={2014}
-        films={mockFilms}
+      <MoviePage
+        film={mockFilms[0]}
       />
   ).toJSON();
 

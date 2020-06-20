@@ -1,21 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main";
-
-const mock = [
-  {
-    title: `Fantastic Beasts`,
-    src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
-  },
-  {
-    title: `Bohemian Rhapsody`,
-    src: `img/bohemian-rhapsody.jpg`
-  },
-  {
-    title: `Macbeth`,
-    src: `img/macbeth.jpg`
-  },
-];
+import {mockFilms} from "../../mocks/mock-for-tests";
 
 it(`Render Main`, () => {
   const tree = renderer.create(
@@ -23,7 +9,8 @@ it(`Render Main`, () => {
         titlePromo={`The Grand Budapest Hotel`}
         genrePromo={`Drama`}
         yearPromo={2014}
-        films={mock}
+        films={mockFilms}
+        onSmallCardClick={() => {}}
       />
   ).toJSON();
 

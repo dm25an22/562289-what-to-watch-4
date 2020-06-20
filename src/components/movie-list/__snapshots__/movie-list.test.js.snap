@@ -10,6 +10,7 @@ exports[`Render MovieList 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Fantastic Beasts"
@@ -36,9 +37,10 @@ exports[`Render MovieList 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="Bohemian Rhapsody"
+        alt="Title"
         height="175"
         src="img/bohemian-rhapsody.jpg"
         width="280"
@@ -52,7 +54,7 @@ exports[`Render MovieList 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Bohemian Rhapsody
+        Title
       </a>
     </h3>
   </article>
@@ -62,9 +64,10 @@ exports[`Render MovieList 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="Macbeth"
+        alt="Title"
         height="175"
         src="img/macbeth.jpg"
         width="280"
@@ -78,7 +81,7 @@ exports[`Render MovieList 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Macbeth
+        Title
       </a>
     </h3>
   </article>
