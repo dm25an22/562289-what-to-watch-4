@@ -7,10 +7,12 @@ it(`Render MovieList`, () => {
   const tree = renderer.create(
       <MovieList
         films={mockFilms}
-        onMouseover={() => {}}
-        onCardMouseOver ={() => {}}
         onSmallCardClick={() => {}}
-      />
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

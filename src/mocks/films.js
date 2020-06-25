@@ -1,5 +1,5 @@
 
-const COUNT_FILMS = 8;
+const COUNT_FILMS = 4;
 
 const text = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
@@ -108,6 +108,10 @@ const producers = [
   `Jenno Topping`,
 ];
 
+const previews = [
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+];
+
 const getRandomNumber = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -169,6 +173,7 @@ const generateMock = () => {
     genre: randomFilm.genre,
     year: getRandomNumber(1995, 2017),
     description: text,
+    preview: getRandomItem(previews),
     rating: ratingNumber,
     descriptionRating: ratingString,
     quantityVotes: getRandomNumber(5, 300),

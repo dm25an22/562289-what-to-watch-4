@@ -12,6 +12,7 @@ const mockFilms = [
     producer: `Tom Ruegger`,
     listActors: [`one`, `two`],
     smallCardImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Title`,
@@ -25,7 +26,8 @@ const mockFilms = [
     quantityVotes: 125,
     producer: `Tom Ruegger`,
     listActors: [`one`, `two`],
-    smallCardImg: `img/bohemian-rhapsody.jpg`
+    smallCardImg: `img/bohemian-rhapsody.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     title: `Title`,
@@ -39,7 +41,8 @@ const mockFilms = [
     quantityVotes: 125,
     producer: `Tom Ruegger`,
     listActors: [`one`, `two`],
-    smallCardImg: `img/macbeth.jpg`
+    smallCardImg: `img/macbeth.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
 ];
 
