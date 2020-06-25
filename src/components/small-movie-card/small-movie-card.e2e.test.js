@@ -4,33 +4,27 @@ import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
 
 describe(`SmallMovieCard`, () => {
-  it(`Should onMous on card and click on title card`, () => {
-    const onCardMouseOver = jest.fn();
+  it(`Click on the title and card`, () => {
     const onSmallCardClick = jest.fn();
     const prevention = jest.fn();
 
     const tree = shallow(
         <SmallMovieCard
+          film={mockFilms[0]}
+          index={1}
           onSmallCardClick={onSmallCardClick}
-          onCardMouseOver={onCardMouseOver}
-          films={mockFilms}
         />
     );
 
-    const filmCard = tree.find(`.small-movie-card`);
-    filmCard.forEach((it) => it.props().onMouseOver());
+    const card = tree.find(`article`);
+    card.props().onClick();
 
-    const cardsImg = tree.find(`.small-movie-card__image`);
-    cardsImg.forEach((it) => it.props().onClick());
+    const filmTitle = tree.find(`a`);
+    filmTitle.simulate(`click`, {preventDefault: prevention});
 
-    const filmsTitle = tree.find(`.small-movie-card__link`);
-    filmsTitle.forEach((it) => it.props().onClick({preventDefault: prevention}));
+    expect(prevention).toHaveBeenCalledTimes(1);
+    expect(prevention).toHaveBeenCalledTimes(1);
 
-    expect(onSmallCardClick).toHaveBeenCalledTimes(mockFilms.length * 2);
-    expect(prevention).toHaveBeenCalledTimes(mockFilms.length);
-
-    expect(filmCard.length).toBe(mockFilms.length);
-    expect(onCardMouseOver).toHaveBeenCalledTimes(mockFilms.length);
   });
 
 });

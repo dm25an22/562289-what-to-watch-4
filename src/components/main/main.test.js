@@ -11,7 +11,11 @@ it(`Render Main`, () => {
         yearPromo={2014}
         films={mockFilms}
         onSmallCardClick={() => {}}
-      />
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

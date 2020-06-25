@@ -6,17 +6,19 @@ exports[`Render MovieList 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
-      onClick={[Function]}
     >
-      <img
-        alt="Fantastic Beasts"
+      <video
+        className="player__video"
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-        width="280"
+        loop={true}
+        muted={true}
+        width="280px"
       />
     </div>
     <h3
@@ -33,17 +35,19 @@ exports[`Render MovieList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
-      onClick={[Function]}
     >
-      <img
-        alt="Title"
+      <video
+        className="player__video"
         height="175"
-        src="img/bohemian-rhapsody.jpg"
-        width="280"
+        loop={true}
+        muted={true}
+        width="280px"
       />
     </div>
     <h3
@@ -60,17 +64,19 @@ exports[`Render MovieList 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
-      onClick={[Function]}
     >
-      <img
-        alt="Title"
+      <video
+        className="player__video"
         height="175"
-        src="img/macbeth.jpg"
-        width="280"
+        loop={true}
+        muted={true}
+        width="280px"
       />
     </div>
     <h3
