@@ -38,7 +38,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {promo, films, genres, onGenreClick} = this.props;
+    const {promo, films, currentGenre, onGenreClick} = this.props;
 
     if (this.state.currentFilm >= 0) {
       return (
@@ -48,10 +48,10 @@ class App extends PureComponent {
     } else {
       return (
         <Main
+          currentGenre={currentGenre}
           promo={promo}
           films={films}
           onGenreClick={onGenreClick}
-          genres={genres}
           onSmallCardClick={this.clickSmallCardHandler}
         />
       );
@@ -62,24 +62,24 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  currentGenre: PropTypes.string.isRequired,
   promo: PropTypes.object.isRequired,
   films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onGenreClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
     promo: state.promo,
-    genres: state.genres,
-    films: state.films
+    films: state.films,
+    currentGenre: state.currentGenre
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGenreClick(films, genre) {
-      dispatch(ActionCreator.filterByGenre(films, genre));
+    onGenreClick(genre) {
+      dispatch(ActionCreator.currentGenre(genre));
     }
   };
 };

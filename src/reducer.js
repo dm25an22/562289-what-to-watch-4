@@ -1,8 +1,6 @@
 import films from "./mocks/films";
-import {extend} from "./utils";
+import {extend, ALL_GENRE} from "./utils";
 
-const ALL_GENRE = `All genre`;
-const MAX_GENRES = 9;
 
 const promo = {
   titlePromo: `The Grand Budapest Hotel`,
@@ -10,58 +8,36 @@ const promo = {
   yearPromo: 2014,
 };
 
-const getUniqueGenres = (movies) => {
-  const genresUnique = [...new Set(movies.map((it) => it.genre))].sort();
-
-  return [ALL_GENRE].concat(checkLengthGenres(genresUnique));
-};
-
-const checkLengthGenres = (genres) => {
-  if (genres.length > MAX_GENRES) {
-    return genres.slice(0, MAX_GENRES);
-  }
-
-  return genres;
-};
 
 const initialState = {
   films,
-  filmsByGenre: films,
-  genres: checkLengthGenres(getUniqueGenres(films)),
+  currentGenre: ALL_GENRE,
   promo
 };
 
 const ActionType = {
-  FILTER: `FILTER`
+  CURRENT_GENRE: `CURRENT_GENRE`
 };
 
 const ActionCreator = {
-  filterByGenre(filmsList, genre) {
-    let movies = [];
-
-    if (genre === ALL_GENRE) {
-      movies = filmsList;
-    } else {
-      movies = filmsList.filter((it) => it.genre === genre);
-    }
-
+  currentGenre(genre) {
     return {
-      type: ActionType.FILTER,
-      payload: movies
+      type: ActionType.CURRENT_GENRE,
+      payload: genre
     };
-  }
+  },
 };
 
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case ActionType.FILTER:
+    case ActionType.CURRENT_GENRE:
       return extend(state, {
-        filmsByGenre: action.payload
+        currentGenre: action.payload
       });
   }
 
   return state;
 };
 
-export {reducer, ActionCreator};
+export {reducer, ActionCreator, ActionType};

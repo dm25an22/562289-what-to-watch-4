@@ -1,19 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieList from "../movie-list/movie-list.jsx";
+import GenreList from "./genres-list.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
 
-it(`Render MovieList`, () => {
+it(`Render GenreList`, () => {
   const tree = renderer.create(
-      <MovieList
+      <GenreList
         currentGenre={`All genre`}
+        onGenreClick={() => {}}
         films={mockFilms}
-        onSmallCardClick={() => {}}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      }
+      />
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

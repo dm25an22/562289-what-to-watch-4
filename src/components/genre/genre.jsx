@@ -2,7 +2,7 @@ import React from "react";
 import PropsTypes from "prop-types";
 
 
-const Genre = ({genre, onGenreClick, films, index, setCurrentGenre, active}) => {
+const Genre = ({genre, onGenreClick, active}) => {
   const className = `catalog__genres-item ${active && `catalog__genres-item--active`}`;
 
   return (
@@ -10,8 +10,7 @@ const Genre = ({genre, onGenreClick, films, index, setCurrentGenre, active}) => 
       <a
         onClick={(evt) => {
           evt.preventDefault();
-          setCurrentGenre(index);
-          onGenreClick(films, genre);
+          onGenreClick(genre);
         }}
         href="#"
         className="catalog__genres-link">{genre}</a>
@@ -22,9 +21,6 @@ const Genre = ({genre, onGenreClick, films, index, setCurrentGenre, active}) => 
 Genre.propTypes = {
   genre: PropsTypes.string.isRequired,
   onGenreClick: PropsTypes.func.isRequired,
-  films: PropsTypes.arrayOf(PropsTypes.object.isRequired).isRequired,
-  index: PropsTypes.number.isRequired,
-  setCurrentGenre: PropsTypes.func.isRequired,
   active: PropsTypes.bool.isRequired
 };
 

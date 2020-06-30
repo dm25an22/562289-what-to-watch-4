@@ -5,7 +5,7 @@ import GenresList from "../genres-list/genres-list.jsx";
 import Promo from "../promo/promo.jsx";
 
 
-const Main = ({promo, onSmallCardClick, films, genres, onGenreClick}) => {
+const Main = ({promo, onSmallCardClick, films, currentGenre, onGenreClick}) => {
   return (
     <>
     <Promo promo={promo} />
@@ -15,12 +15,13 @@ const Main = ({promo, onSmallCardClick, films, genres, onGenreClick}) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenresList
+          currentGenre={currentGenre}
           films={films}
           onGenreClick={onGenreClick}
-          genres={genres}
         />
 
         <MovieList
+          currentGenre={currentGenre}
           films={films}
           onSmallCardClick={onSmallCardClick}
         />
@@ -49,8 +50,8 @@ const Main = ({promo, onSmallCardClick, films, genres, onGenreClick}) => {
 };
 
 Main.propTypes = {
+  currentGenre: PropTypes.string.isRequired,
   onGenreClick: PropTypes.func.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   promo: PropTypes.object.isRequired,
   films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   onSmallCardClick: PropTypes.func.isRequired
