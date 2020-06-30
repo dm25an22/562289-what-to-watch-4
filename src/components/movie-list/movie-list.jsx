@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
+import {connect} from "react-redux";
 
 const MovieList = (props) => {
-  const {films, onSmallCardClick} = props;
+  const {films, onSmallCardClick, filmsByGenre} = props;
   return (
     <div className="catalog__movies-list">
-      {films.map((film, i) => {
+      {filmsByGenre.map((film, i) => {
         return (
           <SmallMovieCard
             key={film.title + i}
@@ -26,4 +27,11 @@ MovieList.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired
 };
 
-export default MovieList;
+const mapStateToProps = (state) => {
+  return {
+    filmsByGenre: state.filmsByGenre
+  };
+};
+
+export {MovieList};
+export default connect(mapStateToProps)(MovieList);

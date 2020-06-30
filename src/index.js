@@ -1,20 +1,15 @@
 import React from "react";
 import ReactDom from "react-dom";
 import App from "./components/app/app.jsx";
-import films from "./mocks/films.js";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "./reducer.js";
 
-const Settings = {
-  TITLE_PROMO: `The Grand Budapest Hotel`,
-  GENRE_PROMO: `Drama`,
-  YEAR_PROMO: 2014,
-};
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f);
 
 ReactDom.render(
-    <App
-      titlePromo={Settings.TITLE_PROMO}
-      genrePromo={Settings.GENRE_PROMO}
-      yearPromo={Settings.YEAR_PROMO}
-      films={films}
-    />,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.querySelector(`#root`)
 );
