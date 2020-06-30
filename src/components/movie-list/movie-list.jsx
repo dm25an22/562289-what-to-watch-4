@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
+import {filterByGenre} from "../../utils";
 
-const MovieList = (props) => {
-  const {films, onSmallCardClick} = props;
+const MovieList = ({films, onSmallCardClick, currentGenre}) => {
+  const filmsByGenre = filterByGenre(films, currentGenre);
+
   return (
     <div className="catalog__movies-list">
-      {films.map((film, i) => {
+      {filmsByGenre.map((film, i) => {
         return (
           <SmallMovieCard
             key={film.title + i}
@@ -22,6 +24,7 @@ const MovieList = (props) => {
 };
 
 MovieList.propTypes = {
+  currentGenre: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   onSmallCardClick: PropTypes.func.isRequired
 };
