@@ -2,15 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import {filterByGenre} from "../../utils";
+import withVideoPlayer from "../../hocks/with-video-player/with-video-player";
+
+const MovieCard = withVideoPlayer(SmallMovieCard);
 
 const MovieList = ({films, onSmallCardClick, currentGenre}) => {
   const filmsByGenre = filterByGenre(films, currentGenre);
-
   return (
     <div className="catalog__movies-list">
       {filmsByGenre.map((film, i) => {
         return (
-          <SmallMovieCard
+          <MovieCard
             key={film.title + i}
             film={film}
             index={i}

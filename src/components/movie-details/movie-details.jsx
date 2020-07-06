@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Header from "../header/header.jsx";
+import MovieNav from "../movie-nav/movie-nav.jsx";
 
-const MoviePage = ({film}) => {
+const MovieDetails = ({film}) => {
   const {
     title,
     bigPoster,
@@ -25,21 +27,7 @@ const MoviePage = ({film}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header />
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
@@ -75,19 +63,8 @@ const MoviePage = ({film}) => {
           </div>
 
           <div className="movie-card__desc">
-            <nav className="movie-nav movie-card__nav">
-              <ul className="movie-nav__list">
-                <li className="movie-nav__item movie-nav__item--active">
-                  <a href="#" className="movie-nav__link">Overview</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Details</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Reviews</a>
-                </li>
-              </ul>
-            </nav>
+
+            <MovieNav />
 
             <div className="movie-rating">
               <div className="movie-rating__score">{rating}</div>
@@ -113,7 +90,7 @@ const MoviePage = ({film}) => {
   );
 };
 
-MoviePage.propTypes = {
+MovieDetails.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,
@@ -129,4 +106,4 @@ MoviePage.propTypes = {
   }).isRequired
 };
 
-export default MoviePage;
+export default MovieDetails;

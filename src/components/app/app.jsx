@@ -1,21 +1,11 @@
 import React, {PureComponent} from "react";
 import Main from "../main/main.jsx";
-import MoviePage from "../movie-page/movie-page.jsx";
+import MovieDetails from "../movie-details/movie-details.jsx";
 import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer";
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentFilm: -1
-    };
-
-    this.clickSmallCardHandler = this.clickSmallCardHandler.bind(this);
-  }
-
   render() {
     return (
       <BrowserRouter>
@@ -24,7 +14,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-film-page">
-            <MoviePage
+            <MovieDetails
               film={this.props.films[0]}
             />
           </Route>
@@ -33,17 +23,13 @@ class App extends PureComponent {
     );
   }
 
-  clickSmallCardHandler(index) {
-    return this.setState({currentFilm: index});
-  }
-
   _renderApp() {
-    const {promo, films, currentGenre, onGenreClick} = this.props;
+    const {promo, films, currentGenre, onGenreClick, currentFilm, onSmallCardClick} = this.props;
 
-    if (this.state.currentFilm >= 0) {
+    if (currentFilm >= 0) {
       return (
-        <MoviePage
-          film={this.props.films[this.state.currentFilm]}
+        <MovieDetails
+          film={films[currentFilm]}
         />);
     } else {
       return (
@@ -52,7 +38,7 @@ class App extends PureComponent {
           promo={promo}
           films={films}
           onGenreClick={onGenreClick}
-          onSmallCardClick={this.clickSmallCardHandler}
+          onSmallCardClick={onSmallCardClick}
         />
       );
     }
@@ -65,21 +51,29 @@ App.propTypes = {
   currentGenre: PropTypes.string.isRequired,
   promo: PropTypes.object.isRequired,
   films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  onGenreClick: PropTypes.func.isRequired
+  onGenreClick: PropTypes.func.isRequired,
+  currentFilm: PropTypes.number.isRequired,
+  onSmallCardClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
     promo: state.promo,
     films: state.films,
-    currentGenre: state.currentGenre
+    currentGenre: state.currentGenre,
+    currentFilm: state.currentFilm,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+
     onGenreClick(genre) {
       dispatch(ActionCreator.currentGenre(genre));
+    },
+
+    onSmallCardClick(film) {
+      dispatch(ActionCreator.currentFilm(film));
     }
   };
 };
