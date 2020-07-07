@@ -9,15 +9,7 @@ exports[`Render SmallMovieCard 1`] = `
 >
   <div
     className="small-movie-card__image"
-  >
-    <video
-      className="player__video"
-      height="175"
-      loop={true}
-      muted={true}
-      width="280px"
-    />
-  </div>
+  />
   <h3
     className="small-movie-card__title"
   >

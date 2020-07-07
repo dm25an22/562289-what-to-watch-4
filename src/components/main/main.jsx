@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import Promo from "../promo/promo.jsx";
-
+import Footer from "../footer/footer.jsx";
+import LoadMoreButton from "../load-more-button/load-more-button.jsx";
 
 const Main = ({promo, onSmallCardClick, films, currentGenre, onGenreClick}) => {
   return (
@@ -26,24 +27,10 @@ const Main = ({promo, onSmallCardClick, films, currentGenre, onGenreClick}) => {
           onSmallCardClick={onSmallCardClick}
         />
 
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        <LoadMoreButton />
       </section>
 
-      <footer className="page-footer">
-        <div className="logo">
-          <a className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
-
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   </>
   );

@@ -28,5 +28,4 @@ const filterByGenre = (filmsList, genre) => {
   }
 };
 
-
 export {extend, getUniqueGenres, ALL_GENRE, filterByGenre};

@@ -23,14 +23,15 @@ class VideoPlayer extends React.PureComponent {
   }
 
   render() {
+    const {settings} = this.props;
     return (
       <video
-        className="player__video"
-        loop={true}
+        className={settings.className}
+        loop={settings.loop}
         ref={this._videoRef}
-        muted={true}
-        width="280px"
-        height="175">
+        muted={settings.muted}
+        width={settings.width}
+        height={settings.height}>
       </video>
     );
   }
@@ -48,6 +49,7 @@ class VideoPlayer extends React.PureComponent {
 }
 
 VideoPlayer.propTypes = {
+  settings: PropTypes.object.isRequired,
   preview: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   poster: PropTypes.string.isRequired

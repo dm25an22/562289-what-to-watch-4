@@ -3,7 +3,7 @@
 exports[`Render VideoPlayer 1`] = `
 <video
   className="player__video"
-  height="175"
+  height="175px"
   loop={true}
   muted={true}
   width="280px"
