@@ -11,6 +11,10 @@ it(`Render SmallMovieCard`, () => {
         film={film}
         index={1}
         onSmallCardClick={() => {}}
+        renderVideoPlayer={() => {}}
+        startPlayHandler={() => {}}
+        stopPlayHandler={() => {}}
+        isPlaing={false}
       />, {
         createNodeMock: () => {
           return {};

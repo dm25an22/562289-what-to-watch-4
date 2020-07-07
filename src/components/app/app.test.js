@@ -13,7 +13,7 @@ const promo = {
   yearPromo: 2014,
 };
 
-it(`Render App`, () => {
+it(`renders App component with main component`, () => {
   const store = mockStore({
     mockFilms,
     currentGenre: `All genre`,
@@ -23,6 +23,35 @@ it(`Render App`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <App
+          currentFilm={-1}
+          onSmallCardClick={() => {}}
+          films={mockFilms}
+          promo={promo}
+          onGenreClick={() => {}}
+          currentGenre={`All genre`}
+        />
+      </Provider>, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it(`renders App component with MovieDetails component`, () => {
+  const store = mockStore({
+    mockFilms,
+    currentGenre: `All genre`,
+    promo
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <App
+          currentFilm={2}
+          onSmallCardClick={() => {}}
           films={mockFilms}
           promo={promo}
           onGenreClick={() => {}}
