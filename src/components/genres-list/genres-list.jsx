@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Genre from "../genre/genre.jsx";
-import {getUniqueGenres} from "../../utils";
+import {connect} from "react-redux";
+import {getUniqueGeners} from "../../reducer/data/selectors";
+import {getCurrentGenre} from "../../reducer/app-state/selectors";
+import {ActionCreator} from "../../reducer/app-state/app-state";
 
-const GenresList = ({onGenreClick, films, currentGenre}) => {
-  const genres = getUniqueGenres(films);
-
+const GenresList = ({onGenreClick, currentGenre, genres}) => {
   return (
     <ul className="catalog__genres-list">
       {genres.map((it) => <Genre
@@ -20,7 +21,23 @@ const GenresList = ({onGenreClick, films, currentGenre}) => {
 GenresList.propTypes = {
   currentGenre: PropTypes.string.isRequired,
   onGenreClick: PropTypes.func.isRequired,
-  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
-export default GenresList;
+const mapStateToProps = (state) => {
+  return {
+    genres: getUniqueGeners(state),
+    currentGenre: getCurrentGenre(state),
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGenreClick(genre) {
+      dispatch(ActionCreator.currentGenre(genre));
+    },
+  };
+};
+
+export {GenresList};
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

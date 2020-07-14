@@ -6,12 +6,6 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-const getUniqueGenres = (movies) => {
-  const genresUnique = [...new Set(movies.map((it) => it.genre))].sort();
-
-  return [ALL_GENRE].concat(checkLengthGenres(genresUnique));
-};
-
 const checkLengthGenres = (genres) => {
   if (genres.length > MAX_GENRES) {
     return genres.slice(0, MAX_GENRES);
@@ -20,12 +14,24 @@ const checkLengthGenres = (genres) => {
   return genres;
 };
 
-const filterByGenre = (filmsList, genre) => {
-  if (genre === ALL_GENRE) {
-    return filmsList;
-  } else {
-    return filmsList.filter((it) => it.genre === genre);
+const getDescriptionRating = (rating) => {
+  switch (true) {
+    case rating < 3:
+      return `Bad`;
+
+    case rating >= 3 && rating < 5:
+      return `Normal`;
+
+    case rating >= 5 && rating < 8:
+      return `Good`;
+
+    case rating >= 8 && rating < 10:
+      return `Very good`;
+
+    case rating >= 10:
+      return `Awesome`;
   }
+  return `Unknown`;
 };
 
-export {extend, getUniqueGenres, ALL_GENRE, filterByGenre};
+export {extend, ALL_GENRE, checkLengthGenres, getDescriptionRating};

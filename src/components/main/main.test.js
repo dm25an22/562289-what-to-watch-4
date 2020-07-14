@@ -1,23 +1,52 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main";
+import configureStore from "redux-mock-store";
 import {mockFilms} from "../../mocks/mock-for-tests";
+import {Provider} from "react-redux";
+import NameSpace from "../../reducer/name-space";
+
+const mockStore = configureStore({});
 
 const promo = {
-  titlePromo: `The Grand Budapest Hotel`,
-  genrePromo: `Drama`,
-  yearPromo: 2014,
+  id: 1,
+  title: `Promo`,
+  moviePoster: `film.poster_image`,
+  bigPoster: `film.background_image`,
+  smallCardImg: `film.preview_image`,
+  genre: `film.genre`,
+  year: 1998,
+  description: `film.description`,
+  preview: `film.preview_video_link`,
+  rating: 3.2,
+  descriptionRating: `Bad`,
+  quantityVotes: 1290,
+  producer: `film.director`,
+  listActors: [`1`, `2`, `3`],
+  runTime: 120,
+  videoLink: `film.video_link`,
+  isFavorite: true,
+  backgroundColor: `red`
 };
-
 it(`Render Main`, () => {
+  const store = mockStore({
+    [NameSpace.DATA]: {
+      films: mockFilms,
+      promoFilm: promo
+    },
+    [NameSpace.APP_STATE]: {
+      currentGenre: `All genre`,
+    }
+  });
+
   const tree = renderer.create(
-      <Main
-        promo={promo}
-        films={mockFilms}
-        currentGenre={`All genre`}
-        onSmallCardClick={() => {}}
-        onGenreClick={() => {}}
-      />, {
+      <Provider store={store} >
+        <Main
+          promoFilm={promo}
+          onSmallCardClick={() => {}}
+        />
+      </Provider>
+      , {
         createNodeMock: () => {
           return {};
         }

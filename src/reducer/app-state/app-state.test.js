@@ -1,4 +1,5 @@
-import {reducer, ActionType} from "./reducer";
+import {ActionType, reducer} from "./app-state";
+
 it(`Reducer with type CURRENT_GENRE should return payload `, () => {
   expect(reducer({
     currentGenre: `All genre`,
