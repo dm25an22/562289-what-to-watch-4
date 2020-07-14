@@ -1,18 +1,8 @@
-import films from "./mocks/films";
-import {extend, ALL_GENRE} from "./utils";
-
-
-const promo = {
-  titlePromo: `The Grand Budapest Hotel`,
-  genrePromo: `Drama`,
-  yearPromo: 2014,
-};
+import {extend, ALL_GENRE} from "../../utils";
 
 
 const initialState = {
-  films,
   currentGenre: ALL_GENRE,
-  promo,
   currentFilm: -1,
 };
 

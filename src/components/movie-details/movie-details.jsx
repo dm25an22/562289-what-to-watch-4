@@ -15,11 +15,12 @@ const MovieDetails = ({film}) => {
     descriptionRating,
     quantityVotes,
     producer,
-    listActors
+    listActors,
+    backgroundColor
   } = film;
 
   return (
-    <section className="movie-card movie-card--full">
+    <section style={{background: backgroundColor}} className="movie-card movie-card--full">
       <div className="movie-card__hero">
         <div className="movie-card__bg">
           <img src={bigPoster} alt={title} />
@@ -77,8 +78,6 @@ const MovieDetails = ({film}) => {
             <div className="movie-card__text">
               <p>{description}</p>
 
-              <p>{description}</p>
-
               <p className="movie-card__director"><strong>Director: {producer}</strong></p>
 
               <p className="movie-card__starring"><strong>Starring: {listActors.join(`, `)}</strong></p>
@@ -102,7 +101,8 @@ MovieDetails.propTypes = {
     descriptionRating: PropTypes.string.isRequired,
     quantityVotes: PropTypes.number.isRequired,
     producer: PropTypes.string.isRequired,
-    listActors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+    listActors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    backgroundColor: PropTypes.string.isRequired
   }).isRequired
 };
 

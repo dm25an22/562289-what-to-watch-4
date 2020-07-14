@@ -3,6 +3,11 @@
 exports[`Render MoviePage 1`] = `
 <section
   className="movie-card movie-card--full"
+  style={
+    Object {
+      "background": "red",
+    }
+  }
 >
   <div
     className="movie-card__hero"
@@ -217,9 +222,6 @@ exports[`Render MoviePage 1`] = `
         <div
           className="movie-card__text"
         >
-          <p>
-            Something
-          </p>
           <p>
             Something
           </p>

@@ -12,7 +12,8 @@ const mockFilms = [
     producer: `Tom Ruegger`,
     listActors: [`one`, `two`],
     smallCardImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    backgroundColor: `red`
   },
   {
     title: `Title`,
@@ -27,7 +28,8 @@ const mockFilms = [
     producer: `Tom Ruegger`,
     listActors: [`one`, `two`],
     smallCardImg: `img/bohemian-rhapsody.jpg`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    backgroundColor: `red`
   },
   {
     title: `Title`,
@@ -42,10 +44,33 @@ const mockFilms = [
     producer: `Tom Ruegger`,
     listActors: [`one`, `two`],
     smallCardImg: `img/macbeth.jpg`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    backgroundColor: `red`
   },
 ];
 
+const mockPromo = {
+  id: 1,
+  title: `Promo`,
+  moviePoster: `film.poster_image`,
+  bigPoster: `film.background_image`,
+  smallCardImg: `film.preview_image`,
+  genre: `film.genre`,
+  year: 1998,
+  description: `film.description`,
+  preview: `film.preview_video_link`,
+  rating: 3.2,
+  descriptionRating: `Bad`,
+  quantityVotes: 1290,
+  producer: `film.director`,
+  listActors: [`1`, `2`, `3`],
+  runTime: 120,
+  videoLink: `film.video_link`,
+  isFavorite: true,
+  backgroundColor: `red`
+};
+
 export {
-  mockFilms
+  mockFilms,
+  mockPromo
 };

@@ -9,7 +9,7 @@ exports[`Render Promo 1`] = `
   >
     <img
       alt="The Grand Budapest Hotel"
-      src="img/bg-the-grand-budapest-hotel.jpg"
+      src="film.background_image"
     />
   </div>
   <h1
@@ -71,7 +71,7 @@ exports[`Render Promo 1`] = `
         <img
           alt="The Grand Budapest Hotel poster"
           height="327"
-          src="img/the-grand-budapest-hotel-poster.jpg"
+          src="film.poster_image"
           width="218"
         />
       </div>
@@ -81,7 +81,7 @@ exports[`Render Promo 1`] = `
         <h2
           className="movie-card__title"
         >
-          The Grand Budapest Hotel
+          Promo
         </h2>
         <p
           className="movie-card__meta"
@@ -89,12 +89,12 @@ exports[`Render Promo 1`] = `
           <span
             className="movie-card__genre"
           >
-            Drama
+            film.genre
           </span>
           <span
             className="movie-card__year"
           >
-            2014
+            1998
           </span>
         </p>
         <div

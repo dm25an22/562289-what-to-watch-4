@@ -6,24 +6,18 @@ import Promo from "../promo/promo.jsx";
 import Footer from "../footer/footer.jsx";
 import LoadMoreButton from "../load-more-button/load-more-button.jsx";
 
-const Main = ({promo, onSmallCardClick, films, currentGenre, onGenreClick}) => {
+const Main = ({onSmallCardClick, promoFilm}) => {
   return (
     <>
-    <Promo promo={promo} />
+    <Promo promoFilm={promoFilm} />
 
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <GenresList
-          currentGenre={currentGenre}
-          films={films}
-          onGenreClick={onGenreClick}
-        />
+        <GenresList />
 
         <MovieList
-          currentGenre={currentGenre}
-          films={films}
           onSmallCardClick={onSmallCardClick}
         />
 
@@ -37,10 +31,7 @@ const Main = ({promo, onSmallCardClick, films, currentGenre, onGenreClick}) => {
 };
 
 Main.propTypes = {
-  currentGenre: PropTypes.string.isRequired,
-  onGenreClick: PropTypes.func.isRequired,
-  promo: PropTypes.object.isRequired,
-  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  promoFilm: PropTypes.object.isRequired,
   onSmallCardClick: PropTypes.func.isRequired
 };
 

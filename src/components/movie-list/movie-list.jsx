@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import {filterByGenre} from "../../utils";
 import withVideoPlayer from "../../hocks/with-video-player/with-video-player";
+import {getFilmsByFilter} from "../../reducer/data/selectors";
+import {connect} from "react-redux";
 
 const MovieCard = withVideoPlayer(SmallMovieCard);
 
-const MovieList = ({films, onSmallCardClick, currentGenre}) => {
-  const filmsByGenre = filterByGenre(films, currentGenre);
+const MovieList = ({onSmallCardClick, filmsByFilter}) => {
   return (
     <div className="catalog__movies-list">
-      {filmsByGenre.map((film, i) => {
+      {filmsByFilter.map((film, i) => {
         return (
           <MovieCard
             key={film.title + i}
@@ -26,9 +26,15 @@ const MovieList = ({films, onSmallCardClick, currentGenre}) => {
 };
 
 MovieList.propTypes = {
-  currentGenre: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  filmsByFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   onSmallCardClick: PropTypes.func.isRequired
 };
 
-export default MovieList;
+const mapStateToProps = (state) => {
+  return {
+    filmsByFilter: getFilmsByFilter(state)
+  };
+};
+
+export {MovieList};
+export default connect(mapStateToProps)(MovieList);
