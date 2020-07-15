@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Headers component 1`] = `
+exports[`renders Headers component with authorization 1`] = `
 <header
   className="page-header movie-card__head"
 >
@@ -41,6 +41,48 @@ exports[`renders Headers component 1`] = `
         width="63"
       />
     </div>
+  </div>
+</header>
+`;
+
+exports[`renders Headers component without authorization 1`] = `
+<header
+  className="page-header movie-card__head"
+>
+  <div
+    className="logo"
+  >
+    <a
+      className="logo__link"
+      href="main.html"
+    >
+      <span
+        className="logo__letter logo__letter--1"
+      >
+        W
+      </span>
+      <span
+        className="logo__letter logo__letter--2"
+      >
+        T
+      </span>
+      <span
+        className="logo__letter logo__letter--3"
+      >
+        W
+      </span>
+    </a>
+  </div>
+  <div
+    className="user-block"
+  >
+    <a
+      className="user-block__link"
+      href="sign-in.html"
+      onClick={[Function]}
+    >
+      Sign in
+    </a>
   </div>
 </header>
 `;
