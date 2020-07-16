@@ -39,7 +39,6 @@ const Header = ({authStatus, onSignInClick}) => {
         {getMurkupByStatus(authStatus, onSignInClick)}
       </div>
 
-
     </header>
   );
 };
