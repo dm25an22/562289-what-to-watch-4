@@ -6,6 +6,11 @@ import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
 
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`
+};
+
 const mockStore = configureStore({});
 
 const promo = {
@@ -29,7 +34,7 @@ const promo = {
   backgroundColor: `red`
 };
 
-it(`renders App component with main component`, () => {
+it(`renders App component with main component without authorization user`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       films: mockFilms,
@@ -37,6 +42,9 @@ it(`renders App component with main component`, () => {
     },
     [NameSpace.APP_STATE]: {
       currentGenre: `All genre`,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
     }
   });
 
@@ -47,6 +55,44 @@ it(`renders App component with main component`, () => {
           onSmallCardClick={() => {}}
           films={mockFilms}
           promoFilm={promo}
+          isSignIn={false}
+          authStatus={AuthorizationStatus.NO_AUTH}
+          onSubmitAuth={() => {}}
+        />
+      </Provider>, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it(`renders App component with main component with authorization user`, () => {
+  const store = mockStore({
+    [NameSpace.DATA]: {
+      films: mockFilms,
+      promoFilm: promo
+    },
+    [NameSpace.APP_STATE]: {
+      currentGenre: `All genre`,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    }
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <App
+          currentFilm={-1}
+          onSmallCardClick={() => {}}
+          films={mockFilms}
+          promoFilm={promo}
+          isSignIn={false}
+          authStatus={AuthorizationStatus.AUTH}
+          onSubmitAuth={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -60,9 +106,16 @@ it(`renders App component with main component`, () => {
 
 it(`renders App component with MovieDetails component`, () => {
   const store = mockStore({
-    mockFilms,
-    currentGenre: `All genre`,
-    promo
+    [NameSpace.DATA]: {
+      films: mockFilms,
+      promoFilm: promo
+    },
+    [NameSpace.APP_STATE]: {
+      currentGenre: `All genre`,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    }
   });
 
   const tree = renderer.create(
@@ -72,6 +125,45 @@ it(`renders App component with MovieDetails component`, () => {
           onSmallCardClick={() => {}}
           films={mockFilms}
           promoFilm={promo}
+          isSignIn={false}
+          authStatus={AuthorizationStatus.NO_AUTH}
+          onSubmitAuth={() => {}}
+        />
+      </Provider>, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+
+it(`renders App component with SiginIn component`, () => {
+  const store = mockStore({
+    [NameSpace.DATA]: {
+      films: mockFilms,
+      promoFilm: promo
+    },
+    [NameSpace.APP_STATE]: {
+      currentGenre: `All genre`,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    }
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <App
+          currentFilm={2}
+          onSmallCardClick={() => {}}
+          films={mockFilms}
+          promoFilm={promo}
+          isSignIn={true}
+          authStatus={AuthorizationStatus.NO_AUTH}
+          onSubmitAuth={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
