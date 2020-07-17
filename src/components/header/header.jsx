@@ -5,7 +5,7 @@ import {getAuthStatus} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {ActionCreator} from "../../reducer/app-state/app-state";
 
-const getMurkupByStatus = (authStatus, onSignInClick) => {
+const getMarkupByStatus = (authStatus, onSignInClick) => {
   if (authStatus === AuthorizationStatus.AUTH) {
     return (
       <div className="user-block__avatar">
@@ -36,7 +36,7 @@ const Header = ({authStatus, onSignInClick}) => {
       </div>
 
       <div className="user-block">
-        {getMurkupByStatus(authStatus, onSignInClick)}
+        {getMarkupByStatus(authStatus, onSignInClick)}
       </div>
 
     </header>
