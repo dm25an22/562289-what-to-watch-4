@@ -32,4 +32,14 @@ const getFilmsByFilter = createSelector(
     }
 );
 
-export {getFilms, getPromoFilm, getFilmsByFilter, getUniqueGeners};
+const getComments = (state) => {
+  return state[NameSpace.DATA].comments;
+};
+
+export {
+  getFilms,
+  getPromoFilm,
+  getFilmsByFilter,
+  getUniqueGeners,
+  getComments
+};

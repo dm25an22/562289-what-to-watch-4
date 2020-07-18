@@ -32,7 +32,7 @@ const withCurrentTab = (Component) => {
           return <DetailsInfo film={film} />;
 
         case TabName.REVIEWS:
-          return <ReviewsInfo />;
+          return <ReviewsInfo film={film} />;
       }
 
       return null;

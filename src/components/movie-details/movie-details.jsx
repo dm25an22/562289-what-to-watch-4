@@ -10,12 +10,6 @@ const MovieDetails = ({film, currentTab, clickOnTab, renderCurrentInfo}) => {
     moviePoster,
     genre,
     year,
-    description,
-    rating,
-    descriptionRating,
-    quantityVotes,
-    producer,
-    listActors,
     backgroundColor
   } = film;
 
@@ -86,14 +80,12 @@ MovieDetails.propTypes = {
     moviePoster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    descriptionRating: PropTypes.string.isRequired,
-    quantityVotes: PropTypes.number.isRequired,
-    producer: PropTypes.string.isRequired,
     listActors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     backgroundColor: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  currentTab: PropTypes.string.isRequired,
+  clickOnTab: PropTypes.func.isRequired,
+  renderCurrentInfo: PropTypes.func.isRequired
 };
 
 export default MovieDetails;

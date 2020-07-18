@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getRatingWithComma} from "../../utils";
 
 const OverviewInfo = ({film}) => {
   const {
@@ -14,7 +15,7 @@ const OverviewInfo = ({film}) => {
   return (
     <React.Fragment>
       <div className="movie-rating">
-        <div className="movie-rating__score">{rating}</div>
+        <div className="movie-rating__score">{getRatingWithComma(rating)}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{descriptionRating}</span>
           <span className="movie-rating__count">{quantityVotes}</span>
