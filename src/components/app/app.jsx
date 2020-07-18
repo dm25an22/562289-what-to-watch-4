@@ -7,13 +7,16 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app-state/app-state";
 import {getCurrentFilm} from "../../reducer/app-state/selectors";
 import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
+import withCurrentTab from "../../hocks/with-current-tab/with-current-tab";
+
+const MovieDetailsWrraped = withCurrentTab(MovieDetails);
 class App extends PureComponent {
   _movieDetailsRender() {
     if (this.props.films === null) {
       return null;
     }
 
-    return <MovieDetails
+    return <MovieDetailsWrraped
       film={this.props.films[0]}
     />;
   }
@@ -27,7 +30,7 @@ class App extends PureComponent {
 
     if (currentFilm >= 0) {
       return (
-        <MovieDetails
+        <MovieDetailsWrraped
           film={films[currentFilm]}
         />);
     } else {

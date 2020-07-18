@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import MovieNav from "../movie-nav/movie-nav.jsx";
 
-const MovieDetails = ({film}) => {
+const MovieDetails = ({film, currentTab, clickOnTab, renderCurrentInfo}) => {
   const {
     title,
     bigPoster,
@@ -65,23 +65,13 @@ const MovieDetails = ({film}) => {
 
           <div className="movie-card__desc">
 
-            <MovieNav />
+            <MovieNav
+              currentTab={currentTab}
+              clickOnTab={clickOnTab}
+            />
 
-            <div className="movie-rating">
-              <div className="movie-rating__score">{rating}</div>
-              <p className="movie-rating__meta">
-                <span className="movie-rating__level">{descriptionRating}</span>
-                <span className="movie-rating__count">{quantityVotes}</span>
-              </p>
-            </div>
+            {renderCurrentInfo(film)}
 
-            <div className="movie-card__text">
-              <p>{description}</p>
-
-              <p className="movie-card__director"><strong>Director: {producer}</strong></p>
-
-              <p className="movie-card__starring"><strong>Starring: {listActors.join(`, `)}</strong></p>
-            </div>
           </div>
         </div>
       </div>
