@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {TabName} from "../../consts";
 
 const MovieNav = ({currentTab, clickOnTab}) => {
@@ -21,6 +22,11 @@ const MovieNav = ({currentTab, clickOnTab}) => {
       </ul>
     </nav>
   );
+};
+
+MovieNav.propTypes = {
+  currentTab: PropTypes.string.isRequired,
+  clickOnTab: PropTypes.func.isRequired
 };
 
 export default MovieNav;

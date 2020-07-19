@@ -20,7 +20,7 @@ const MovieList = ({onSmallCardClick, filmsByFilter, similar = false}) => {
       {films.map((film, i) => {
         return (
           <MovieCard
-            key={film.title + i}
+            key={film.title}
             film={film}
             index={i}
             onSmallCardClick={onSmallCardClick}

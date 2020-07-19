@@ -1,6 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Promo from "./promo.jsx";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import NameSpace from "../../reducer/name-space";
+import {mockFilms} from "../../mocks/mock-for-tests";
+
+
+const mockStore = configureStore({});
 
 const promo = {
   id: 1,
@@ -23,11 +30,32 @@ const promo = {
   backgroundColor: `red`
 };
 
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`
+};
+
+const store = mockStore({
+  [NameSpace.DATA]: {
+    films: mockFilms,
+    promoFilm: promo
+  },
+  [NameSpace.APP_STATE]: {
+    currentGenre: `All genre`,
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+  }
+});
+
+
 it(`Render Promo`, () => {
   const tree = renderer.create(
-      <Promo
-        promoFilm={promo}
-      />
+      <Provider store={store}>
+        <Promo
+          promoFilm={promo}
+        />
+      </Provider>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

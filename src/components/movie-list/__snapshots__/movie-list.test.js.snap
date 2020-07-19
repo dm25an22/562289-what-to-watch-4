@@ -87,7 +87,7 @@ exports[`Render MovieList 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Title
+        Title2
       </a>
     </h3>
   </article>

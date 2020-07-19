@@ -28,6 +28,11 @@ const promo = {
   isFavorite: true,
   backgroundColor: `red`
 };
+
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`
+};
 it(`Render Main`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
@@ -36,6 +41,9 @@ it(`Render Main`, () => {
     },
     [NameSpace.APP_STATE]: {
       currentGenre: `All genre`,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
     }
   });
 

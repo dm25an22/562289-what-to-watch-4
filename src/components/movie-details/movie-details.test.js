@@ -6,8 +6,13 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
 
-
 const mockStore = configureStore({});
+
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`
+};
+
 it(`Render MoviePage`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
@@ -15,6 +20,9 @@ it(`Render MoviePage`, () => {
     },
     [NameSpace.APP_STATE]: {
       currentGenre: `Drama`,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
     }
   });
 

@@ -13,7 +13,9 @@ const mockFilms = [
     listActors: [`one`, `two`],
     smallCardImg: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    backgroundColor: `red`
+    backgroundColor: `red`,
+    runTime: 90,
+    id: 1
   },
   {
     title: `Title`,
@@ -29,10 +31,12 @@ const mockFilms = [
     listActors: [`one`, `two`],
     smallCardImg: `img/bohemian-rhapsody.jpg`,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    backgroundColor: `red`
+    backgroundColor: `red`,
+    runTime: 90,
+    id: 2
   },
   {
-    title: `Title`,
+    title: `Title2`,
     moviePoster: `img/the-grand-budapest-hotel-poster.jpg`,
     bigPoster: `img/the-grand-budapest-hotel-poster.jpg`,
     genre: `Drama`,
@@ -45,12 +49,13 @@ const mockFilms = [
     listActors: [`one`, `two`],
     smallCardImg: `img/macbeth.jpg`,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    backgroundColor: `red`
+    backgroundColor: `red`,
+    runTime: 90,
+    id: 3
   },
 ];
 
 const mockPromo = {
-  id: 1,
   title: `Promo`,
   moviePoster: `film.poster_image`,
   bigPoster: `film.background_image`,
@@ -67,7 +72,8 @@ const mockPromo = {
   runTime: 120,
   videoLink: `film.video_link`,
   isFavorite: true,
-  backgroundColor: `red`
+  backgroundColor: `red`,
+  id: 4
 };
 
 export {

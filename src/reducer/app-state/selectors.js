@@ -8,4 +8,8 @@ const getCurrentFilm = (state) => {
   return state[NameSpace.APP_STATE].currentFilm;
 };
 
-export {getCurrentGenre, getCurrentFilm};
+const getSignIn = (state) => {
+  return state[NameSpace.APP_STATE].isSignIn;
+};
+
+export {getCurrentGenre, getCurrentFilm, getSignIn};
