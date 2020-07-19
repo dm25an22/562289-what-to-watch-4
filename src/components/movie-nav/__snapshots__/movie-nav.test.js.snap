@@ -8,31 +8,34 @@ exports[`renders MovieNav component 1`] = `
     className="movie-nav__list"
   >
     <li
-      className="movie-nav__item movie-nav__item--active"
+      className="movie-nav__item false"
     >
       <a
         className="movie-nav__link"
         href="#"
+        onClick={[Function]}
       >
         Overview
       </a>
     </li>
     <li
-      className="movie-nav__item"
+      className="movie-nav__item false"
     >
       <a
         className="movie-nav__link"
         href="#"
+        onClick={[Function]}
       >
         Details
       </a>
     </li>
     <li
-      className="movie-nav__item"
+      className="movie-nav__item false"
     >
       <a
         className="movie-nav__link"
         href="#"
+        onClick={[Function]}
       >
         Reviews
       </a>

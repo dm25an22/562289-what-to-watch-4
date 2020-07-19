@@ -7,14 +7,14 @@ import {getComments} from "../../reducer/data/selectors";
 
 class ReviewsInfo extends React.PureComponent {
   componentDidMount() {
-    this.props.loadComments(this.props.film.id);
+    this.props.loadComments(this.props.id);
   }
 
   _getHalfLength() {
     if (this.props.comments !== null) {
       const lengthNumber = this.props.comments.length;
-
       let halfLength = null;
+
       if (lengthNumber % 2 === 0) {
         halfLength = lengthNumber / 2;
       } else {
@@ -68,9 +68,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 ReviewsInfo.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-  }),
+  id: PropTypes.number.isRequired,
   comments: PropTypes.any,
   loadComments: PropTypes.func.isRequired
 };

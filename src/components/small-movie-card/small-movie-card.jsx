@@ -13,12 +13,12 @@ class SmallMovieCard extends React.PureComponent {
       isPlaing
     } = this.props;
 
-    const {preview, smallCardImg} = film;
+    const {preview, smallCardImg, genre} = film;
 
     return (
       <article
         onClick={() => {
-          onSmallCardClick(index);
+          onSmallCardClick(index, genre);
           stopPlayHandler();
         }}
         onMouseEnter={startPlayHandler}
@@ -51,7 +51,8 @@ SmallMovieCard.propTypes = {
   film: PropTypes.shape({
     preview: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    smallCardImg: PropTypes.string.isRequired
+    smallCardImg: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
   }).isRequired,
   onSmallCardClick: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired

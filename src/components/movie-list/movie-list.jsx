@@ -7,10 +7,17 @@ import {connect} from "react-redux";
 
 const MovieCard = withVideoPlayer(SmallMovieCard);
 
-const MovieList = ({onSmallCardClick, filmsByFilter}) => {
+const MovieList = ({onSmallCardClick, filmsByFilter, similar = false}) => {
+
+  let films = filmsByFilter;
+
+  if (similar) {
+    films = filmsByFilter.slice(0, 4);
+  }
+
   return (
     <div className="catalog__movies-list">
-      {filmsByFilter.map((film, i) => {
+      {films.map((film, i) => {
         return (
           <MovieCard
             key={film.title + i}
@@ -27,12 +34,13 @@ const MovieList = ({onSmallCardClick, filmsByFilter}) => {
 
 MovieList.propTypes = {
   filmsByFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  onSmallCardClick: PropTypes.func.isRequired
+  onSmallCardClick: PropTypes.func.isRequired,
+  similar: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
   return {
-    filmsByFilter: getFilmsByFilter(state)
+    filmsByFilter: getFilmsByFilter(state),
   };
 };
 

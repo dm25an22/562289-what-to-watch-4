@@ -32,6 +32,7 @@ class App extends PureComponent {
       return (
         <MovieDetailsWrraped
           film={films[currentFilm]}
+          onSmallCardClick={onSmallCardClick}
         />);
     } else {
       return (
@@ -78,8 +79,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSmallCardClick(film) {
+    onSmallCardClick(film, genre) {
       dispatch(ActionCreator.currentFilm(film));
+      dispatch(ActionCreator.currentGenre(genre));
     }
   };
 };

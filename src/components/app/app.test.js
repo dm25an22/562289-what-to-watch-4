@@ -60,9 +60,13 @@ it(`renders App component with main component`, () => {
 
 it(`renders App component with MovieDetails component`, () => {
   const store = mockStore({
-    mockFilms,
-    currentGenre: `All genre`,
-    promo
+    [NameSpace.DATA]: {
+      films: mockFilms,
+      promoFilm: promo
+    },
+    [NameSpace.APP_STATE]: {
+      currentGenre: `Drama`,
+    }
   });
 
   const tree = renderer.create(
