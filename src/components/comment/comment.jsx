@@ -30,7 +30,10 @@ Comment.propTypes = {
   data: PropTypes.shape({
     comment: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
+    rating: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ]),
     user: PropTypes.shape({
       name: PropTypes.string.isRequired
     }).isRequired

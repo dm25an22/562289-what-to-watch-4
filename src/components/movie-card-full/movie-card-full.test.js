@@ -1,10 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieDetails from "./movie-details.jsx";
+import MovieCardFull from "./movie-card-full.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
+
 
 const mockStore = configureStore({});
 
@@ -13,13 +14,10 @@ const AuthorizationStatus = {
   AUTH: `AUTH`
 };
 
-it(`Render MoviePage`, () => {
+it(`render MovieCardFull component`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       films: mockFilms,
-    },
-    [NameSpace.APP_STATE]: {
-      currentGenre: `Drama`,
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -28,16 +26,13 @@ it(`Render MoviePage`, () => {
 
   const tree = renderer.create(
       <Provider store={store} >
-        <MovieDetails
+        <MovieCardFull
           film={mockFilms[0]}
-          onSmallCardClick={() => {}}
+          currentTab={`Overview`}
+          clickOnTab={() => {}}
+          renderCurrentInfo={() => {}}
         />
-      </Provider>,
-      {
-        createNodeMock: () => {
-          return {};
-        }
-      }
+      </Provider>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

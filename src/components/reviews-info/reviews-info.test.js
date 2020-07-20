@@ -51,6 +51,7 @@ it(`render ReviewsInfo component with 3 comments`, () => {
       <Provider store={store} >
         <ReviewsInfo
           id={1}
+          setInitialTab={() => {}}
           comments={commentsMock}
           loadComments={() => {}}
         />
@@ -71,6 +72,7 @@ it(`render ReviewsInfo component with 1 comments`, () => {
       <Provider store={store} >
         <ReviewsInfo
           id={1}
+          setInitialTab={() => {}}
           comments={commentsMock.slice(0, 1)}
           loadComments={() => {}}
         />
@@ -91,6 +93,7 @@ it(`render ReviewsInfo component with 2 comments`, () => {
       <Provider store={store} >
         <ReviewsInfo
           id={1}
+          setInitialTab={() => {}}
           comments={commentsMock.slice(0, 2)}
           loadComments={() => {}}
         />
@@ -111,6 +114,7 @@ it(`render ReviewsInfo component without comments`, () => {
       <Provider store={store} >
         <ReviewsInfo
           id={1}
+          setInitialTab={() => {}}
           comments={null}
           loadComments={() => {}}
         />

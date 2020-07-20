@@ -18,6 +18,7 @@ const checkLengthGenres = (genres) => {
 };
 
 const getDescriptionRating = (rating) => {
+
   switch (true) {
     case rating < 3:
       return `Bad`;
@@ -37,7 +38,16 @@ const getDescriptionRating = (rating) => {
   return `Unknown`;
 };
 
-const getRunTime = (time) => {
+const getRatingWithComma = (rating) => {
+  if (Number.isInteger(rating)) {
+    return commaReplacement(rating.toFixed(1));
+  }
+
+  return commaReplacement(rating);
+};
+
+
+const getFormatedRunTime = (time) => {
   const minute = time % 60;
   const hour = Math.floor(time / 60);
 
@@ -64,7 +74,7 @@ const getDateForComment = (strDate) => {
   return `${month} ${day}, ${year}`;
 };
 
-const getRatingWithComma = (rating) => {
+const commaReplacement = (rating) => {
   return String(rating).replace(`.`, `,`);
 };
 
@@ -73,7 +83,7 @@ export {
   ALL_GENRE,
   checkLengthGenres,
   getDescriptionRating,
-  getRunTime,
+  getFormatedRunTime,
   getListActors,
   getDateForComment,
   getRatingWithComma

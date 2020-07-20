@@ -2,12 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import Comment from "../comment/comment.jsx";
 import {connect} from "react-redux";
-import {Operation as DataOperation} from "../../reducer/data/data";
+import {Operation as DataOperation, ActionCreator} from "../../reducer/data/data";
 import {getComments} from "../../reducer/data/selectors";
 
 class ReviewsInfo extends React.PureComponent {
   componentDidMount() {
     this.props.loadComments(this.props.id);
+  }
+
+  componentWillUnmount() {
+    this.props.setInitialTab();
   }
 
   _getHalfLength() {
@@ -27,7 +31,7 @@ class ReviewsInfo extends React.PureComponent {
     return null;
   }
 
-  _renderCommentsListTest(start, end) {
+  _renderCommentsList(start, end) {
     if (this.props.comments !== null) {
       return this.props.comments.slice(start, end).map((it) => <Comment key={it.id} data={it} />);
     } else {
@@ -40,10 +44,10 @@ class ReviewsInfo extends React.PureComponent {
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {this._renderCommentsListTest(0, halfLength)}
+          {this._renderCommentsList(0, halfLength)}
         </div>
         <div className="movie-card__reviews-col">
-          {this._renderCommentsListTest(halfLength)}
+          {this._renderCommentsList(halfLength)}
         </div>
       </div>
     );
@@ -62,6 +66,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadComments(id) {
       dispatch(DataOperation.loadComments(id));
+    },
+
+    setInitialTab() {
+      dispatch(ActionCreator.setInitialComments());
     }
   };
 };
@@ -70,7 +78,8 @@ const mapDispatchToProps = (dispatch) => {
 ReviewsInfo.propTypes = {
   id: PropTypes.number.isRequired,
   comments: PropTypes.any,
-  loadComments: PropTypes.func.isRequired
+  loadComments: PropTypes.func.isRequired,
+  setInitialTab: PropTypes.func.isRequired
 };
 
 export {ReviewsInfo};

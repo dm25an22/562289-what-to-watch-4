@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {getRunTime, getListActors} from "../../utils";
+import {getFormatedRunTime, getListActors} from "../../utils";
 
 const DetailsInfo = ({film}) => {
   const {
@@ -29,7 +29,7 @@ const DetailsInfo = ({film}) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{getRunTime(runTime)}</span>
+          <span className="movie-card__details-value">{getFormatedRunTime(runTime)}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>

@@ -35,7 +35,10 @@ OverviewInfo.propTypes = {
   film: PropTypes.shape({
     producer: PropTypes.string.isRequired,
     listActors: PropTypes.array.isRequired,
-    rating: PropTypes.number.isRequired,
+    rating: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ]),
     description: PropTypes.string.isRequired,
     descriptionRating: PropTypes.string.isRequired,
     quantityVotes: PropTypes.number.isRequired

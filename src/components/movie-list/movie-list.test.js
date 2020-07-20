@@ -17,3 +17,20 @@ it(`Render MovieList`, () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it(`Render MovieList more like`, () => {
+  const tree = renderer.create(
+      <MovieList
+        filmsByFilter={mockFilms.filter((it) => it.genre === mockFilms[0].genre)}
+        onSmallCardClick={() => {}}
+        similar={true}
+        currentFilmId={mockFilms[0].id}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

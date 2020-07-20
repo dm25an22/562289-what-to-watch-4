@@ -39,7 +39,7 @@ const mockFilms = [
     title: `Title2`,
     moviePoster: `img/the-grand-budapest-hotel-poster.jpg`,
     bigPoster: `img/the-grand-budapest-hotel-poster.jpg`,
-    genre: `Drama`,
+    genre: `Action`,
     year: 2011,
     description: `Something`,
     rating: 4.7,
