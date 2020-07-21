@@ -11,6 +11,9 @@ import {getAuthStatus} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
 import {getSignIn} from "../../reducer/app-state/selectors";
+// import withShowMore from "../../hocks/with-show-more/with-show-more.js";
+
+// const MainWrraped = withShowMore(Main);
 
 class App extends PureComponent {
   _renderApp() {

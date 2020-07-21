@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import withVideoPlayer from "../../hocks/with-video-player/with-video-player";
-import {getFilmsByFilter} from "../../reducer/data/selectors";
-import {connect} from "react-redux";
 
 const SmallMovieCardWrraped = withVideoPlayer(SmallMovieCard);
 
@@ -30,11 +28,4 @@ MovieList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    filmsByFilter: getFilmsByFilter(state),
-  };
-};
-
-export {MovieList};
-export default connect(mapStateToProps)(MovieList);
+export default MovieList;
