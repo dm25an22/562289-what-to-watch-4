@@ -20,6 +20,7 @@ it(`Render MoviePage`, () => {
     },
     [NameSpace.APP_STATE]: {
       currentGenre: `Drama`,
+      currentFilm: 0
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,

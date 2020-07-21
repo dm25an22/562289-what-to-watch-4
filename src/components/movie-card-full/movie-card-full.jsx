@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
-import MovieNav from "../movie-nav/movie-nav.jsx";
+import MovieCardInfo from "../movie-card-info/movie-card-info.jsx";
+import withCurrentTab from "../../hocks/with-current-tab/with-current-tab";
 
-const MovieCardFull = ({film, currentTab, clickOnTab, renderCurrentInfo}) => {
+const MovieCardInfoWrraped = withCurrentTab(MovieCardInfo);
+
+const MovieCardFull = ({film}) => {
   const {
     title,
     bigPoster,
@@ -57,16 +60,11 @@ const MovieCardFull = ({film, currentTab, clickOnTab, renderCurrentInfo}) => {
             <img src={moviePoster} alt={`${title} poster`} width="218" height="327" />
           </div>
 
-          <div className="movie-card__desc">
+          <MovieCardInfoWrraped
+            key={film.id}
+            film={film}
+          />
 
-            <MovieNav
-              currentTab={currentTab}
-              clickOnTab={clickOnTab}
-            />
-
-            {renderCurrentInfo(film)}
-
-          </div>
         </div>
       </div>
     </section>
@@ -75,6 +73,7 @@ const MovieCardFull = ({film, currentTab, clickOnTab, renderCurrentInfo}) => {
 
 MovieCardFull.propTypes = {
   film: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,
     moviePoster: PropTypes.string.isRequired,
@@ -83,9 +82,6 @@ MovieCardFull.propTypes = {
     listActors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     backgroundColor: PropTypes.string.isRequired
   }).isRequired,
-  currentTab: PropTypes.string.isRequired,
-  clickOnTab: PropTypes.func.isRequired,
-  renderCurrentInfo: PropTypes.func.isRequired
 };
 
 export default MovieCardFull;

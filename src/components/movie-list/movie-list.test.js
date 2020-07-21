@@ -4,9 +4,11 @@ import {MovieList} from "../movie-list/movie-list.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
 
 it(`Render MovieList`, () => {
+  const currentFilm = mockFilms[0];
+
   const tree = renderer.create(
       <MovieList
-        filmsByFilter={mockFilms}
+        films={mockFilms.filter((it) => it.genre === currentFilm.genre)}
         onSmallCardClick={() => {}}
       />, {
         createNodeMock: () => {
@@ -19,12 +21,18 @@ it(`Render MovieList`, () => {
 });
 
 it(`Render MovieList more like`, () => {
+  const currentFilm = mockFilms[0];
+  const films = () => {
+    const mockFilmsCopy = [...mockFilms.filter((it) => it.genre === currentFilm.genre)];
+    const index = mockFilmsCopy.findIndex((it) => it.id === currentFilm.id);
+    mockFilmsCopy.splice(index, 1);
+
+    return mockFilmsCopy.slice(0, 4);
+  };
   const tree = renderer.create(
       <MovieList
-        filmsByFilter={mockFilms.filter((it) => it.genre === mockFilms[0].genre)}
+        films={films()}
         onSmallCardClick={() => {}}
-        similar={true}
-        currentFilmId={mockFilms[0].id}
       />, {
         createNodeMock: () => {
           return {};

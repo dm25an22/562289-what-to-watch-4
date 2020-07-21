@@ -1,32 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Footer from "../footer/footer.jsx";
+import PageContent from "../page-content/page-content.jsx";
 import MovieList from "../movie-list/movie-list.jsx";
 import MovieCardFull from "../movie-card-full/movie-card-full.jsx";
-import withCurrentTab from "../../hocks/with-current-tab/with-current-tab";
+import withSimilarFilms from "../../hocks/with-similar-films/with-similar-films";
 
-const MovieCardFullWrraped = withCurrentTab(MovieCardFull);
+const MovieListWrraped = withSimilarFilms(MovieList);
 
 const MovieDetails = ({film, onSmallCardClick}) => {
   return (
     <React.Fragment>
 
-      <MovieCardFullWrraped key={film.id} film={film}/>
+      <MovieCardFull film={film}/>
 
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
+      <PageContent>
 
-          <MovieList
-            onSmallCardClick={onSmallCardClick}
-            similar={true}
-            currentFilmId={film.id}
-          />
+        <MovieListWrraped
+          onSmallCardClick={onSmallCardClick}
+        />
 
-        </section>
-
-        <Footer />
-      </div>
+      </PageContent>
     </React.Fragment>
   );
 };

@@ -28,9 +28,6 @@ it(`render MovieCardFull component`, () => {
       <Provider store={store} >
         <MovieCardFull
           film={mockFilms[0]}
-          currentTab={`Overview`}
-          clickOnTab={() => {}}
-          renderCurrentInfo={() => {}}
         />
       </Provider>
   ).toJSON();

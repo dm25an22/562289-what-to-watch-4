@@ -62,35 +62,6 @@ exports[`Render MovieList 1`] = `
       </a>
     </h3>
   </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        className="player__video"
-        height="175px"
-        loop={true}
-        muted={true}
-        width="280px"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-        onClick={[Function]}
-      >
-        Title2
-      </a>
-    </h3>
-  </article>
 </div>
 `;
 
