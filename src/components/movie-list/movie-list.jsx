@@ -2,15 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import withVideoPlayer from "../../hocks/with-video-player/with-video-player";
-import {getFilmsByFilter} from "../../reducer/data/selectors";
-import {connect} from "react-redux";
 
 const SmallMovieCardWrraped = withVideoPlayer(SmallMovieCard);
 
-const MovieList = ({onSmallCardClick, films}) => {
+const MovieList = ({onSmallCardClick, filmsByFilter}) => {
   return (
     <div className="catalog__movies-list">
-      {films.map((film, i) => {
+      {filmsByFilter.map((film, i) => {
         return (
           <SmallMovieCardWrraped
             key={film.title}
@@ -27,14 +25,7 @@ const MovieList = ({onSmallCardClick, films}) => {
 
 MovieList.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired,
-  films: PropTypes.arrayOf(PropTypes.object).isRequired
+  filmsByFilter: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    filmsByFilter: getFilmsByFilter(state),
-  };
-};
-
-export {MovieList};
-export default connect(mapStateToProps)(MovieList);
+export default MovieList;

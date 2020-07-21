@@ -6,13 +6,34 @@ import {getFilmsByFilter} from "../../reducer/data/selectors";
 
 const withFilterByGenre = (Component) => {
   class WithFilterByGenre extends React.PureComponent {
+    constructor(props) {
+      super(props);
+
+
+      this.state = {
+        prevCount: 8,
+        films: this.props.filmsByFilter
+      };
+
+      this.changeState = this.changeState.bind(this);
+    }
+
+    componentDidMount() {
+      this.setState({films: this.state.films.slice(0, 8)});
+    }
+
+    changeState() {
+      const newFilms = this.props.filmsByFilter.slice(0, this.state.prevCount + 8);
+      this.setState({films: newFilms});
+      this.setState({prevCount: newFilms.length});
+    }
 
     render() {
-      const {filmsByFilter} = this.props;
       return (
         <Component
           {...this.props}
-          films={filmsByFilter}
+          filmsByFilter={this.state.films}
+          changeState={this.changeState}
         />
       );
     }
