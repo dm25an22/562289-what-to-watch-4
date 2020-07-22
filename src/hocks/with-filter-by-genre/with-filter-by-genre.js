@@ -33,6 +33,7 @@ const withFilterByGenre = (Component) => {
         <Component
           {...this.props}
           filmsByFilter={this.state.films}
+          allFilmsCount={this.props.filmsByFilter.length}
           changeState={this.changeState}
         />
       );

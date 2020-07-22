@@ -48,7 +48,7 @@ class App extends PureComponent {
     } else {
       return (
         <MainWrraped
-          key={String(new Date())}
+          // key={String(new Date())}
           promoFilm={promoFilm}
           onSmallCardClick={onSmallCardClick}
         />

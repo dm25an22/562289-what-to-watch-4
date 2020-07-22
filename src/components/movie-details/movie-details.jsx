@@ -14,10 +14,13 @@ const MovieDetails = ({film, onSmallCardClick}) => {
       <MovieCardFull film={film}/>
 
       <PageContent>
+        <section className="catalog catalog--like-this">
+          <h2 className="catalog__title">More like this</h2>
 
-        <MovieListWrraped
-          onSmallCardClick={onSmallCardClick}
-        />
+          <MovieListWrraped
+            onSmallCardClick={onSmallCardClick}
+          />
+        </section>
 
       </PageContent>
     </React.Fragment>

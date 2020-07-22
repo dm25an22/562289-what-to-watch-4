@@ -24,20 +24,21 @@ GenresList.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    genres: getUniqueGeners(state),
-    currentGenre: getCurrentGenre(state),
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     genres: getUniqueGeners(state),
+//     currentGenre: getCurrentGenre(state),
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onGenreClick(genre) {
-      dispatch(ActionCreator.currentGenre(genre));
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onGenreClick(genre) {
+//       dispatch(ActionCreator.currentGenre(genre));
+//     },
+//   };
+// };
 
-export {GenresList};
-export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
+// export {GenresList};
+// export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
+export default GenresList;
