@@ -111,7 +111,8 @@ it(`renders App component with MovieDetails component`, () => {
       promoFilm: promo
     },
     [NameSpace.APP_STATE]: {
-      currentGenre: `All genre`,
+      currentGenre: `Drama`,
+      currentFilm: 2
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,

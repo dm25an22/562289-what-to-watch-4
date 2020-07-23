@@ -23,4 +23,17 @@ const getAdaptedData = (film) => {
   };
 };
 
-export {getAdaptedData};
+const getAdaptedComment = (comment) => {
+  return {
+    id: comment.id,
+    user: {
+      id: comment.user.id,
+      name: comment.user.name
+    },
+    rating: comment.rating,
+    comment: comment.comment,
+    date: comment.date
+  };
+};
+
+export {getAdaptedData, getAdaptedComment};

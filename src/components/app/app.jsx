@@ -12,16 +12,6 @@ import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
 import {getSignIn} from "../../reducer/app-state/selectors";
 class App extends PureComponent {
-  _movieDetailsRender() {
-    if (this.props.films === null) {
-      return null;
-    }
-
-    return <MovieDetails
-      film={this.props.films[0]}
-    />;
-  }
-
   _renderApp() {
     const {films, currentFilm, onSmallCardClick, promoFilm, authStatus, onSubmitAuth, isSignIn} = this.props;
 
@@ -47,7 +37,8 @@ class App extends PureComponent {
     if (currentFilm >= 0) {
       return (
         <MovieDetails
-          film={films[currentFilm]}
+          film={films.find((it) => it.id === currentFilm)}
+          onSmallCardClick={onSmallCardClick}
         />);
     } else {
       return (
@@ -66,9 +57,6 @@ class App extends PureComponent {
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
-          </Route>
-          <Route exact path="/dev-film-page">
-            {this._movieDetailsRender()}
           </Route>
           <Route exact path="/dev-sign-in">
             <SignIn
@@ -104,8 +92,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSmallCardClick(film) {
-      dispatch(ActionCreator.currentFilm(film));
+    onSmallCardClick(id, genre) {
+      dispatch(ActionCreator.currentFilm(id));
+      dispatch(ActionCreator.currentGenre(genre));
     },
 
     onSubmitAuth(authData) {

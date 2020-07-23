@@ -1,6 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders MovieNav component 1`] = `
+exports[`renders MovieNav component with activeClass on Details 1`] = `
+<nav
+  className="movie-nav movie-card__nav"
+>
+  <ul
+    className="movie-nav__list"
+  >
+    <li
+      className="movie-nav__item false"
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+        onClick={[Function]}
+      >
+        Overview
+      </a>
+    </li>
+    <li
+      className="movie-nav__item movie-nav__item--active"
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+        onClick={[Function]}
+      >
+        Details
+      </a>
+    </li>
+    <li
+      className="movie-nav__item false"
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+        onClick={[Function]}
+      >
+        Reviews
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`renders MovieNav component with activeClass on Overview 1`] = `
 <nav
   className="movie-nav movie-card__nav"
 >
@@ -13,26 +57,73 @@ exports[`renders MovieNav component 1`] = `
       <a
         className="movie-nav__link"
         href="#"
+        onClick={[Function]}
       >
         Overview
       </a>
     </li>
     <li
-      className="movie-nav__item"
+      className="movie-nav__item false"
     >
       <a
         className="movie-nav__link"
         href="#"
+        onClick={[Function]}
       >
         Details
       </a>
     </li>
     <li
-      className="movie-nav__item"
+      className="movie-nav__item false"
     >
       <a
         className="movie-nav__link"
         href="#"
+        onClick={[Function]}
+      >
+        Reviews
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`renders MovieNav component with activeClass on Reviews 1`] = `
+<nav
+  className="movie-nav movie-card__nav"
+>
+  <ul
+    className="movie-nav__list"
+  >
+    <li
+      className="movie-nav__item false"
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+        onClick={[Function]}
+      >
+        Overview
+      </a>
+    </li>
+    <li
+      className="movie-nav__item false"
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+        onClick={[Function]}
+      >
+        Details
+      </a>
+    </li>
+    <li
+      className="movie-nav__item movie-nav__item--active"
+    >
+      <a
+        className="movie-nav__link"
+        href="#"
+        onClick={[Function]}
       >
         Reviews
       </a>

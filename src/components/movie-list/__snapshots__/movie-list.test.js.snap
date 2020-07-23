@@ -62,6 +62,13 @@ exports[`Render MovieList 1`] = `
       </a>
     </h3>
   </article>
+</div>
+`;
+
+exports[`Render MovieList more like 1`] = `
+<div
+  className="catalog__movies-list"
+>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}

@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render ReviewsInfo component with 1 comments 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Muir
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2019-05-08T14:13:56.569Z"
+          >
+            June 8, 2019
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8,9
+      </div>
+    </div>
+  </div>
+  <div
+    className="movie-card__reviews-col"
+  />
+</div>
+`;
+
+exports[`render ReviewsInfo component with 2 comments 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Muir
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2019-05-08T14:13:56.569Z"
+          >
+            June 8, 2019
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8,9
+      </div>
+    </div>
+  </div>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Muir
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2019-05-08T14:13:56.569Z"
+          >
+            June 8, 2019
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        2,0
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`render ReviewsInfo component with 3 comments 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Muir
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2019-05-08T14:13:56.569Z"
+          >
+            June 8, 2019
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8,9
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Muir
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2019-05-08T14:13:56.569Z"
+          >
+            June 8, 2019
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        2,0
+      </div>
+    </div>
+  </div>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Muir
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2019-05-08T14:13:56.569Z"
+          >
+            June 8, 2019
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        4,3
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`render ReviewsInfo component without comments 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  />
+  <div
+    className="movie-card__reviews-col"
+  />
+</div>
+`;

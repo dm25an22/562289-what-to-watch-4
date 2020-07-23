@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render OverviewInfo component 1`] = `
+Array [
+  <div
+    className="movie-rating"
+  >
+    <div
+      className="movie-rating__score"
+    >
+      4,7
+    </div>
+    <p
+      className="movie-rating__meta"
+    >
+      <span
+        className="movie-rating__level"
+      >
+        Normal
+      </span>
+      <span
+        className="movie-rating__count"
+      >
+        125
+      </span>
+    </p>
+  </div>,
+  <div
+    className="movie-card__text"
+  >
+    <p>
+      Something
+    </p>
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        Tom Ruegger
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring: 
+        one, two
+      </strong>
+    </p>
+  </div>,
+]
+`;

@@ -1,3 +1,6 @@
+import React from "react";
+import {MONTHS} from './consts';
+
 const ALL_GENRE = `All genre`;
 const MAX_GENRES = 9;
 
@@ -15,6 +18,7 @@ const checkLengthGenres = (genres) => {
 };
 
 const getDescriptionRating = (rating) => {
+
   switch (true) {
     case rating < 3:
       return `Bad`;
@@ -34,4 +38,53 @@ const getDescriptionRating = (rating) => {
   return `Unknown`;
 };
 
-export {extend, ALL_GENRE, checkLengthGenres, getDescriptionRating};
+const getRatingWithComma = (rating) => {
+  if (Number.isInteger(rating)) {
+    return commaReplacement(rating.toFixed(1));
+  }
+
+  return commaReplacement(rating);
+};
+
+
+const getFormatedRunTime = (time) => {
+  const minute = time % 60;
+  const hour = Math.floor(time / 60);
+
+  return `${hour > 0 ? `${hour}h ` : ``}${minute > 0 ? `${minute}m` : ``}`;
+};
+
+const getListActors = (list) => {
+  return list.map((it, index) => {
+    if (index !== list.length - 1) {
+      return <React.Fragment key={it}> {it}, <br/> </React.Fragment>;
+    } else {
+      return <React.Fragment key={it}> {it} </React.Fragment>;
+    }
+  });
+};
+
+const getDateForComment = (strDate) => {
+  const date = new Date(strDate);
+  const year = date.getFullYear();
+  const day = date.getDate();
+  const monthIndex = date.getMonth() + 1;
+  const month = MONTHS[monthIndex];
+
+  return `${month} ${day}, ${year}`;
+};
+
+const commaReplacement = (rating) => {
+  return String(rating).replace(`.`, `,`);
+};
+
+export {
+  extend,
+  ALL_GENRE,
+  checkLengthGenres,
+  getDescriptionRating,
+  getFormatedRunTime,
+  getListActors,
+  getDateForComment,
+  getRatingWithComma
+};
