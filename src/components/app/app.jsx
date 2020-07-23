@@ -13,52 +13,60 @@ import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/use
 import {getSignIn} from "../../reducer/app-state/selectors";
 
 class App extends PureComponent {
-  _renderApp() {
+  // _renderApp() {
+  //   const {films, currentFilm, onSmallCardClick, promoFilm, authStatus, onSubmitAuth, isSignIn} = this.props;
+
+  //   if (films === null || promoFilm === null) {
+  //     return null;
+  //   }
+
+  //   if (isSignIn) {
+  //     return (
+  //       <SignIn onSubmit={onSubmitAuth} />
+  //     );
+  //   }
+
+  //   if (authStatus === AuthorizationStatus.AUTH && isSignIn) {
+  //     return (
+  //       <Main
+  //         promoFilm={promoFilm}
+  //         onSmallCardClick={onSmallCardClick}
+  //       />
+  //     );
+  //   }
+
+  //   if (currentFilm >= 0) {
+  //     return (
+  //       <MovieDetails
+  //         film={films.find((it) => it.id === currentFilm)}
+  //         onSmallCardClick={onSmallCardClick}
+  //       />);
+  //   } else {
+  //     return (
+  //       <Main
+  //         promoFilm={promoFilm}
+  //         onSmallCardClick={onSmallCardClick}
+  //       />
+  //     );
+  //   }
+
+  // }
+
+  render() {
     const {films, currentFilm, onSmallCardClick, promoFilm, authStatus, onSubmitAuth, isSignIn} = this.props;
 
     if (films === null || promoFilm === null) {
       return null;
-      // 123
     }
 
-    if (isSignIn) {
-      return (
-        <SignIn onSubmit={onSubmitAuth} />
-      );
-    }
-
-    if (authStatus === AuthorizationStatus.AUTH && isSignIn) {
-      return (
-        <Main
-          promoFilm={promoFilm}
-          onSmallCardClick={onSmallCardClick}
-        />
-      );
-    }
-
-    if (currentFilm >= 0) {
-      return (
-        <MovieDetails
-          film={films.find((it) => it.id === currentFilm)}
-          onSmallCardClick={onSmallCardClick}
-        />);
-    } else {
-      return (
-        <Main
-          promoFilm={promoFilm}
-          onSmallCardClick={onSmallCardClick}
-        />
-      );
-    }
-
-  }
-
-  render() {
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this._renderApp()}
+            <Main
+              promoFilm={promoFilm}
+              onSmallCardClick={onSmallCardClick}
+            />
           </Route>
           <Route exact path="/dev-sign-in">
             <SignIn
