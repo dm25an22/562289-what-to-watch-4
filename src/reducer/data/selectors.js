@@ -35,7 +35,6 @@ const getFilmsByFilter = createSelector(
     }
 );
 
-
 const getComments = (state) => {
   return state[NameSpace.DATA].comments;
 };

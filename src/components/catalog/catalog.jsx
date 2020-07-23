@@ -1,48 +1,35 @@
 import React from "react";
+import PropTypes from "prop-types";
 import GenresList from "../genres-list/genres-list.jsx";
-import LoadMoreButton from "../load-more-button/load-more-button.jsx";
 import MovieList from "../movie-list/movie-list.jsx";
-import { connect } from "react-redux";
-import {getUniqueGeners} from "../../reducer/data/selectors";
-import {getCurrentGenre} from "../../reducer/app-state/selectors";
-import {ActionCreator} from "../../reducer/app-state/app-state";
+import withShowMore from "../../hocks/with-show-more/with-show-more.js";
 
-const Catalog = ({filmsByFilter, onSmallCardClick, changeState, allFilmsCount, genres, currentGenre, onGenreClick}) => {
+const MovieListWrraped = withShowMore(MovieList);
+
+const Catalog = ({onSmallCardClick, currentGenre, onGenreClick, genres}) => {
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
       <GenresList
-        genres={genres}
         currentGenre={currentGenre}
         onGenreClick={onGenreClick}
+        genres={genres}
       />
 
-      <MovieList
-        filmsByFilter={filmsByFilter}
+      <MovieListWrraped
+        key={currentGenre}
         onSmallCardClick={onSmallCardClick}
       />
-
-      {filmsByFilter.length < allFilmsCount && <LoadMoreButton
-        changeState={changeState}
-      />}
     </section>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    genres: getUniqueGeners(state),
-    currentGenre: getCurrentGenre(state),
-  };
+Catalog.propTypes = {
+  onSmallCardClick: PropTypes.func.isRequired,
+  currentGenre: PropTypes.string.isRequired,
+  onGenreClick: PropTypes.func.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onGenreClick(genre) {
-      dispatch(ActionCreator.currentGenre(genre));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Catalog);
+export default Catalog;

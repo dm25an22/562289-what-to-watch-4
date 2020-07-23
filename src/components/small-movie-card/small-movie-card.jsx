@@ -55,7 +55,6 @@ SmallMovieCard.propTypes = {
     genre: PropTypes.string.isRequired,
   }).isRequired,
   onSmallCardClick: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired
 };
 
 export default SmallMovieCard;

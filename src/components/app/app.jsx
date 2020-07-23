@@ -6,15 +6,11 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app-state/app-state";
 import {getCurrentFilm} from "../../reducer/app-state/selectors";
-import {getFilms, getPromoFilm, getFilmsByFilter} from "../../reducer/data/selectors";
+import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthStatus} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
 import {getSignIn} from "../../reducer/app-state/selectors";
-
-import withFilterByGenre from "../../hocks/with-filter-by-genre/with-filter-by-genre";
-
-const MainWrraped = withFilterByGenre(Main);
 
 class App extends PureComponent {
   _renderApp() {
@@ -32,7 +28,7 @@ class App extends PureComponent {
 
     if (authStatus === AuthorizationStatus.AUTH && isSignIn) {
       return (
-        <MainWrraped
+        <Main
           promoFilm={promoFilm}
           onSmallCardClick={onSmallCardClick}
         />
@@ -47,8 +43,7 @@ class App extends PureComponent {
         />);
     } else {
       return (
-        <MainWrraped
-          // key={String(new Date())}
+        <Main
           promoFilm={promoFilm}
           onSmallCardClick={onSmallCardClick}
         />
@@ -93,7 +88,6 @@ const mapStateToProps = (state) => {
     currentFilm: getCurrentFilm(state),
     promoFilm: getPromoFilm(state),
     authStatus: getAuthStatus(state),
-    filmsByFilter: getFilmsByFilter(state),
   };
 };
 
