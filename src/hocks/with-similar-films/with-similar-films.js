@@ -6,7 +6,6 @@ import {getSimilarFilms} from "../../reducer/data/selectors";
 
 const withSimilarFilms = (Component) => {
   class WithSimilarFilms extends React.PureComponent {
-
     render() {
       const {filmsByFilter} = this.props;
       return (
