@@ -18,6 +18,7 @@ class App extends PureComponent {
 
     if (films === null || promoFilm === null) {
       return null;
+      // 123
     }
 
     if (isSignIn) {
