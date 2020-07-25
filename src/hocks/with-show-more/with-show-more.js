@@ -7,12 +7,10 @@ import LoadMoreButton from '../../components/load-more-button/load-more-button.j
 const START_SHOW_CARDS = 8;
 const SHOW_MORE_STEP = 8;
 
-
 const withShowMore = (Component) => {
   class WithShowMore extends React.PureComponent {
     constructor(props) {
       super(props);
-
 
       this.state = {
         showCards: START_SHOW_CARDS,

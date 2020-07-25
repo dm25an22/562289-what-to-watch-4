@@ -19,9 +19,7 @@ it(`Render MovieList`, () => {
         filmsByFilter={mockFilms.filter((it) => it.genre === currentFilm.genre)}
         onSmallCardClick={() => {}}
       />, {
-        createNodeMock: () => {
-          return {};
-        }
+        createNodeMock: () => ({})
       }
   ).toJSON();
 
@@ -38,9 +36,7 @@ it(`Render MovieList with loadMoreButton`, () => {
       >
         {loadMoreButton}
       </MovieList>, {
-        createNodeMock: () => {
-          return {};
-        }
+        createNodeMock: () => ({})
       }
   ).toJSON();
 
@@ -61,9 +57,7 @@ it(`Render MovieList more like`, () => {
         filmsByFilter={films()}
         onSmallCardClick={() => {}}
       />, {
-        createNodeMock: () => {
-          return {};
-        }
+        createNodeMock: () => ({})
       }
   ).toJSON();
 
