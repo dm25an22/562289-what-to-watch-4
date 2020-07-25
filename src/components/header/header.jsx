@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getAuthStatus} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
-import {ActionCreator} from "../../reducer/app-state/app-state";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../consts";
 
-const getMarkupByStatus = (authStatus, onSignInClick) => {
+const getMarkupByStatus = (authStatus) => {
   if (authStatus === AuthorizationStatus.AUTH) {
     return (
       <div className="user-block__avatar">
@@ -14,29 +15,24 @@ const getMarkupByStatus = (authStatus, onSignInClick) => {
     );
   } else {
     return (
-      <a onClick={(evt) => {
-        evt.preventDefault();
-
-        onSignInClick(true);
-      }}
-      href="sign-in.html" className="user-block__link">Sign in</a>
+      <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>
     );
   }
 };
 
-const Header = ({authStatus, onSignInClick}) => {
+const Header = ({authStatus}) => {
   return (
     <header className="page-header movie-card__head">
       <div className="logo">
-        <a href="main.html" className="logo__link">
+        <Link to={AppRoute.ROOT} className="logo__link">
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </a>
+        </Link>
       </div>
 
       <div className="user-block">
-        {getMarkupByStatus(authStatus, onSignInClick)}
+        {getMarkupByStatus(authStatus)}
       </div>
 
     </header>
@@ -45,7 +41,6 @@ const Header = ({authStatus, onSignInClick}) => {
 
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
-  onSignInClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -54,14 +49,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSignInClick(bool) {
-      dispatch(ActionCreator.isSignIn(bool));
-    }
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);
 
 

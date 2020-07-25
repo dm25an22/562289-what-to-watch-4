@@ -32,6 +32,7 @@ class SmallMovieCard extends React.PureComponent {
           <a className="small-movie-card__link"
             onClick={(evt) => {
               evt.preventDefault();
+              stopPlayHandler();
             }}
             href="movie-page.html">{film.title}
           </a>

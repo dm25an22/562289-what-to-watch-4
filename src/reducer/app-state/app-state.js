@@ -3,13 +3,11 @@ import {extend, ALL_GENRE} from "../../utils";
 const initialState = {
   currentGenre: ALL_GENRE,
   currentFilm: -1,
-  isSignIn: false
 };
 
 const ActionType = {
   CURRENT_GENRE: `CURRENT_GENRE`,
   CURRENT_FILM: `CURRENT_FILM`,
-  IS_SIGN_IN: `iS_SIGN_IN`
 };
 
 const ActionCreator = {
@@ -28,13 +26,6 @@ const ActionCreator = {
     };
   },
 
-  isSignIn(bool) {
-    return {
-      type: ActionType.IS_SIGN_IN,
-      payload: bool
-    };
-  },
-
 };
 
 const reducer = (state = initialState, action) => {
@@ -48,11 +39,6 @@ const reducer = (state = initialState, action) => {
     case ActionType.CURRENT_FILM:
       return extend(state, {
         currentFilm: action.payload
-      });
-
-    case ActionType.IS_SIGN_IN:
-      return extend(state, {
-        isSignIn: action.payload
       });
   }
 

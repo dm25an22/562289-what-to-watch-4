@@ -30,4 +30,7 @@ MovieDetails.propTypes = {
   }).isRequired,
 };
 
+// getCurrentFilm
+// connect
+
 export default MovieDetails;

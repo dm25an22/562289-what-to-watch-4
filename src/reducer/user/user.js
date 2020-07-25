@@ -1,5 +1,4 @@
 import {extend} from "../../utils";
-import {ActionCreator as AppStateActionCreator} from "../app-state/app-state";
 
 const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
@@ -41,9 +40,6 @@ const Operation = {
     })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-      })
-      .then(() => {
-        dispatch(AppStateActionCreator.isSignIn(false));
       });
   }
 };

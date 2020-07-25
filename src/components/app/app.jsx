@@ -10,7 +10,7 @@ import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthStatus} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
-import {getSignIn} from "../../reducer/app-state/selectors";
+import {AppRoute} from "../../consts";
 class App extends PureComponent {
   // _renderApp() {
   //   const {films, currentFilm, onSmallCardClick, promoFilm, authStatus, onSubmitAuth, isSignIn} = this.props;
@@ -61,15 +61,21 @@ class App extends PureComponent {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             <Main
               promoFilm={promoFilm}
               onSmallCardClick={onSmallCardClick}
             />
           </Route>
-          <Route exact path="/dev-sign-in">
+          <Route exact path={AppRoute.LOGIN}>
             <SignIn
               onSubmit={this.props.onSubmitAuth}
+            />
+          </Route>
+          <Route exact path={AppRoute.FILM}>
+            <MovieDetails
+              film={films.find((it) => it.id === 3)}
+              onSmallCardClick={onSmallCardClick}
             />
           </Route>
         </Switch>
@@ -81,7 +87,6 @@ class App extends PureComponent {
 
 App.propTypes = {
   authStatus: PropTypes.string.isRequired,
-  isSignIn: PropTypes.bool.isRequired,
   films: PropTypes.any,
   promoFilm: PropTypes.any,
   currentFilm: PropTypes.number.isRequired,
@@ -91,7 +96,6 @@ App.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    isSignIn: getSignIn(state),
     films: getFilms(state),
     currentFilm: getCurrentFilm(state),
     promoFilm: getPromoFilm(state),
