@@ -4,20 +4,11 @@ exports[`render PageContent component with children 1`] = `
 <div
   className="page-content"
 >
-  <section
-    className="catalog"
-  >
-    <h2
-      className="catalog__title visually-hidden"
-    >
-      Catalog
-    </h2>
-    <div>
-      <h1>
-        Text
-      </h1>
-    </div>
-  </section>
+  <div>
+    <h1>
+      Text
+    </h1>
+  </div>
   <footer
     className="page-footer"
   >

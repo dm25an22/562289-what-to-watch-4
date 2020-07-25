@@ -5,9 +5,7 @@ import Footer from "../footer/footer.jsx";
 const PageContent = ({children}) => {
   return (
     <div className="page-content">
-
       {children}
-
       <Footer />
     </div>
   );
