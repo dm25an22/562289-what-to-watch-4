@@ -5,7 +5,6 @@ import {getCurrentGenre, getCurrentFilm} from "../app-state/selectors";
 
 const MAX_FILIMS_IN_SIMILAR = 4;
 
-
 const getFilms = (state) => {
   return state[NameSpace.DATA].films;
 };

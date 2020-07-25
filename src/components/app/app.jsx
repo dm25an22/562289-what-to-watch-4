@@ -11,7 +11,6 @@ import {getAuthStatus} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
 import {getSignIn} from "../../reducer/app-state/selectors";
-
 class App extends PureComponent {
   // _renderApp() {
   //   const {films, currentFilm, onSmallCardClick, promoFilm, authStatus, onSubmitAuth, isSignIn} = this.props;
