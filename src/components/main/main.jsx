@@ -1,28 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MovieList from "../movie-list/movie-list.jsx";
-import GenresList from "../genres-list/genres-list.jsx";
 import Promo from "../promo/promo.jsx";
 import PageContent from "../page-content/page-content.jsx";
-import LoadMoreButton from "../load-more-button/load-more-button.jsx";
-import withFilterByGenre from "../../hocks/with-filter-by-genre/with-filter-by-genre";
+import Catalog from "../catalog/catalog.jsx";
+import withCurrentGenre from "../../hocks/with-current-genre/with-current-genre";
 
-const MovieListWrraped = withFilterByGenre(MovieList);
+const CatalogWrraped = withCurrentGenre(Catalog);
 
-const Main = ({onSmallCardClick, promoFilm}) => {
+const Main = ({promoFilm, onSmallCardClick}) => {
   return (
     <>
     <Promo promoFilm={promoFilm} />
 
     <PageContent>
-
-      <GenresList />
-
-      <MovieListWrraped
+      <CatalogWrraped
         onSmallCardClick={onSmallCardClick}
       />
-
-      <LoadMoreButton />
     </PageContent>
   </>
   );

@@ -6,12 +6,10 @@ import MovieNav from "../movie-nav/movie-nav.jsx";
 const MovieCardInfo = ({film, renderCurrentInfo, currentTab, clickOnTab}) => {
   return (
     <div className="movie-card__desc">
-
       <MovieNav
         currentTab={currentTab}
         clickOnTab={clickOnTab}
       />
-
       {renderCurrentInfo(film)}
 
     </div>

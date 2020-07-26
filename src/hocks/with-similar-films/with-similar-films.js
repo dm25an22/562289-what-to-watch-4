@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {getSimilarFilms} from "../../reducer/data/selectors";
 
-
 const withSimilarFilms = (Component) => {
   class WithSimilarFilms extends React.PureComponent {
 
@@ -12,7 +11,7 @@ const withSimilarFilms = (Component) => {
       return (
         <Component
           {...this.props}
-          films={filmsByFilter}
+          filmsByFilter={filmsByFilter}
         />
       );
     }

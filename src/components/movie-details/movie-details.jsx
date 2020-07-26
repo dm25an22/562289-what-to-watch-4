@@ -10,15 +10,14 @@ const MovieListWrraped = withSimilarFilms(MovieList);
 const MovieDetails = ({film, onSmallCardClick}) => {
   return (
     <React.Fragment>
-
       <MovieCardFull film={film}/>
-
       <PageContent>
-
-        <MovieListWrraped
-          onSmallCardClick={onSmallCardClick}
-        />
-
+        <section className="catalog catalog--like-this">
+          <h2 className="catalog__title">More like this</h2>
+          <MovieListWrraped
+            onSmallCardClick={onSmallCardClick}
+          />
+        </section>
       </PageContent>
     </React.Fragment>
   );

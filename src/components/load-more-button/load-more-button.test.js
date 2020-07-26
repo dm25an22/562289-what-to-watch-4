@@ -4,7 +4,9 @@ import LoadMoreButton from "./load-more-button";
 
 it(`renders LoadMoreButton component`, () => {
   const tree = renderer.create(
-      <LoadMoreButton />
+      <LoadMoreButton
+        changeCountShowCrads={() => {}}
+      />
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
