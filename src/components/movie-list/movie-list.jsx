@@ -5,7 +5,7 @@ import withVideoPlayer from "../../hocks/with-video-player/with-video-player";
 
 const SmallMovieCardWrraped = withVideoPlayer(SmallMovieCard);
 
-const MovieList = ({onSmallCardClick, filmsByFilter, children}) => {
+const MovieList = ({filmsByFilter, children}) => {
   return (
     <React.Fragment>
       <div className="catalog__movies-list">
@@ -14,7 +14,6 @@ const MovieList = ({onSmallCardClick, filmsByFilter, children}) => {
             <SmallMovieCardWrraped
               key={film.title}
               film={film}
-              onSmallCardClick={onSmallCardClick}
             />
           );
         })}
@@ -27,7 +26,6 @@ const MovieList = ({onSmallCardClick, filmsByFilter, children}) => {
 };
 
 MovieList.propTypes = {
-  onSmallCardClick: PropTypes.func.isRequired,
   filmsByFilter: PropTypes.arrayOf(PropTypes.object).isRequired,
   children: PropTypes.node,
 };

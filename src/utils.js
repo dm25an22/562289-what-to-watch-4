@@ -78,6 +78,14 @@ const commaReplacement = (rating) => {
   return String(rating).replace(`.`, `,`);
 };
 
+const getFilmsByGener = (films, genre) => {
+  if (genre === ALL_GENRE) {
+    return films;
+  } else {
+    return films.filter((it) => it.genre === genre);
+  }
+};
+
 export {
   extend,
   ALL_GENRE,
@@ -86,5 +94,6 @@ export {
   getFormatedRunTime,
   getListActors,
   getDateForComment,
-  getRatingWithComma
+  getRatingWithComma,
+  getFilmsByGener
 };

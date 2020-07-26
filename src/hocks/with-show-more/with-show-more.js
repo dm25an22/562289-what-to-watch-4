@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
-import {getFilmsByFilter} from "../../reducer/data/selectors";
+import {getFilms} from "../../reducer/data/selectors";
 import LoadMoreButton from '../../components/load-more-button/load-more-button.jsx';
+import {getFilmsByGener} from '../../utils';
 
 const START_SHOW_CARDS = 8;
 const SHOW_MORE_STEP = 8;
@@ -13,20 +14,20 @@ const withShowMore = (Component) => {
     constructor(props) {
       super(props);
 
-
       this.state = {
         showCards: START_SHOW_CARDS,
+        films: getFilmsByGener(this.props.films, this.props.genre)
       };
 
       this.changeCountShowCrads = this.changeCountShowCrads.bind(this);
     }
 
-    changeCountShowCrads() {
-      this.setState((prevState) => ({showCards: prevState.showCards + SHOW_MORE_STEP}));
+    _getShowfilms() {
+      return this.state.films.slice(0, this.state.showCards);
     }
 
-    _getShowfilms() {
-      return this.props.filmsByFilter.slice(0, this.state.showCards);
+    changeCountShowCrads() {
+      this.setState((prevState) => ({showCards: prevState.showCards + SHOW_MORE_STEP}));
     }
 
     render() {
@@ -36,7 +37,7 @@ const withShowMore = (Component) => {
           filmsByFilter={this._getShowfilms()}
         >
 
-          {this.state.showCards < this.props.filmsByFilter.length && <LoadMoreButton changeCountShowCrads={this.changeCountShowCrads} />}
+          {this.state.showCards < this.state.films.length && <LoadMoreButton changeCountShowCrads={this.changeCountShowCrads} />}
 
         </Component>
       );
@@ -44,12 +45,13 @@ const withShowMore = (Component) => {
   }
 
   WithShowMore.propTypes = {
-    filmsByFilter: PropTypes.arrayOf(PropTypes.object).isRequired
+    films: PropTypes.arrayOf(PropTypes.object).isRequired,
+    genre: PropTypes.string.isRequired
   };
 
   const mapStateToProps = (state) => {
     return {
-      filmsByFilter: getFilmsByFilter(state),
+      films: getFilms(state),
     };
   };
 
