@@ -1,6 +1,4 @@
-import {getDescriptionRating} from "../utils";
-
-const getAdaptedData = (film) => {
+const getAdaptedFilm = (film) => {
   return {
     id: film.id,
     title: film.name,
@@ -12,7 +10,6 @@ const getAdaptedData = (film) => {
     description: film.description,
     preview: film.preview_video_link,
     rating: film.rating,
-    descriptionRating: getDescriptionRating(film.rating),
     quantityVotes: film.scores_count,
     producer: film.director,
     listActors: film.starring,
@@ -36,4 +33,26 @@ const getAdaptedComment = (comment) => {
   };
 };
 
-export {getAdaptedData, getAdaptedComment};
+const filmToRAW = (film) => {
+  return {
+    "id": film.id,
+    "name": film.title,
+    "poster_image": film.moviePoster,
+    "background_image": film.bigPoster,
+    "preview_image": film.smallCardImg,
+    "genre": film.genre,
+    "released": film.year,
+    "description": film.description,
+    "preview_video_link": film.preview,
+    "rating": film.rating,
+    "scores_count": film.quantityVotes,
+    "director": film.producer,
+    "starring": film.listActors,
+    "run_time": film.runTime,
+    "video_link": film.videoLink,
+    "is_favorite": film.isFavorite,
+    "background_color": film.backgroundColor
+  };
+};
+
+export {getAdaptedFilm, getAdaptedComment, filmToRAW};

@@ -22,5 +22,6 @@ export const MONTHS = [
 export const AppRoute = {
   ROOT: `/`,
   LOGIN: `/login`,
-  FILM: `/film`
+  FILM: `/film`,
+  MY_LIST: `/my-list`
 };

@@ -7,12 +7,11 @@ import withCurrentGenre from "../../hocks/with-current-genre/with-current-genre"
 
 const CatalogWrraped = withCurrentGenre(Catalog);
 
-const Main = ({promoFilm}) => {
-  window.scrollTo(0, 0);
+const Main = ({promoFilm, authStatus}) => {
 
   return (
     <React.Fragment>
-      <Promo promoFilm={promoFilm} />
+      <Promo promoFilm={promoFilm} authStatus={authStatus} />
 
       <PageContent>
         <CatalogWrraped />

@@ -46,7 +46,6 @@ const getRatingWithComma = (rating) => {
   return commaReplacement(rating);
 };
 
-
 const getFormatedRunTime = (time) => {
   const minute = time % 60;
   const hour = Math.floor(time / 60);
@@ -86,6 +85,7 @@ const getFilmsByGener = (films, genre) => {
   }
 };
 
+
 export {
   extend,
   ALL_GENRE,
@@ -95,5 +95,5 @@ export {
   getListActors,
   getDateForComment,
   getRatingWithComma,
-  getFilmsByGener
+  getFilmsByGener,
 };

@@ -14,7 +14,6 @@ const getUniqueGeners = createSelector(
     getFilms,
     (films) => {
       const genresList = [...new Set(films.map((it) => it.genre))].sort();
-
       return [ALL_GENRE].concat(checkLengthGenres(genresList));
     }
 );
@@ -23,9 +22,15 @@ const getComments = (state) => {
   return state[NameSpace.DATA].comments;
 };
 
+const getFavorites = (state) => {
+  return state[NameSpace.DATA].favorites;
+};
+
+
 export {
   getFilms,
   getPromoFilm,
   getUniqueGeners,
   getComments,
+  getFavorites,
 };

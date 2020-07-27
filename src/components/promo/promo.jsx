@@ -1,15 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
+import {connect} from "react-redux";
+import {Operation as DataOperation} from "../../reducer/data/data";
+import {AppRoute} from "../../consts.js";
+import {history} from "../../history.js";
+import {AuthorizationStatus} from "../../reducer/user/user";
 
-const Promo = ({promoFilm}) => {
+const Promo = ({promoFilm, authStatus,  onMyListBtnClick}) => {
   const {
     bigPoster,
     moviePoster,
     title,
     genre,
-    year
+    year,
+    isFavorite
   } = promoFilm;
+
+  const status = isFavorite ? 0 : 1;
 
   return (
     <section className="movie-card">
@@ -41,10 +49,25 @@ const Promo = ({promoFilm}) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"/>
-                </svg>
+              <button
+                onClick={() => {
+                  if (authStatus === AuthorizationStatus.NO_AUTH) {
+                    history.push(AppRoute.LOGIN);
+                  } else {
+                    onMyListBtnClick(promoFilm, status);
+                  }
+                }}
+                className="btn btn--list movie-card__button" type="button">
+
+                {isFavorite ?
+                  <svg viewBox="0 0 18 14" width="18" height="14">
+                    <use xlinkHref="#in-list" />
+                  </svg>
+                  :
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"/>
+                  </svg>}
+
                 <span>My list</span>
               </button>
             </div>
@@ -62,7 +85,17 @@ Promo.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-  }).isRequired
+    isFavorite: PropTypes.bool.isRequired
+  }).isRequired,
+  onMyListBtnClick: PropTypes.func.isRequired
 };
 
-export default Promo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onMyListBtnClick(film, status) {
+      dispatch(DataOperation.toggleFavorite(film, status));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Promo);

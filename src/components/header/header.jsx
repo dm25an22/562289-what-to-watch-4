@@ -5,12 +5,16 @@ import {getAuthStatus} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../consts";
+import { history } from "../../history";
 
 const getMarkupByStatus = (authStatus) => {
   if (authStatus === AuthorizationStatus.AUTH) {
     return (
-      <div className="user-block__avatar">
-        <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+      <div onClick={() => {
+        history.push(AppRoute.MY_LIST);
+      }}
+      className="user-block__avatar">
+        <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
       </div>
     );
   } else {
@@ -20,7 +24,7 @@ const getMarkupByStatus = (authStatus) => {
   }
 };
 
-const Header = ({authStatus}) => {
+const Header = ({authStatus, children}) => {
   return (
     <header className="page-header movie-card__head">
       <div className="logo">
@@ -41,6 +45,7 @@ const Header = ({authStatus}) => {
 
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
+  children: PropTypes.node
 };
 
 const mapStateToProps = (state) => {

@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import MovieCardInfo from "../movie-card-info/movie-card-info.jsx";
 import withCurrentTab from "../../hocks/with-current-tab/with-current-tab";
+import {connect} from "react-redux";
+import {Operation as DataOperation} from "../../reducer/data/data";
 
 const MovieCardInfoWrraped = withCurrentTab(MovieCardInfo);
 
-const MovieCardFull = ({film}) => {
+const MovieCardFull = ({film, onMyListBtnClick}) => {
   const {
     title,
     bigPoster,
@@ -14,7 +16,10 @@ const MovieCardFull = ({film}) => {
     genre,
     year,
     backgroundColor,
+    isFavorite
   } = film;
+
+  const status = isFavorite ? 0 : 1;
 
   return (
     <section style={{background: backgroundColor}} className="movie-card movie-card--full">
@@ -42,10 +47,18 @@ const MovieCardFull = ({film}) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
+              <button onClick={() => {
+                onMyListBtnClick(film, status);
+              }}
+              className="btn btn--list movie-card__button" type="button">
+                {isFavorite ?
+                  <svg viewBox="0 0 18 14" width="18" height="14">
+                    <use xlinkHref="#in-list" />
+                  </svg>
+                  :
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"/>
+                  </svg>}
                 <span>My list</span>
               </button>
               <a href="add-review.html" className="btn movie-card__button">Add review</a>
@@ -80,8 +93,19 @@ MovieCardFull.propTypes = {
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     listActors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    backgroundColor: PropTypes.string.isRequired
+    backgroundColor: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
+  onMyListBtnClick: PropTypes.func.isRequired
 };
 
-export default MovieCardFull;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onMyListBtnClick(film, status) {
+      dispatch(DataOperation.toggleFavorite(film, status));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(MovieCardFull);

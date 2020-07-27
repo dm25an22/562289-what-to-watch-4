@@ -11,6 +11,7 @@ import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/use
 import {AppRoute} from "../../consts";
 import {history} from "../../history";
 import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js";
+import MyList from "../my-list/my-list.jsx";
 
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
 class App extends PureComponent {
@@ -28,6 +29,7 @@ class App extends PureComponent {
             render={() => (
               <Main
                 promoFilm={promoFilm}
+                authStatus={authStatus}
               />
             )}
           >
@@ -40,7 +42,7 @@ class App extends PureComponent {
             )}
           >
           </Route>
-          <Route exact path="/film/:id"
+          <Route exact path={`${AppRoute.FILM}/:id`}
             render={(props) => (
               <MovieDetailsWrraped
                 {...props}
@@ -48,6 +50,9 @@ class App extends PureComponent {
               />
             )}
           >
+          </Route>
+          <Route exact path={AppRoute.MY_LIST}>
+            <MyList />
           </Route>
         </Switch>
       </Router>
