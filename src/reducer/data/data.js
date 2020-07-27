@@ -1,12 +1,12 @@
 import {extend} from "../../utils";
-import {getAdaptedFilm, getAdaptedComment, filmToRAW} from "../adapter";
+import {getAdaptedFilm, getAdaptedComment} from "../adapter";
 import {getPromoFilm} from "./selectors";
 
 const initialState = {
   films: null,
   promoFilm: null,
   comments: null,
-  favorites: []
+  // favorites: []
 };
 
 const ActionType = {
@@ -14,7 +14,7 @@ const ActionType = {
   LOAD_PROMO: `LOAD_PROMO`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   SET_INITIAL_COMMENTS: `SET_INITIAL_COMMENTS`,
-  LOAD_FAVORITES: `LOAD_FAVORITES`,
+  // LOAD_FAVORITES: `LOAD_FAVORITES`,
   UPDATE_PROMO: `UPDATE_PROMO`,
   UPDATE_FILMS: `UPDATE_FILMS`
 };
@@ -48,12 +48,12 @@ const ActionCreator = {
     };
   },
 
-  loadFavorites(favorites) {
-    return {
-      type: ActionType.LOAD_FAVORITES,
-      payload: favorites
-    };
-  },
+  // loadFavorites(favorites) {
+  //   return {
+  //     type: ActionType.LOAD_FAVORITES,
+  //     payload: favorites
+  //   };
+  // },
 
   updateFilms(film) {
     return {
@@ -96,16 +96,16 @@ const Operation = {
       });
   },
 
-  loadFavorites: () => (dispatch, getState, api) => {
-    return api.get(`/favorite`)
-      .then((response) => {
-        const favorites = response.data.map((film) => getAdaptedFilm(film));
-        dispatch(ActionCreator.loadFavorites(favorites));
-      });
-  },
+  // loadFavorites: () => (dispatch, getState, api) => {
+  //   return api.get(`/favorite`)
+  //     .then((response) => {
+  //       const favorites = response.data.map((film) => getAdaptedFilm(film));
+  //       dispatch(ActionCreator.loadFavorites(favorites));
+  //     });
+  // },
 
   toggleFavorite: (film, status) => (dispatch, getState, api) => {
-    return api.post(`/favorite/${film.id}/${status}`, filmToRAW(film))
+    return api.post(`/favorite/${film.id}/${status}`)
       .then((response) => {
         const adaptedResponse = getAdaptedFilm(response.data);
         const state = getState();
@@ -143,10 +143,10 @@ const reducer = (state = initialState, action) => {
         comments: action.payload
       });
 
-    case ActionType.LOAD_FAVORITES:
-      return extend(state, {
-        favorites: action.payload
-      });
+    // case ActionType.LOAD_FAVORITES:
+    //   return extend(state, {
+    //     favorites: action.payload
+    //   });
 
     case ActionType.UPDATE_PROMO:
       return extend(state, {

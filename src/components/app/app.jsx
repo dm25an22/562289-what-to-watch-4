@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthStatus} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
-import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
+import {Operation as UserOperation} from "../../reducer/user/user";
 import {AppRoute} from "../../consts";
 import {history} from "../../history";
 import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js";
@@ -16,7 +16,7 @@ import MyList from "../my-list/my-list.jsx";
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
 class App extends PureComponent {
   render() {
-    const {films, promoFilm, authStatus, onSubmitAuth, isSignIn} = this.props;
+    const {films, promoFilm, authStatus, onSubmitAuth} = this.props;
 
     if (films === null || promoFilm === null) {
       return null;
@@ -37,7 +37,8 @@ class App extends PureComponent {
           <Route exact path={AppRoute.LOGIN}
             render={() => (
               <SignIn
-                onSubmit={this.props.onSubmitAuth}
+                onSubmit={onSubmitAuth}
+                authStatus={authStatus}
               />
             )}
           >

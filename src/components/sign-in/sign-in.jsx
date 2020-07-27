@@ -1,8 +1,9 @@
 import React, {createRef} from "react";
 import PropTypes from "prop-types";
 import Footer from "../footer/footer.jsx";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {AppRoute} from "../../consts.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 class SignIn extends React.PureComponent {
   constructor(props) {
@@ -26,6 +27,12 @@ class SignIn extends React.PureComponent {
   }
 
   render() {
+    const {authStatus} = this.props;
+
+    if (authStatus === AuthorizationStatus.AUTH) {
+      return <Redirect to={AppRoute.ROOT} />;
+    }
+
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -65,7 +72,8 @@ class SignIn extends React.PureComponent {
 }
 
 SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  authStatus: PropTypes.string.isRequired
 };
 
 export default SignIn;
