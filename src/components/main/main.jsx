@@ -9,13 +9,12 @@ import withFaforite from "../../hocks/with-favorite/with-favorite";
 const PromoWrraped = withFaforite(Promo);
 const CatalogWrraped = withCurrentGenre(Catalog);
 
-const Main = ({promoFilm, authStatus}) => {
+const Main = ({promoFilm}) => {
   scrollTo(0, 0);
 
   return (
     <React.Fragment>
-      <PromoWrraped film={promoFilm} authStatus={authStatus} />
-
+      <PromoWrraped film={promoFilm} />
       <PageContent>
         <CatalogWrraped />
       </PageContent>

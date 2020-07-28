@@ -3,6 +3,7 @@ import PropTepes from "prop-types";
 import {connect} from "react-redux";
 import {Operation as DataOperation} from "../../reducer/data/data";
 import {getFavorites} from "../../reducer/data/selectors";
+import {getAuthStatus} from "../../reducer/user/selectors";
 
 
 const withFavorite = (Component) => {
@@ -36,7 +37,8 @@ const withFavorite = (Component) => {
 
   const mapStateToProps = (state) => {
     return {
-      favoriteList: getFavorites(state)
+      favoriteList: getFavorites(state),
+      authStatus: getAuthStatus(state)
     };
   };
 

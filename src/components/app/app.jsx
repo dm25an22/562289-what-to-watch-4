@@ -34,7 +34,6 @@ class App extends PureComponent {
             render={() => (
               <Main
                 promoFilm={promoFilm}
-                authStatus={authStatus}
               />
             )}
           >
@@ -53,7 +52,6 @@ class App extends PureComponent {
               <MovieDetailsWrraped
                 {...props}
                 films={films}
-                authStatus={authStatus}
               />
             )}
           >

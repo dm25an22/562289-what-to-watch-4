@@ -9,12 +9,12 @@ import withFaforite from "../../hocks/with-favorite/with-favorite";
 const MovieCardFullWrraped = withFaforite(MovieCardFull);
 const MovieListWrraped = withSimilarFilms(MovieList);
 
-const MovieDetails = ({film, films, authStatus}) => {
+const MovieDetails = ({film, films}) => {
   window.scrollTo(0, 0);
 
   return (
     <React.Fragment>
-      <MovieCardFullWrraped film={film} authStatus={authStatus}/>
+      <MovieCardFullWrraped film={film}/>
       <PageContent>
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
