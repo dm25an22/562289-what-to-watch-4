@@ -1,9 +1,9 @@
 import React, {createRef} from "react";
 import PropTypes from "prop-types";
 import Footer from "../footer/footer.jsx";
-import {Link, Redirect} from "react-router-dom";
-import {AppRoute} from "../../consts.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {history} from "../../history.js";
+import Logo from "../logo/logo.jsx";
 
 class SignIn extends React.PureComponent {
   constructor(props) {
@@ -30,19 +30,13 @@ class SignIn extends React.PureComponent {
     const {authStatus} = this.props;
 
     if (authStatus === AuthorizationStatus.AUTH) {
-      return <Redirect to={AppRoute.ROOT} />;
+      history.goBack();
     }
 
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
-          <div className="logo">
-            <Link to={AppRoute.ROOT} className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+          <Logo />
 
           <h1 className="page-title user-page__title">Sign in</h1>
         </header>

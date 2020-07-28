@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Header from "../header/header.jsx";
 import MovieCardInfo from "../movie-card-info/movie-card-info.jsx";
 import withCurrentTab from "../../hocks/with-current-tab/with-current-tab";
-import {connect} from "react-redux";
-import {Operation as DataOperation} from "../../reducer/data/data";
+import {AppRoute} from "../../consts.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {history} from "../../history";
+import HeaderMovie from "../header/header-movie.jsx";
 
 const MovieCardInfoWrraped = withCurrentTab(MovieCardInfo);
 
-const MovieCardFull = ({film, onMyListBtnClick}) => {
+const MovieCardFull = ({film, onMyListBtnClick, authStatus, status}) => {
   const {
     title,
     bigPoster,
@@ -16,10 +17,7 @@ const MovieCardFull = ({film, onMyListBtnClick}) => {
     genre,
     year,
     backgroundColor,
-    isFavorite
   } = film;
-
-  const status = isFavorite ? 0 : 1;
 
   return (
     <section style={{background: backgroundColor}} className="movie-card movie-card--full">
@@ -30,7 +28,7 @@ const MovieCardFull = ({film, onMyListBtnClick}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <Header />
+        <HeaderMovie />
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
@@ -48,16 +46,20 @@ const MovieCardFull = ({film, onMyListBtnClick}) => {
                 <span>Play</span>
               </button>
               <button onClick={() => {
-                onMyListBtnClick(film, status);
+                if (authStatus === AuthorizationStatus.NO_AUTH) {
+                  history.push(AppRoute.LOGIN);
+                } else {
+                  onMyListBtnClick(film, status);
+                }
               }}
               className="btn btn--list movie-card__button" type="button">
-                {isFavorite ?
-                  <svg viewBox="0 0 18 14" width="18" height="14">
-                    <use xlinkHref="#in-list" />
-                  </svg>
-                  :
+                {status ?
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"/>
+                  </svg>
+                  :
+                  <svg viewBox="0 0 18 14" width="18" height="14">
+                    <use xlinkHref="#in-list" />
                   </svg>}
                 <span>My list</span>
               </button>
@@ -99,13 +101,4 @@ MovieCardFull.propTypes = {
   onMyListBtnClick: PropTypes.func.isRequired
 };
 
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onMyListBtnClick(film, status) {
-      dispatch(DataOperation.toggleFavorite(film, status));
-    }
-  };
-};
-
-export default connect(null, mapDispatchToProps)(MovieCardFull);
+export default MovieCardFull;

@@ -5,7 +5,9 @@ import {getAuthStatus} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../consts";
-import { history } from "../../history";
+import {history} from "../../history";
+import Logo from "../logo/logo.jsx";
+
 
 const getMarkupByStatus = (authStatus) => {
   if (authStatus === AuthorizationStatus.AUTH) {
@@ -24,17 +26,11 @@ const getMarkupByStatus = (authStatus) => {
   }
 };
 
-const Header = ({authStatus, children}) => {
+const Header = ({className, authStatus, children}) => {
   return (
-    <header className="page-header movie-card__head">
-      <div className="logo">
-        <Link to={AppRoute.ROOT} className="logo__link">
-          <span className="logo__letter logo__letter--1">W</span>
-          <span className="logo__letter logo__letter--2">T</span>
-          <span className="logo__letter logo__letter--3">W</span>
-        </Link>
-      </div>
-
+    <header className={`page-header ${className}`}>
+      <Logo />
+      {children}
       <div className="user-block">
         {getMarkupByStatus(authStatus)}
       </div>
@@ -45,7 +41,6 @@ const Header = ({authStatus, children}) => {
 
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
-  children: PropTypes.node
 };
 
 const mapStateToProps = (state) => {

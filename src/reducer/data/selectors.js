@@ -22,16 +22,9 @@ const getComments = (state) => {
   return state[NameSpace.DATA].comments;
 };
 
-// const getFavorites = (state) => {
-//   return state[NameSpace.DATA].favorites;
-// };
-
-const getFavorites = createSelector(
-    getFilms,
-    (films) => {
-      return films.filter((film) => film.isFavorite === true);
-    }
-);
+const getFavorites = (state) => {
+  return state[NameSpace.DATA].favorites;
+};
 
 
 export {

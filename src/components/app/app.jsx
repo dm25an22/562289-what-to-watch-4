@@ -7,7 +7,8 @@ import {connect} from "react-redux";
 import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthStatus} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
-import {Operation as UserOperation} from "../../reducer/user/user";
+import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
+import {Operation as DataOperation} from "../../reducer/data/data";
 import {AppRoute} from "../../consts";
 import {history} from "../../history";
 import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js";
@@ -16,10 +17,14 @@ import MyList from "../my-list/my-list.jsx";
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
 class App extends PureComponent {
   render() {
-    const {films, promoFilm, authStatus, onSubmitAuth} = this.props;
+    const {films, promoFilm, authStatus, onSubmitAuth, loadFavoriteList} = this.props;
 
     if (films === null || promoFilm === null) {
       return null;
+    }
+
+    if (authStatus === AuthorizationStatus.AUTH) {
+      loadFavoriteList();
     }
 
     return (
@@ -48,6 +53,7 @@ class App extends PureComponent {
               <MovieDetailsWrraped
                 {...props}
                 films={films}
+                authStatus={authStatus}
               />
             )}
           >
@@ -81,6 +87,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSubmitAuth(authData) {
       dispatch(UserOperation.login(authData));
+    },
+
+    loadFavoriteList() {
+      dispatch(DataOperation.loadFavorites());
     }
   };
 };

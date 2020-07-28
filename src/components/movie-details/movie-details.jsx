@@ -4,15 +4,17 @@ import PageContent from "../page-content/page-content.jsx";
 import MovieList from "../movie-list/movie-list.jsx";
 import MovieCardFull from "../movie-card-full/movie-card-full.jsx";
 import withSimilarFilms from "../../hocks/with-similar-films/with-similar-films";
+import withFaforite from "../../hocks/with-favorite/with-favorite";
 
+const MovieCardFullWrraped = withFaforite(MovieCardFull);
 const MovieListWrraped = withSimilarFilms(MovieList);
 
-const MovieDetails = ({film, films}) => {
+const MovieDetails = ({film, films, authStatus}) => {
   window.scrollTo(0, 0);
 
   return (
     <React.Fragment>
-      <MovieCardFull film={film}/>
+      <MovieCardFullWrraped film={film} authStatus={authStatus}/>
       <PageContent>
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>

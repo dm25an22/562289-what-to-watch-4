@@ -1,12 +1,11 @@
-import {extend} from "../../utils";
+import {extend, removeFilmFromFavorites} from "../../utils";
 import {getAdaptedFilm, getAdaptedComment} from "../adapter";
-import {getPromoFilm} from "./selectors";
 
 const initialState = {
   films: null,
   promoFilm: null,
   comments: null,
-  // favorites: []
+  favorites: []
 };
 
 const ActionType = {
@@ -14,9 +13,9 @@ const ActionType = {
   LOAD_PROMO: `LOAD_PROMO`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   SET_INITIAL_COMMENTS: `SET_INITIAL_COMMENTS`,
-  // LOAD_FAVORITES: `LOAD_FAVORITES`,
-  UPDATE_PROMO: `UPDATE_PROMO`,
-  UPDATE_FILMS: `UPDATE_FILMS`
+  LOAD_FAVORITES: `LOAD_FAVORITES`,
+  ADD_TO_FAVORITES: `ADD_TO_FAVORITES`,
+  REMOVE_FROM_FAVORITES: `REMOVE_FROM_FAVORITES`
 };
 
 const ActionCreator = {
@@ -48,26 +47,26 @@ const ActionCreator = {
     };
   },
 
-  // loadFavorites(favorites) {
-  //   return {
-  //     type: ActionType.LOAD_FAVORITES,
-  //     payload: favorites
-  //   };
-  // },
-
-  updateFilms(film) {
+  loadFavorites(favorites) {
     return {
-      type: ActionType.UPDATE_FILMS,
+      type: ActionType.LOAD_FAVORITES,
+      payload: favorites
+    };
+  },
+
+  addToFavorites(film) {
+    return {
+      type: ActionType.ADD_TO_FAVORITES,
       payload: film
     };
   },
 
-  updatePromo(film) {
+  removeFromFavorites(film) {
     return {
-      type: ActionType.UPDATE_PROMO,
+      type: ActionType.REMOVE_FROM_FAVORITES,
       payload: film
     };
-  }
+  },
 };
 
 const Operation = {
@@ -96,26 +95,23 @@ const Operation = {
       });
   },
 
-  // loadFavorites: () => (dispatch, getState, api) => {
-  //   return api.get(`/favorite`)
-  //     .then((response) => {
-  //       const favorites = response.data.map((film) => getAdaptedFilm(film));
-  //       dispatch(ActionCreator.loadFavorites(favorites));
-  //     });
-  // },
+  loadFavorites: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        const favorites = response.data.map((film) => getAdaptedFilm(film));
+        dispatch(ActionCreator.loadFavorites(favorites));
+      });
+  },
 
   toggleFavorite: (film, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${film.id}/${status}`)
       .then((response) => {
         const adaptedResponse = getAdaptedFilm(response.data);
-        const state = getState();
-        const promoFilm = getPromoFilm(state);
-
-        if (adaptedResponse.id === promoFilm.id) {
-          dispatch(ActionCreator.updatePromo(adaptedResponse));
+        if (status) {
+          dispatch(ActionCreator.addToFavorites(adaptedResponse));
+        } else {
+          dispatch(ActionCreator.removeFromFavorites(adaptedResponse));
         }
-
-        dispatch(ActionCreator.updateFilms(adaptedResponse));
       });
   }
 };
@@ -143,24 +139,19 @@ const reducer = (state = initialState, action) => {
         comments: action.payload
       });
 
-    // case ActionType.LOAD_FAVORITES:
-    //   return extend(state, {
-    //     favorites: action.payload
-    //   });
-
-    case ActionType.UPDATE_PROMO:
+    case ActionType.LOAD_FAVORITES:
       return extend(state, {
-        promoFilm: action.payload
+        favorites: action.payload
       });
 
-    case ActionType.UPDATE_FILMS:
+    case ActionType.ADD_TO_FAVORITES:
       return extend(state, {
-        films: state.films.map((film) => {
-          if (film.id === action.payload.id) {
-            return action.payload;
-          }
-          return film;
-        })
+        favorites: [...state.favorites, action.payload]
+      });
+
+    case ActionType.REMOVE_FROM_FAVORITES:
+      return extend(state, {
+        favorites: removeFilmFromFavorites([...state.favorites], action.payload)
       });
   }
 

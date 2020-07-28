@@ -85,6 +85,15 @@ const getFilmsByGener = (films, genre) => {
   }
 };
 
+const checkFilmInFavorite = (listFavorite, film) => {
+  return Boolean(listFavorite.find((it) => it.id === film.id));
+};
+
+const removeFilmFromFavorites = (favorites, film) => {
+  const filmIndex = favorites.findIndex((it) => it.id === film.id);
+  favorites.splice(filmIndex, 1);
+  return favorites;
+};
 
 export {
   extend,
@@ -96,4 +105,6 @@ export {
   getDateForComment,
   getRatingWithComma,
   getFilmsByGener,
+  checkFilmInFavorite,
+  removeFilmFromFavorites
 };
