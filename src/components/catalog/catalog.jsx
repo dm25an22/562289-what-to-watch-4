@@ -6,7 +6,7 @@ import withShowMore from "../../hocks/with-show-more/with-show-more.js";
 
 const MovieListWrraped = withShowMore(MovieList);
 
-const Catalog = ({onSmallCardClick, currentGenre, onGenreClick, genres}) => {
+const Catalog = ({currentGenre, onGenreClick, genres}) => {
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -19,14 +19,13 @@ const Catalog = ({onSmallCardClick, currentGenre, onGenreClick, genres}) => {
 
       <MovieListWrraped
         key={currentGenre}
-        onSmallCardClick={onSmallCardClick}
+        genre={currentGenre}
       />
     </section>
   );
 };
 
 Catalog.propTypes = {
-  onSmallCardClick: PropTypes.func.isRequired,
   currentGenre: PropTypes.string.isRequired,
   onGenreClick: PropTypes.func.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired

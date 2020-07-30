@@ -1,33 +1,40 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {connect} from 'react-redux';
-import {getSimilarFilms} from "../../reducer/data/selectors";
+import {getFilmsByGener} from '../../utils';
+
+const MAX_FILIMS_IN_SIMILAR = 4;
 
 const withSimilarFilms = (Component) => {
   class WithSimilarFilms extends React.PureComponent {
 
+    _getUniqueList() {
+      const {films, genre} = this.props;
+
+      const filmsByGenre = getFilmsByGener(films, genre);
+      const filmsByGenreCopy = [...filmsByGenre];
+      const filmIndex = filmsByGenreCopy.findIndex((it) => it.id === this.props.id);
+
+      filmsByGenreCopy.splice(filmIndex, 1);
+      return filmsByGenreCopy.slice(0, MAX_FILIMS_IN_SIMILAR);
+    }
+
     render() {
-      const {filmsByFilter} = this.props;
       return (
         <Component
           {...this.props}
-          filmsByFilter={filmsByFilter}
+          filmsByFilter={this._getUniqueList()}
         />
       );
     }
   }
 
   WithSimilarFilms.propTypes = {
-    filmsByFilter: PropTypes.arrayOf(PropTypes.object).isRequired
+    films: PropTypes.arrayOf(PropTypes.object).isRequired,
+    genre: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
   };
 
-  const mapStateToProps = (state) => {
-    return {
-      filmsByFilter: getSimilarFilms(state),
-    };
-  };
-
-  return connect(mapStateToProps)(WithSimilarFilms);
+  return WithSimilarFilms;
 };
 
 export default withSimilarFilms;

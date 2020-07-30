@@ -5,6 +5,8 @@ import {mockFilms} from "../../mocks/mock-for-tests";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 const mockStore = configureStore({});
 
@@ -20,12 +22,13 @@ const store = mockStore({
 it(`render Comment component`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <Catalog
-          onSmallCardClick={() => {}}
-          currentGenre={`Action`}
-          onGenreClick={() => {}}
-          genres={[`All genre`, `Drama`, `Action`]}
-        />
+        <Router history={history} >
+          <Catalog
+            currentGenre={`Action`}
+            onGenreClick={() => {}}
+            genres={[`All genre`, `Drama`, `Action`]}
+          />
+        </Router>
       </Provider>, {
         createNodeMock: () => {
           return {};

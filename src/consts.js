@@ -18,3 +18,10 @@ export const MONTHS = [
   `November`,
   `December`
 ];
+
+export const AppRoute = {
+  ROOT: `/`,
+  LOGIN: `/login`,
+  FILM: `/film`,
+  MY_LIST: `/my-list`
+};

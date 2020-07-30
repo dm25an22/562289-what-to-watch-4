@@ -1,7 +1,8 @@
 import {reducer, ActionType, Operation} from "./data";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
-import {mockfilms, mockPromo} from "../../mocks/mock-for-tests";
+import {mockfilms, mockPromo, mockFilms} from "../../mocks/mock-for-tests";
+import {getAdaptedFilm} from "../adapter";
 
 const api = createAPI();
 
@@ -17,7 +18,6 @@ const mockResponse = {
   description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes).`,
   preview: `https://some-link`,
   rating: 0,
-  descriptionRating: `Bad`,
   quantityVotes: 240,
   producer: `Wes Andreson`,
   listActors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
@@ -150,3 +150,59 @@ it(`Should make a correct API call to /comments/id `, function () {
     });
 });
 
+it(`Should make a correct API call to /favorite `, function () {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const favoritesLoader = Operation.loadFavorites();
+
+  apiMock
+    .onGet(`/favorite`)
+    .reply(200, []);
+
+  return favoritesLoader(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.LOAD_FAVORITES,
+        payload: [],
+      });
+    });
+});
+
+
+it(`Should make a correct API call to /favorite/film_id/status add item`, function () {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const toggleFavorite = Operation.toggleFavorite(mockFilms[0], 1);
+
+  apiMock
+    .onPost(`/favorite/${mockFilms[0].id}/1`)
+    .reply(200, mockFilms[0]);
+
+  return toggleFavorite(dispatch, () => {}, api)
+    .then(() => {
+      const adaptedData = getAdaptedFilm(mockFilms[0]);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.ADD_TO_FAVORITES,
+        payload: adaptedData,
+      });
+    });
+});
+
+it(`Should make a correct API call to /favorite/film_id/status remove item`, function () {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const toggleFavorite = Operation.toggleFavorite(mockFilms[0], 0);
+
+  apiMock
+    .onPost(`/favorite/${mockFilms[0].id}/0`)
+    .reply(200, mockFilms[0]);
+
+  return toggleFavorite(dispatch, () => {}, api)
+    .then(() => {
+      const adaptedData = getAdaptedFilm(mockFilms[0]);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.REMOVE_FROM_FAVORITES,
+        payload: adaptedData,
+      });
+    });
+});

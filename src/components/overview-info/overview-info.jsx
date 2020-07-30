@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {getRatingWithComma} from "../../utils";
+import {getRatingWithComma, getDescriptionRating} from "../../utils";
 
 const OverviewInfo = ({film}) => {
   const {
     rating,
-    descriptionRating,
     quantityVotes,
     producer,
     description,
@@ -17,7 +16,7 @@ const OverviewInfo = ({film}) => {
       <div className="movie-rating">
         <div className="movie-rating__score">{getRatingWithComma(rating)}</div>
         <p className="movie-rating__meta">
-          <span className="movie-rating__level">{descriptionRating}</span>
+          <span className="movie-rating__level">{getDescriptionRating(rating)}</span>
           <span className="movie-rating__count">{quantityVotes}</span>
         </p>
       </div>
@@ -40,7 +39,6 @@ OverviewInfo.propTypes = {
       PropTypes.string
     ]),
     description: PropTypes.string.isRequired,
-    descriptionRating: PropTypes.string.isRequired,
     quantityVotes: PropTypes.number.isRequired
   }).isRequired
 };

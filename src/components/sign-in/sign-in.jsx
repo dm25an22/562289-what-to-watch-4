@@ -1,6 +1,9 @@
 import React, {createRef} from "react";
 import PropTypes from "prop-types";
 import Footer from "../footer/footer.jsx";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {history} from "../../history.js";
+import Logo from "../logo/logo.jsx";
 
 class SignIn extends React.PureComponent {
   constructor(props) {
@@ -24,16 +27,16 @@ class SignIn extends React.PureComponent {
   }
 
   render() {
+    const {authStatus} = this.props;
+
+    if (authStatus === AuthorizationStatus.AUTH) {
+      history.goBack();
+    }
+
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo />
 
           <h1 className="page-title user-page__title">Sign in</h1>
         </header>
@@ -63,7 +66,8 @@ class SignIn extends React.PureComponent {
 }
 
 SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  authStatus: PropTypes.string.isRequired
 };
 
 export default SignIn;
