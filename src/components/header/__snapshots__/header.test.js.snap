@@ -2,14 +2,15 @@
 
 exports[`renders Headers component with authorization 1`] = `
 <header
-  className="page-header movie-card__head"
+  className="page-header undefined"
 >
   <div
     className="logo"
   >
     <a
-      className="logo__link"
-      href="main.html"
+      className="logo__link undefined"
+      href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -33,11 +34,12 @@ exports[`renders Headers component with authorization 1`] = `
   >
     <div
       className="user-block__avatar"
+      onClick={[Function]}
     >
       <img
         alt="User avatar"
         height="63"
-        src="img/avatar.jpg"
+        src="/img/avatar.jpg"
         width="63"
       />
     </div>
@@ -47,14 +49,15 @@ exports[`renders Headers component with authorization 1`] = `
 
 exports[`renders Headers component without authorization 1`] = `
 <header
-  className="page-header movie-card__head"
+  className="page-header undefined"
 >
   <div
     className="logo"
   >
     <a
-      className="logo__link"
-      href="main.html"
+      className="logo__link undefined"
+      href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -78,7 +81,7 @@ exports[`renders Headers component without authorization 1`] = `
   >
     <a
       className="user-block__link"
-      href="sign-in.html"
+      href="/login"
       onClick={[Function]}
     >
       Sign in

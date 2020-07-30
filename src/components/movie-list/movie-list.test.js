@@ -2,6 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import MovieList from "../movie-list/movie-list.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 const loadMoreButton = (
   <div className="catalog__more">
@@ -15,10 +17,11 @@ it(`Render MovieList`, () => {
   const currentFilm = mockFilms[0];
 
   const tree = renderer.create(
-      <MovieList
-        filmsByFilter={mockFilms.filter((it) => it.genre === currentFilm.genre)}
-        onSmallCardClick={() => {}}
-      />, {
+      <Router history={history}>
+        <MovieList
+          filmsByFilter={mockFilms.filter((it) => it.genre === currentFilm.genre)}
+        />
+      </Router>, {
         createNodeMock: () => {
           return {};
         }
@@ -32,12 +35,14 @@ it(`Render MovieList with loadMoreButton`, () => {
   const currentFilm = mockFilms[0];
 
   const tree = renderer.create(
-      <MovieList
-        filmsByFilter={mockFilms.filter((it) => it.genre === currentFilm.genre)}
-        onSmallCardClick={() => {}}
-      >
-        {loadMoreButton}
-      </MovieList>, {
+      <Router history={history} >
+        <MovieList
+          filmsByFilter={mockFilms.filter((it) => it.genre === currentFilm.genre)}
+          onSmallCardClick={() => {}}
+        >
+          {loadMoreButton}
+        </MovieList>
+      </Router>, {
         createNodeMock: () => {
           return {};
         }
@@ -57,10 +62,13 @@ it(`Render MovieList more like`, () => {
     return mockFilmsCopy.slice(0, 4);
   };
   const tree = renderer.create(
-      <MovieList
-        filmsByFilter={films()}
-        onSmallCardClick={() => {}}
-      />, {
+      <Router history={history}>
+
+        <MovieList
+          filmsByFilter={films()}
+          onSmallCardClick={() => {}}
+        />
+      </Router>, {
         createNodeMock: () => {
           return {};
         }

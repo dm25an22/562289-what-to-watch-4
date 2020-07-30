@@ -53,17 +53,11 @@ const MovieCardFull = ({film}) => {
 
 MovieCardFull.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,
     moviePoster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    listActors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     backgroundColor: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
-  onMyListBtnClick: PropTypes.func.isRequired
 };
 
 export default MovieCardFull;

@@ -5,6 +5,8 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
 import {mockFilms} from "../../mocks/mock-for-tests";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 
 const mockStore = configureStore({});
@@ -38,10 +40,8 @@ const AuthorizationStatus = {
 const store = mockStore({
   [NameSpace.DATA]: {
     films: mockFilms,
-    promoFilm: promo
-  },
-  [NameSpace.APP_STATE]: {
-    currentGenre: `All genre`,
+    promoFilm: promo,
+    favorites: [promo]
   },
   [NameSpace.USER]: {
     authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -52,9 +52,11 @@ const store = mockStore({
 it(`Render Promo`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <Promo
-          promoFilm={promo}
-        />
+        <Router history={history} >
+          <Promo
+            film={promo}
+          />
+        </Router>
       </Provider>
   ).toJSON();
 

@@ -70,7 +70,8 @@ App.propTypes = {
   authStatus: PropTypes.string.isRequired,
   films: PropTypes.any,
   promoFilm: PropTypes.any,
-  onSubmitAuth: PropTypes.func.isRequired
+  onSubmitAuth: PropTypes.func.isRequired,
+  loadFavoriteList: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

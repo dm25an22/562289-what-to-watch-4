@@ -36,12 +36,7 @@ Promo.propTypes = {
   film: PropTypes.shape({
     bigPoster: PropTypes.string.isRequired,
     moviePoster: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
-  onMyListBtnClick: PropTypes.func.isRequired
 };
 
 export default Promo;

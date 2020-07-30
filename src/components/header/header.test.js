@@ -4,6 +4,8 @@ import Header from "./header";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 const mockStore = configureStore({});
 
@@ -22,7 +24,9 @@ it(`renders Headers component without authorization`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Header />
+        <Router history={history} >
+          <Header />
+        </Router>
       </Provider>
   ).toJSON();
 
@@ -37,7 +41,9 @@ it(`renders Headers component with authorization`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Header />
+        <Router history={history} >
+          <Header />
+        </Router>
       </Provider>
   ).toJSON();
 

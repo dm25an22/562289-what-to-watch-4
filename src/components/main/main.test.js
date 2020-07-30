@@ -5,6 +5,8 @@ import configureStore from "redux-mock-store";
 import {mockFilms} from "../../mocks/mock-for-tests";
 import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 const mockStore = configureStore({});
 
@@ -37,22 +39,23 @@ it(`Render Main`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       films: mockFilms,
-      promoFilm: promo
-    },
-    [NameSpace.APP_STATE]: {
-      currentGenre: `All genre`,
+      promoFilm: promo,
+      favorites: [promo]
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
     }
   });
 
+  window.scrollTo = jest.fn();
+
   const tree = renderer.create(
-      <Provider store={store} >
-        <Main
-          promoFilm={promo}
-          onSmallCardClick={() => {}}
-        />
+      <Provider store={store}>
+        <Router history={history} >
+          <Main
+            promoFilm={promo}
+          />
+        </Router>
       </Provider>
       , {
         createNodeMock: () => {

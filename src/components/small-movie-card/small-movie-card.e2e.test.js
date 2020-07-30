@@ -2,33 +2,10 @@ import React from "react";
 import {shallow} from "enzyme";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 describe(`SmallMovieCard`, () => {
-  it(`Click on the title and card`, () => {
-    const prevention = jest.fn();
-    const film = mockFilms[1];
-
-    const tree = shallow(
-        <SmallMovieCard
-          film={film}
-          index={1}
-          onSmallCardClick={() => {}}
-          renderVideoPlayer={() => {}}
-          startPlayHandler={() => {}}
-          stopPlayHandler={() => {}}
-          isPlaing={false}
-        />
-    );
-
-    const card = tree.find(`article`);
-    card.props().onClick();
-
-    const filmTitle = tree.find(`a`);
-    filmTitle.simulate(`click`, {preventDefault: prevention});
-
-    expect(prevention).toHaveBeenCalledTimes(1);
-  });
-
   it(`mouseEnter on the card and change isPlaing on true `, () => {
     const film = mockFilms[1];
     let isPlaing = false;

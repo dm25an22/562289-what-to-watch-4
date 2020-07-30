@@ -17,7 +17,6 @@ const mockResponse = {
   description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes).`,
   preview: `https://some-link`,
   rating: 0,
-  descriptionRating: `Bad`,
   quantityVotes: 240,
   producer: `Wes Andreson`,
   listActors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
