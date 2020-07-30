@@ -2,9 +2,6 @@ import React from "react";
 import {shallow} from "enzyme";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
-import {Router} from "react-router-dom";
-import {history} from "../../history";
-
 describe(`SmallMovieCard`, () => {
   it(`mouseEnter on the card and change isPlaing on true `, () => {
     const film = mockFilms[1];
@@ -17,7 +14,6 @@ describe(`SmallMovieCard`, () => {
         <SmallMovieCard
           film={film}
           index={1}
-          onSmallCardClick={() => {}}
           renderVideoPlayer={() => {}}
           startPlayHandler={startPlayHandler}
           stopPlayHandler={() => {}}
@@ -43,7 +39,6 @@ describe(`SmallMovieCard`, () => {
         <SmallMovieCard
           film={film}
           index={1}
-          onSmallCardClick={() => {}}
           renderVideoPlayer={() => {}}
           startPlayHandler={() => {}}
           stopPlayHandler={stopPlayHandler}

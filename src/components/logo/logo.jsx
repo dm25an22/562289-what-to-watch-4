@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../consts";
 
@@ -12,6 +13,10 @@ const Logo = ({className}) => {
       </Link>
     </div>
   );
+};
+
+Logo.propTypes = {
+  className: PropTypes.string
 };
 
 export default Logo;

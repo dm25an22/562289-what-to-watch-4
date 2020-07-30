@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render ButtonAddReview component 1`] = `
+<a
+  className="btn movie-card__button"
+  href="add-review.html"
+>
+  Add review
+</a>
+`;

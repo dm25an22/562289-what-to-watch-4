@@ -53,6 +53,7 @@ const MovieCardFull = ({film}) => {
 
 MovieCardFull.propTypes = {
   film: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     bigPoster: PropTypes.string.isRequired,
     moviePoster: PropTypes.string.isRequired,

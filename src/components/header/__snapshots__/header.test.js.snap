@@ -47,6 +47,105 @@ exports[`renders Headers component with authorization 1`] = `
 </header>
 `;
 
+exports[`renders Headers component with class "movie-card__head" 1`] = `
+<header
+  className="page-header movie-card__head"
+>
+  <div
+    className="logo"
+  >
+    <a
+      className="logo__link undefined"
+      href="/"
+      onClick={[Function]}
+    >
+      <span
+        className="logo__letter logo__letter--1"
+      >
+        W
+      </span>
+      <span
+        className="logo__letter logo__letter--2"
+      >
+        T
+      </span>
+      <span
+        className="logo__letter logo__letter--3"
+      >
+        W
+      </span>
+    </a>
+  </div>
+  <div
+    className="user-block"
+  >
+    <div
+      className="user-block__avatar"
+      onClick={[Function]}
+    >
+      <img
+        alt="User avatar"
+        height="63"
+        src="/img/avatar.jpg"
+        width="63"
+      />
+    </div>
+  </div>
+</header>
+`;
+
+exports[`renders Headers component with class "user-page__head" and children 1`] = `
+<header
+  className="page-header user-page__head"
+>
+  <div
+    className="logo"
+  >
+    <a
+      className="logo__link undefined"
+      href="/"
+      onClick={[Function]}
+    >
+      <span
+        className="logo__letter logo__letter--1"
+      >
+        W
+      </span>
+      <span
+        className="logo__letter logo__letter--2"
+      >
+        T
+      </span>
+      <span
+        className="logo__letter logo__letter--3"
+      >
+        W
+      </span>
+    </a>
+  </div>
+  <h1
+    className="page-title user-page__title"
+  >
+    My list
+  </h1>
+  <div
+    className="user-block"
+  >
+    <div
+      className="user-block__avatar"
+      onClick={[Function]}
+    >
+      <img
+        alt="User avatar"
+        height="63"
+        src="/img/avatar.jpg"
+        width="63"
+      />
+    </div>
+  </div>
+</header>
+`;
+
 exports[`renders Headers component without authorization 1`] = `
 <header
   className="page-header undefined"

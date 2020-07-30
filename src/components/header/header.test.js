@@ -49,3 +49,48 @@ it(`renders Headers component with authorization`, () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it(`renders Headers component with class "movie-card__head"`, () => {
+  const store = mockStore({
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH,
+    }
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <Router history={history} >
+          <Header
+            className={`movie-card__head`}
+          />
+        </Router>
+      </Provider>
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+
+it(`renders Headers component with class "user-page__head" and children`, () => {
+  const store = mockStore({
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH,
+    }
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <Router history={history} >
+          <Header
+            className={`user-page__head`}
+          >
+            <React.Fragment>
+              <h1 className="page-title user-page__title">My list</h1>
+            </React.Fragment>
+          </Header>
+        </Router>
+      </Provider>
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

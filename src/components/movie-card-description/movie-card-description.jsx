@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ButtonPlay from "../buttons/button-play/button-play.jsx";
 import ButtonMyList from "../buttons/button-my-list/button-my-list.jsx";
 import withFavorite from "../../hocks/with-favorite/with-favorite";
@@ -27,6 +28,15 @@ const MovieCardDescription = ({film, children}) => {
       </div>
     </div>
   );
+};
+
+MovieCardDescription.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+  }).isRequired,
+  children: PropTypes.node
 };
 
 export default MovieCardDescription;

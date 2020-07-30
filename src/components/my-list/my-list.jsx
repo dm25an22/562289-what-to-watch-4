@@ -36,4 +36,5 @@ const mapStateToProps = (state) => {
   };
 };
 
+export {MyList};
 export default connect(mapStateToProps)(MyList);

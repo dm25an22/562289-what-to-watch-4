@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {AuthorizationStatus} from "../../../reducer/user/user";
 import {AppRoute} from "../../../consts";
 import {history} from "../../../history";
@@ -27,6 +28,13 @@ const ButtonMyList = ({authStatus, onMyListBtnClick, film, status}) => {
       <span>My list</span>
     </button>
   );
+};
+
+ButtonMyList.propTypes = {
+  authStatus: PropTypes.string.isRequired,
+  onMyListBtnClick: PropTypes.func.isRequired,
+  film: PropTypes.object.isRequired,
+  status: PropTypes.number.isRequired
 };
 
 export default ButtonMyList;

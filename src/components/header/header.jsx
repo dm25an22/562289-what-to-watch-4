@@ -41,6 +41,8 @@ const Header = ({className, authStatus, children}) => {
 
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 const mapStateToProps = (state) => {
