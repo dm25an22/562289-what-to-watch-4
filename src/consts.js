@@ -23,5 +23,6 @@ export const AppRoute = {
   ROOT: `/`,
   LOGIN: `/login`,
   FILM: `/film`,
-  MY_LIST: `/my-list`
+  MY_LIST: `/my-list`,
+  ADD_REVIEW: `/add-review`
 };

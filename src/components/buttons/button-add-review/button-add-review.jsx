@@ -1,8 +1,10 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../../consts";
 
-const ButtonAddReview = () => {
+const ButtonAddReview = ({id}) => {
   return (
-    <a href="add-review.html" className="btn movie-card__button">Add review</a>
+    <Link to={`${AppRoute.ADD_REVIEW}/${id}`} className="btn movie-card__button">Add review</Link>
   );
 };
 

@@ -13,8 +13,10 @@ import {AppRoute} from "../../consts";
 import {history} from "../../history";
 import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js";
 import MyList from "../my-list/my-list.jsx";
+import AddReview from '../add-review/add-review.jsx';
 
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
+const AddReviewWrraped = withCurrentFilm(AddReview);
 class App extends PureComponent {
   render() {
     const {films, promoFilm, authStatus, onSubmitAuth, loadFavoriteList} = this.props;
@@ -59,6 +61,14 @@ class App extends PureComponent {
           <Route exact path={AppRoute.MY_LIST}>
             <MyList />
           </Route>
+          <Route exact path={`${AppRoute.ADD_REVIEW}/:id`}
+            render={(props) => (
+              <AddReviewWrraped
+                {...props}
+                films={films}
+              />
+            )}
+          />
         </Switch>
       </Router>
     );
