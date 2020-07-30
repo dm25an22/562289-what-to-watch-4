@@ -128,11 +128,7 @@ Array [
       >
         <a
           className="small-movie-card__link"
-<<<<<<< HEAD
-          href="movie-page.html"
-=======
           href="/film/1"
->>>>>>> route
           onClick={[Function]}
         >
           Fantastic Beasts
@@ -161,11 +157,7 @@ Array [
       >
         <a
           className="small-movie-card__link"
-<<<<<<< HEAD
-          href="movie-page.html"
-=======
           href="/film/2"
->>>>>>> route
           onClick={[Function]}
         >
           Title
