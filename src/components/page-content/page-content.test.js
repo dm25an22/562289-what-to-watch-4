@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import PageContent from "./page-content.jsx";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 const MockComponent = () => {
   return (
@@ -14,9 +16,11 @@ const MockComponent = () => {
 it(`render PageContent component with children`, () => {
 
   const tree = renderer.create(
-      <PageContent>
-        <MockComponent />
-      </PageContent>
+      <Router history={history} >
+        <PageContent>
+          <MockComponent />
+        </PageContent>
+      </Router>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

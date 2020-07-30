@@ -46,7 +46,6 @@ const getRatingWithComma = (rating) => {
   return commaReplacement(rating);
 };
 
-
 const getFormatedRunTime = (time) => {
   const minute = time % 60;
   const hour = Math.floor(time / 60);
@@ -78,6 +77,24 @@ const commaReplacement = (rating) => {
   return String(rating).replace(`.`, `,`);
 };
 
+const getFilmsByGener = (films, genre) => {
+  if (genre === ALL_GENRE) {
+    return films;
+  } else {
+    return films.filter((it) => it.genre === genre);
+  }
+};
+
+const checkFilmInFavorite = (listFavorite, film) => {
+  return Boolean(listFavorite.find((it) => it.id === film.id));
+};
+
+const removeFilmFromFavorites = (favorites, film) => {
+  const filmIndex = favorites.findIndex((it) => it.id === film.id);
+  favorites.splice(filmIndex, 1);
+  return favorites;
+};
+
 export {
   extend,
   ALL_GENRE,
@@ -86,5 +103,8 @@ export {
   getFormatedRunTime,
   getListActors,
   getDateForComment,
-  getRatingWithComma
+  getRatingWithComma,
+  getFilmsByGener,
+  checkFilmInFavorite,
+  removeFilmFromFavorites
 };

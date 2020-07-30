@@ -1,23 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../consts";
+import {history} from "../../history";
 class SmallMovieCard extends React.PureComponent {
   render() {
     const {
       film,
-      onSmallCardClick,
       renderVideoPlayer,
       startPlayHandler,
       stopPlayHandler,
       isPlaing
     } = this.props;
 
-    const {preview, smallCardImg, genre, id} = film;
+    const {preview, smallCardImg, id} = film;
 
     return (
       <article
         onClick={() => {
-          onSmallCardClick(id, genre);
+          history.push(`${AppRoute.FILM}/${id}`);
           stopPlayHandler();
         }}
         onMouseEnter={startPlayHandler}
@@ -29,12 +30,14 @@ class SmallMovieCard extends React.PureComponent {
 
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link"
-            onClick={(evt) => {
-              evt.preventDefault();
+          <Link
+            to={`${AppRoute.FILM}/${id}`}
+            className="small-movie-card__link"
+            onClick={() => {
+              stopPlayHandler();
             }}
-            href="movie-page.html">{film.title}
-          </a>
+          >{film.title}
+          </Link>
         </h3>
       </article>
     );
@@ -52,9 +55,7 @@ SmallMovieCard.propTypes = {
     preview: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     smallCardImg: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
   }).isRequired,
-  onSmallCardClick: PropTypes.func.isRequired,
 };
 
 export default SmallMovieCard;

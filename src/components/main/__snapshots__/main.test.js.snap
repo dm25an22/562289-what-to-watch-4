@@ -25,8 +25,9 @@ Array [
         className="logo"
       >
         <a
-          className="logo__link"
-          href="main.html"
+          className="logo__link undefined"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -50,7 +51,7 @@ Array [
       >
         <a
           className="user-block__link"
-          href="sign-in.html"
+          href="/login"
           onClick={[Function]}
         >
           Sign in
@@ -117,15 +118,16 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
-                height="20"
-                viewBox="0 0 19 20"
-                width="19"
+                height="14"
+                viewBox="0 0 18 14"
+                width="18"
               >
                 <use
-                  xlinkHref="#add"
+                  xlinkHref="#in-list"
                 />
               </svg>
               <span>
@@ -210,7 +212,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/film/1"
               onClick={[Function]}
             >
               Fantastic Beasts
@@ -239,7 +241,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/film/2"
               onClick={[Function]}
             >
               Title
@@ -268,7 +270,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/film/3"
               onClick={[Function]}
             >
               Title2
@@ -285,6 +287,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

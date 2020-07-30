@@ -4,6 +4,8 @@ import Header from "./header";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 const mockStore = configureStore({});
 
@@ -22,7 +24,9 @@ it(`renders Headers component without authorization`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Header />
+        <Router history={history} >
+          <Header />
+        </Router>
       </Provider>
   ).toJSON();
 
@@ -37,7 +41,54 @@ it(`renders Headers component with authorization`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Header />
+        <Router history={history} >
+          <Header />
+        </Router>
+      </Provider>
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it(`renders Headers component with class "movie-card__head"`, () => {
+  const store = mockStore({
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH,
+    }
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <Router history={history} >
+          <Header
+            className={`movie-card__head`}
+          />
+        </Router>
+      </Provider>
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+
+it(`renders Headers component with class "user-page__head" and children`, () => {
+  const store = mockStore({
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH,
+    }
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <Router history={history} >
+          <Header
+            className={`user-page__head`}
+          >
+            <React.Fragment>
+              <h1 className="page-title user-page__title">My list</h1>
+            </React.Fragment>
+          </Header>
+        </Router>
       </Provider>
   ).toJSON();
 

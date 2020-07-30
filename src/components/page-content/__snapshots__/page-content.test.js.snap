@@ -17,6 +17,8 @@ exports[`render PageContent component with children 1`] = `
     >
       <a
         className="logo__link logo__link--light"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"

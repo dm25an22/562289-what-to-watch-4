@@ -1,6 +1,4 @@
-import {getDescriptionRating} from "../utils";
-
-const getAdaptedData = (film) => {
+const getAdaptedFilm = (film) => {
   return {
     id: film.id,
     title: film.name,
@@ -12,7 +10,6 @@ const getAdaptedData = (film) => {
     description: film.description,
     preview: film.preview_video_link,
     rating: film.rating,
-    descriptionRating: getDescriptionRating(film.rating),
     quantityVotes: film.scores_count,
     producer: film.director,
     listActors: film.starring,
@@ -36,4 +33,4 @@ const getAdaptedComment = (comment) => {
   };
 };
 
-export {getAdaptedData, getAdaptedComment};
+export {getAdaptedFilm, getAdaptedComment};

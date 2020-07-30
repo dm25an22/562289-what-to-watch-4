@@ -7,23 +7,21 @@ import withCurrentGenre from "../../hocks/with-current-genre/with-current-genre"
 
 const CatalogWrraped = withCurrentGenre(Catalog);
 
-const Main = ({promoFilm, onSmallCardClick}) => {
-  return (
-    <>
-    <Promo promoFilm={promoFilm} />
+const Main = ({promoFilm}) => {
+  scrollTo(0, 0);
 
-    <PageContent>
-      <CatalogWrraped
-        onSmallCardClick={onSmallCardClick}
-      />
-    </PageContent>
-  </>
+  return (
+    <React.Fragment>
+      <Promo film={promoFilm} />
+      <PageContent>
+        <CatalogWrraped />
+      </PageContent>
+    </React.Fragment>
   );
 };
 
 Main.propTypes = {
   promoFilm: PropTypes.object.isRequired,
-  onSmallCardClick: PropTypes.func.isRequired
 };
 
 export default Main;

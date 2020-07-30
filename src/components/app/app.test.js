@@ -34,30 +34,28 @@ const promo = {
   backgroundColor: `red`
 };
 
-it(`renders App component with main component without authorization user`, () => {
+it(`renders App component without authorization user`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       films: mockFilms,
-      promoFilm: promo
-    },
-    [NameSpace.APP_STATE]: {
-      currentGenre: `All genre`,
+      promoFilm: promo,
+      favorites: [promo]
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
     }
   });
 
+  window.scrollTo = jest.fn();
+
   const tree = renderer.create(
       <Provider store={store}>
         <App
-          currentFilm={-1}
-          onSmallCardClick={() => {}}
           films={mockFilms}
           promoFilm={promo}
-          isSignIn={false}
           authStatus={AuthorizationStatus.NO_AUTH}
           onSubmitAuth={() => {}}
+          loadFavoriteList={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -69,66 +67,28 @@ it(`renders App component with main component without authorization user`, () =>
   expect(tree).toMatchSnapshot();
 });
 
-it(`renders App component with main component with authorization user`, () => {
+it(`renders App component with authorization user`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       films: mockFilms,
-      promoFilm: promo
-    },
-    [NameSpace.APP_STATE]: {
-      currentGenre: `All genre`,
+      promoFilm: promo,
+      favorites: [promo]
     },
     [NameSpace.USER]: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      authorizationStatus: AuthorizationStatus.AUTH,
     }
   });
+
+  window.scrollTo = jest.fn();
 
   const tree = renderer.create(
       <Provider store={store}>
         <App
-          currentFilm={-1}
-          onSmallCardClick={() => {}}
           films={mockFilms}
           promoFilm={promo}
-          isSignIn={false}
           authStatus={AuthorizationStatus.AUTH}
           onSubmitAuth={() => {}}
-        />
-      </Provider>, {
-        createNodeMock: () => {
-          return {};
-        }
-      }
-  ).toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
-
-it(`renders App component with MovieDetails component`, () => {
-  const store = mockStore({
-    [NameSpace.DATA]: {
-      films: mockFilms,
-      promoFilm: promo
-    },
-    [NameSpace.APP_STATE]: {
-      currentGenre: `Drama`,
-      currentFilm: 2
-    },
-    [NameSpace.USER]: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH,
-    }
-  });
-
-  const tree = renderer.create(
-      <Provider store={store}>
-        <App
-          currentFilm={2}
-          onSmallCardClick={() => {}}
-          films={mockFilms}
-          promoFilm={promo}
-          isSignIn={false}
-          authStatus={AuthorizationStatus.NO_AUTH}
-          onSubmitAuth={() => {}}
+          loadFavoriteList={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -141,37 +101,3 @@ it(`renders App component with MovieDetails component`, () => {
 });
 
 
-it(`renders App component with SiginIn component`, () => {
-  const store = mockStore({
-    [NameSpace.DATA]: {
-      films: mockFilms,
-      promoFilm: promo
-    },
-    [NameSpace.APP_STATE]: {
-      currentGenre: `All genre`,
-    },
-    [NameSpace.USER]: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH,
-    }
-  });
-
-  const tree = renderer.create(
-      <Provider store={store}>
-        <App
-          currentFilm={2}
-          onSmallCardClick={() => {}}
-          films={mockFilms}
-          promoFilm={promo}
-          isSignIn={true}
-          authStatus={AuthorizationStatus.NO_AUTH}
-          onSubmitAuth={() => {}}
-        />
-      </Provider>, {
-        createNodeMock: () => {
-          return {};
-        }
-      }
-  ).toJSON();
-
-  expect(tree).toMatchSnapshot();
-});

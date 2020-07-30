@@ -7,7 +7,9 @@ import withSimilarFilms from "../../hocks/with-similar-films/with-similar-films"
 
 const MovieListWrraped = withSimilarFilms(MovieList);
 
-const MovieDetails = ({film, onSmallCardClick}) => {
+const MovieDetails = ({film, films}) => {
+  scrollTo(0, 0);
+
   return (
     <React.Fragment>
       <MovieCardFull film={film}/>
@@ -15,7 +17,9 @@ const MovieDetails = ({film, onSmallCardClick}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <MovieListWrraped
-            onSmallCardClick={onSmallCardClick}
+            films={films}
+            id={film.id}
+            genre={film.genre}
           />
         </section>
       </PageContent>
@@ -24,10 +28,8 @@ const MovieDetails = ({film, onSmallCardClick}) => {
 };
 
 MovieDetails.propTypes = {
-  onSmallCardClick: PropTypes.func.isRequired,
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired
-  }).isRequired,
+  film: PropTypes.object.isRequired,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MovieDetails;
