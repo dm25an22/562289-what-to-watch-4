@@ -23,7 +23,9 @@ class AddReview extends React.PureComponent {
   }
 
   _disabledForm(bool) {
-    Array.from(this._formRef.current.rating)
+    const radioButtons = this._formRef.current.rating;
+
+    Array.from(radioButtons)
       .map((it) => {
         it.disabled = bool;
       });
@@ -49,10 +51,9 @@ class AddReview extends React.PureComponent {
     evt.preventDefault();
     this._disabledForm(true);
     const {onSubmitAddReview, film} = this.props;
-    const {rating} = this._formRef.current;
 
     const newComment = {
-      rating: rating.value,
+      rating: this._formRef.current.rating.value,
       comment: this._reviewTextRef.current.value
     };
 

@@ -1,8 +1,8 @@
 import {reducer, ActionType, AuthorizationStatus, Operation} from "./user";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
-import { userDataMock } from "../../mocks/mock-for-tests";
-import { getAdaptedUserData } from "../adapter";
+import {userDataMock} from "../../mocks/mock-for-tests";
+import {getAdaptedUserData} from "../adapter";
 
 const api = createAPI(() => {});
 it(`Reducer with type REQUIRED_AUTHORIZATION should return payload `, () => {

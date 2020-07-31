@@ -1,5 +1,10 @@
 import React from "react";
 
+const ERROR_STYLE = {
+  NONE: `none`,
+  RED_BORDER: `1px solid red`
+};
+
 const withErrorStyle = (Component) => {
   class WithErrorStyle extends React.PureComponent {
     constructor(props) {
@@ -15,14 +20,14 @@ const withErrorStyle = (Component) => {
 
     showErrorStyle() {
       this.setState({
-        errorStyle: `1px solid red`
+        errorStyle: ERROR_STYLE.RED_BORDER
       });
     }
 
     hideErrorStyle() {
       setTimeout(() => {
         this.setState({
-          errorStyle: `none`
+          errorStyle: ERROR_STYLE.NONE
         });
       }, 1700);
     }
