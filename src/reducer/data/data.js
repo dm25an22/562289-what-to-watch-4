@@ -15,7 +15,7 @@ const ActionType = {
   SET_INITIAL_COMMENTS: `SET_INITIAL_COMMENTS`,
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   ADD_TO_FAVORITES: `ADD_TO_FAVORITES`,
-  REMOVE_FROM_FAVORITES: `REMOVE_FROM_FAVORITES`
+  REMOVE_FROM_FAVORITES: `REMOVE_FROM_FAVORITES`,
 };
 
 const ActionCreator = {
@@ -92,6 +92,16 @@ const Operation = {
         const cloneResponse = [...response.data].map((comment) => getAdaptedComment(comment));
         const sortCommentsByDate = cloneResponse.sort((a, b) => new Date(b.date) - new Date(a.date));
         dispatch(ActionCreator.loadComments(sortCommentsByDate));
+      });
+  },
+
+  addNewComment: (filmId, newComment, onSuccess, onError) => (dispath, getState, api) => {
+    return api.post(`/comments/${filmId}`, newComment)
+      .then(() => {
+        onSuccess();
+      })
+      .catch(() => {
+        onError();
       });
   },
 

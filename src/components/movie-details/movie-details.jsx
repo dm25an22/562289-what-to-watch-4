@@ -7,12 +7,12 @@ import withSimilarFilms from "../../hocks/with-similar-films/with-similar-films"
 
 const MovieListWrraped = withSimilarFilms(MovieList);
 
-const MovieDetails = ({film, films}) => {
+const MovieDetails = ({film, films, authStatus}) => {
   scrollTo(0, 0);
 
   return (
     <React.Fragment>
-      <MovieCardFull film={film}/>
+      <MovieCardFull film={film} authStatus={authStatus}/>
       <PageContent>
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
@@ -30,6 +30,7 @@ const MovieDetails = ({film, films}) => {
 MovieDetails.propTypes = {
   film: PropTypes.object.isRequired,
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  authStatus: PropTypes.string.isRequired
 };
 
 export default MovieDetails;

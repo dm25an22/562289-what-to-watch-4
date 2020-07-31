@@ -11,7 +11,7 @@ class ReviewsInfo extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.props.setInitialTab();
+    this.props.setInitialComments();
   }
 
   _getHalfLength() {
@@ -68,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(DataOperation.loadComments(id));
     },
 
-    setInitialTab() {
+    setInitialComments() {
       dispatch(ActionCreator.setInitialComments());
     }
   };
@@ -79,7 +79,7 @@ ReviewsInfo.propTypes = {
   id: PropTypes.number.isRequired,
   comments: PropTypes.any,
   loadComments: PropTypes.func.isRequired,
-  setInitialTab: PropTypes.func.isRequired
+  setInitialComments: PropTypes.func.isRequired
 };
 
 export {ReviewsInfo};

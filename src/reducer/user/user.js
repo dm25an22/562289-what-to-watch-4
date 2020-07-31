@@ -1,4 +1,5 @@
 import {extend} from "../../utils";
+import {getAdaptedUserData} from "../adapter";
 
 const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
@@ -6,11 +7,13 @@ const AuthorizationStatus = {
 };
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  userData: null
 };
 
 const ActionType = {
-  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SET_USER_DATA: `SET_USER_DATA`
 };
 
 const ActionCreator = {
@@ -19,14 +22,25 @@ const ActionCreator = {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status
     };
+  },
+
+  setUserData(userData) {
+    return {
+      type: ActionType.SET_USER_DATA,
+      payload: userData
+    };
   }
 };
 
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then((response) => {
+        const adaptedUserData = getAdaptedUserData(response.data);
+
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setUserData(adaptedUserData));
+
       })
       .catch((err) => {
         throw err;
@@ -38,8 +52,11 @@ const Operation = {
       email: authData.email,
       password: authData.password
     })
-      .then(() => {
+      .then((response) => {
+        const adaptedUserData = getAdaptedUserData(response.data);
+
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setUserData(adaptedUserData));
       });
   }
 };
@@ -49,6 +66,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return extend(state, {
         authorizationStatus: action.payload
+      });
+
+    case ActionType.SET_USER_DATA:
+      return extend(state, {
+        userData: action.payload
       });
   }
 

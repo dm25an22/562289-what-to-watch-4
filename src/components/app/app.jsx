@@ -13,11 +13,21 @@ import {AppRoute} from "../../consts";
 import {history} from "../../history";
 import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js";
 import MyList from "../my-list/my-list.jsx";
+import AddReview from '../add-review/add-review.jsx';
+import withErrorStyle from "../../hocks/with-error-style/with-error-style";
 
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
+const AddReviewWrraped = withCurrentFilm(withErrorStyle(AddReview));
 class App extends PureComponent {
   render() {
-    const {films, promoFilm, authStatus, onSubmitAuth, loadFavoriteList} = this.props;
+    const {
+      films,
+      promoFilm,
+      authStatus,
+      onSubmitAuth,
+      loadFavoriteList,
+      onSubmitAddReview,
+    } = this.props;
 
     if (films === null || promoFilm === null) {
       return null;
@@ -52,6 +62,7 @@ class App extends PureComponent {
               <MovieDetailsWrraped
                 {...props}
                 films={films}
+                authStatus={authStatus}
               />
             )}
           >
@@ -59,6 +70,15 @@ class App extends PureComponent {
           <Route exact path={AppRoute.MY_LIST}>
             <MyList />
           </Route>
+          <Route exact path={`${AppRoute.ADD_REVIEW}/:id`}
+            render={(props) => (
+              <AddReviewWrraped
+                {...props}
+                films={films}
+                onSubmitAddReview={onSubmitAddReview}
+              />
+            )}
+          />
         </Switch>
       </Router>
     );
@@ -71,7 +91,8 @@ App.propTypes = {
   films: PropTypes.any,
   promoFilm: PropTypes.any,
   onSubmitAuth: PropTypes.func.isRequired,
-  loadFavoriteList: PropTypes.func.isRequired
+  loadFavoriteList: PropTypes.func.isRequired,
+  onSubmitAddReview: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -90,6 +111,10 @@ const mapDispatchToProps = (dispatch) => {
 
     loadFavoriteList() {
       dispatch(DataOperation.loadFavorites());
+    },
+
+    onSubmitAddReview(filmId, newComment, onSuccess, onError) {
+      dispatch(DataOperation.addNewComment(filmId, newComment, onSuccess, onError));
     }
   };
 };

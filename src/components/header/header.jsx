@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getAuthStatus} from "../../reducer/user/selectors";
+import {getAuthStatus, getUserData} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../consts";
@@ -9,14 +9,14 @@ import {history} from "../../history";
 import Logo from "../logo/logo.jsx";
 
 
-const getMarkupByStatus = (authStatus) => {
+const getMarkupByStatus = (authStatus, userData) => {
   if (authStatus === AuthorizationStatus.AUTH) {
     return (
       <div onClick={() => {
         history.push(AppRoute.MY_LIST);
       }}
       className="user-block__avatar">
-        <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+        <img src={`https://htmlacademy-react-3.appspot.com${userData.avatarUrl}`} alt="User avatar" width="63" height="63" />
       </div>
     );
   } else {
@@ -26,13 +26,13 @@ const getMarkupByStatus = (authStatus) => {
   }
 };
 
-const Header = ({className, authStatus, children}) => {
+const Header = ({className, authStatus, children, userData}) => {
   return (
     <header className={`page-header ${className}`}>
       <Logo />
       {children}
       <div className="user-block">
-        {getMarkupByStatus(authStatus)}
+        {getMarkupByStatus(authStatus, userData)}
       </div>
 
     </header>
@@ -42,12 +42,14 @@ const Header = ({className, authStatus, children}) => {
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  userData: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
   return {
-    authStatus: getAuthStatus(state)
+    authStatus: getAuthStatus(state),
+    userData: getUserData(state)
   };
 };
 
