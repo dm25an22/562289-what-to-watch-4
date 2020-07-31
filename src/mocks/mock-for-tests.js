@@ -76,7 +76,15 @@ const mockPromo = {
   id: 4
 };
 
+const userDataMock = {
+  id: 1,
+  email: `Oliver.conner@gmail.com`,
+  name: `Oliver.conner`,
+  avatarUrl: `img/1.png`
+};
+
 export {
   mockFilms,
-  mockPromo
+  mockPromo,
+  userDataMock
 };

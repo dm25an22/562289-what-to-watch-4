@@ -128,12 +128,6 @@ exports[`render MovieCardFull component 1`] = `
               My list
             </span>
           </button>
-          <a
-            className="btn movie-card__button"
-            href="add-review.html"
-          >
-            Add review
-          </a>
         </div>
       </div>
     </div>

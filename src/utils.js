@@ -95,6 +95,20 @@ const removeFilmFromFavorites = (favorites, film) => {
   return favorites;
 };
 
+const convertColor = (color) => {
+  if (color.substring(0, 1) === `#`) {
+    color = color.substring(1);
+  }
+
+  const rgbColor = {};
+
+  rgbColor.r = parseInt(color.substring(0, 2), 16) + 10;
+  rgbColor.g = parseInt(color.substring(2, 4), 16) + 10;
+  rgbColor.b = parseInt(color.substring(4), 16) + 10;
+
+  return `rgb(${rgbColor.r},${rgbColor.g},${rgbColor.b})`;
+};
+
 export {
   extend,
   ALL_GENRE,
@@ -106,5 +120,6 @@ export {
   getRatingWithComma,
   getFilmsByGener,
   checkFilmInFavorite,
-  removeFilmFromFavorites
+  removeFilmFromFavorites,
+  convertColor
 };

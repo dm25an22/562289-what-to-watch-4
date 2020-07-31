@@ -6,6 +6,8 @@ import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
 import {Router} from "react-router-dom";
 import {history} from "../../history";
+import {userDataMock} from "../../mocks/mock-for-tests";
+
 
 const mockStore = configureStore({});
 
@@ -19,13 +21,14 @@ it(`renders Headers component without authorization`, () => {
   const store = mockStore({
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
+      userData: userDataMock
     }
   });
 
   const tree = renderer.create(
       <Provider store={store}>
         <Router history={history} >
-          <Header />
+          <Header userData={userDataMock}/>
         </Router>
       </Provider>
   ).toJSON();
@@ -36,13 +39,14 @@ it(`renders Headers component with authorization`, () => {
   const store = mockStore({
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.AUTH,
+      userData: userDataMock
     }
   });
 
   const tree = renderer.create(
       <Provider store={store}>
         <Router history={history} >
-          <Header />
+          <Header userData={userDataMock} />
         </Router>
       </Provider>
   ).toJSON();
@@ -54,6 +58,7 @@ it(`renders Headers component with class "movie-card__head"`, () => {
   const store = mockStore({
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.AUTH,
+      userData: userDataMock
     }
   });
 
@@ -61,6 +66,7 @@ it(`renders Headers component with class "movie-card__head"`, () => {
       <Provider store={store}>
         <Router history={history} >
           <Header
+            userData={userDataMock}
             className={`movie-card__head`}
           />
         </Router>
@@ -75,6 +81,7 @@ it(`renders Headers component with class "user-page__head" and children`, () => 
   const store = mockStore({
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.AUTH,
+      userData: userDataMock
     }
   });
 
@@ -82,6 +89,7 @@ it(`renders Headers component with class "user-page__head" and children`, () => 
       <Provider store={store}>
         <Router history={history} >
           <Header
+            userData={userDataMock}
             className={`user-page__head`}
           >
             <React.Fragment>

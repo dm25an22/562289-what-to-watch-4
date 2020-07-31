@@ -31,6 +31,7 @@ it(`render MovieCardFull component`, () => {
       <Provider store={store} >
         <Router history={history} >
           <MovieCardFull
+            authStatus={ AuthorizationStatus.NO_AUTH}
             film={mockFilms[0]}
           />
         </Router>

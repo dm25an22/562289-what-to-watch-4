@@ -33,4 +33,13 @@ const getAdaptedComment = (comment) => {
   };
 };
 
-export {getAdaptedFilm, getAdaptedComment};
+const getAdaptedUserData = (userData) => {
+  return {
+    id: userData.id,
+    email: userData.email,
+    name: userData.name,
+    avatarUrl: userData.avatar_url
+  };
+};
+
+export {getAdaptedFilm, getAdaptedComment, getAdaptedUserData};
