@@ -40,7 +40,6 @@ const Operation = {
 
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserData(adaptedUserData));
-
       })
       .catch((err) => {
         throw err;
