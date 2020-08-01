@@ -44,7 +44,6 @@ it(`renders App component without authorization user`, () => {
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userData: null
-
     }
   });
 

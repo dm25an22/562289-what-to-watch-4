@@ -70,7 +70,7 @@ class App extends PureComponent {
           <Route exact path={AppRoute.MY_LIST}>
             <MyList />
           </Route>
-          <Route exact path={`${AppRoute.ADD_REVIEW}/:id`}
+          <Route exact path={`${AppRoute.FILM}/:id${AppRoute.ADD_REVIEW}/:id`}
             render={(props) => (
               <AddReviewWrraped
                 {...props}

@@ -135,7 +135,6 @@ class AddReview extends React.PureComponent {
     );
   }
 
-
 }
 
 AddReview.propTypes = {

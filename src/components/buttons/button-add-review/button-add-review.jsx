@@ -5,7 +5,7 @@ import {AppRoute} from "../../../consts";
 
 const ButtonAddReview = ({id}) => {
   return (
-    <Link to={`${AppRoute.ADD_REVIEW}/${id}`} className="btn movie-card__button">Add review</Link>
+    <Link to={`${AppRoute.FILM}/${id}${AppRoute.ADD_REVIEW}/${id}`} className="btn movie-card__button">Add review</Link>
   );
 };
 
