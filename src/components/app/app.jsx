@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {Route, Switch, Router} from "react-router-dom";
 import {connect} from "react-redux";
 import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
-import {getAuthStatus} from "../../reducer/user/selectors";
+import {getAuthStatus, getUserData} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
 import {Operation as DataOperation} from "../../reducer/data/data";
@@ -30,9 +30,10 @@ class App extends PureComponent {
       onSubmitAuth,
       loadFavoriteList,
       onSubmitAddReview,
+      userData
     } = this.props;
 
-    if (films === null || promoFilm === null) {
+    if (films === null || promoFilm === null || userData === null) {
       return null;
     }
 
@@ -104,6 +105,7 @@ App.propTypes = {
   onSubmitAuth: PropTypes.func.isRequired,
   loadFavoriteList: PropTypes.func.isRequired,
   onSubmitAddReview: PropTypes.func.isRequired,
+  userData: PropTypes.any
 };
 
 const mapStateToProps = (state) => {
@@ -111,6 +113,7 @@ const mapStateToProps = (state) => {
     films: getFilms(state),
     promoFilm: getPromoFilm(state),
     authStatus: getAuthStatus(state),
+    userData: getUserData(state)
   };
 };
 

@@ -16,7 +16,7 @@ const getMarkupByStatus = (authStatus, userData) => {
         history.push(AppRoute.MY_LIST);
       }}
       className="user-block__avatar">
-        <img src={`https://htmlacademy-react-3.appspot.com${userData.avatarUrl}`} alt="User avatar" width="63" height="63" />
+        <img src={userData.avatarUrl !== null ? `https://htmlacademy-react-3.appspot.com${userData.avatarUrl}` : ``} alt="User avatar" width="63" height="63" />
       </div>
     );
   } else {
@@ -43,7 +43,7 @@ Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
-  userData: PropTypes.object
+  userData: PropTypes.any
 };
 
 const mapStateToProps = (state) => {

@@ -97,8 +97,10 @@ exports[`render MovieCardFull component with buttonAddReview 1`] = `
         <div
           className="movie-card__buttons"
         >
-          <button
+          <a
             className="btn btn--play movie-card__button"
+            href="/player/1"
+            onClick={[Function]}
             type="button"
           >
             <svg
@@ -113,7 +115,7 @@ exports[`render MovieCardFull component with buttonAddReview 1`] = `
             <span>
               Play
             </span>
-          </button>
+          </a>
           <button
             className="btn btn--list movie-card__button"
             onClick={[Function]}
@@ -348,8 +350,10 @@ exports[`render MovieCardFull component without buttonAddReview 1`] = `
         <div
           className="movie-card__buttons"
         >
-          <button
+          <a
             className="btn btn--play movie-card__button"
+            href="/player/1"
+            onClick={[Function]}
             type="button"
           >
             <svg
@@ -364,7 +368,7 @@ exports[`render MovieCardFull component without buttonAddReview 1`] = `
             <span>
               Play
             </span>
-          </button>
+          </a>
           <button
             className="btn btn--list movie-card__button"
             onClick={[Function]}

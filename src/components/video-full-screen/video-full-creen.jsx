@@ -1,30 +1,27 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {history} from '../../history.js';
 
-class VideoFullScreen extends React.PureComponent {
+const VideoFullScreen = (props) => {
+  const {
+    film,
+    isPlaying,
+    timeProgress,
+    positionProgress,
+    renderVideo,
+    toggleFullscreen,
+    onPrgressBarHandler,
+    drugTogglerHandler,
+    containerRef,
+    togglerRef,
+    isShowConrollerBar,
+    playHandler
+  } = props;
 
-  render() {
-    const {
-      film,
-      isPlaying,
-      timeProgress,
-      positionProgress,
-      renderVideo,
-      toggleFullscreen,
-      onPrgressBarHandler,
-      drugTogglerHandler,
-      containerRef,
-      togglerRef,
-      isShowConrollerBar,
-      playHandler
-    } = this.props;
-
-    return (
-      <div style={{cursor: `${isShowConrollerBar ? `default` : `none`}`}} className="player">
-
-        {renderVideo()}
-
-        {isShowConrollerBar &&
+  return (
+    <div style={{cursor: `${isShowConrollerBar ? `default` : `none`}`}} className="player">
+      {renderVideo()}
+      {isShowConrollerBar &&
         <React.Fragment>
           <button onClick={() => {
             history.goBack();
@@ -70,11 +67,31 @@ class VideoFullScreen extends React.PureComponent {
             </div>
           </div>
         </React.Fragment>
-        }
+      }
+    </div>
+  );
+};
 
-      </div>
-    );
-  }
-}
+
+VideoFullScreen.propTypes = {
+  film: PropTypes.object.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  timeProgress: PropTypes.string.isRequired,
+  positionProgress: PropTypes.number.isRequired,
+  renderVideo: PropTypes.func.isRequired,
+  toggleFullscreen: PropTypes.func.isRequired,
+  onPrgressBarHandler: PropTypes.func.isRequired,
+  drugTogglerHandler: PropTypes.func.isRequired,
+  containerRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.instanceOf(Element)})
+  ]),
+  togglerRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.instanceOf(Element)})
+  ]),
+  isShowConrollerBar: PropTypes.bool.isRequired,
+  playHandler: PropTypes.func.isRequired,
+};
 
 export default VideoFullScreen;

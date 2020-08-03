@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import withVideoPlayer from "../../hocks/with-video-player/with-video-player";
+import withSmallVideoPlayer from "../../hocks/with-small-video-player/with-small-video-player";
 
-const SmallMovieCardWrraped = withVideoPlayer(SmallMovieCard);
+const SmallMovieCardWrraped = withSmallVideoPlayer(SmallMovieCard);
 
 const MovieList = ({filmsByFilter, children}) => {
   return (

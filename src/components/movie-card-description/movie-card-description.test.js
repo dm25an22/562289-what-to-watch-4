@@ -5,6 +5,8 @@ import {mockFilms} from "../../mocks/mock-for-tests";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
+import {Router} from "react-router-dom";
+import {history} from "../../history";
 
 const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
@@ -26,9 +28,12 @@ const store = mockStore({
 it(`render MovieCardDescription component`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <MovieCardDescription
-          film={mockFilms[0]}
-        />
+        <Router history={history}>
+          <MovieCardDescription
+            film={mockFilms[0]}
+          />
+        </Router>
+
       </Provider>
   ).toJSON();
 
@@ -38,13 +43,16 @@ it(`render MovieCardDescription component`, () => {
 it(`render MovieCardDescription component with children`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <MovieCardDescription
-          film={mockFilms[0]}
-        >
-          <React.Fragment>
-            <h1>Text</h1>
-          </React.Fragment>
-        </MovieCardDescription>
+        <Router history={history}>
+
+          <MovieCardDescription
+            film={mockFilms[0]}
+          >
+            <React.Fragment>
+              <h1>Text</h1>
+            </React.Fragment>
+          </MovieCardDescription>
+        </Router>
       </Provider>
   ).toJSON();
 

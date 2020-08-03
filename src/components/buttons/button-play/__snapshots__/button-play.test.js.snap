@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render ButtonPlay component 1`] = `
-<button
+<a
   className="btn btn--play movie-card__button"
+  href="/player/undefined"
+  onClick={[Function]}
   type="button"
 >
   <svg
@@ -17,5 +19,5 @@ exports[`render ButtonPlay component 1`] = `
   <span>
     Play
   </span>
-</button>
+</a>
 `;

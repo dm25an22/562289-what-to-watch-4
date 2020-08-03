@@ -12,6 +12,8 @@ const Settings = {
   height: `100%`
 };
 
+const DELAY = 6000;
+
 const withFullVideoPlayer = (Component) => {
   class WithFullVideoPlayer extends React.PureComponent {
     constructor(props) {
@@ -44,7 +46,7 @@ const withFullVideoPlayer = (Component) => {
         this.setState({
           isShowConrollerBar: false
         });
-      }, 6000);
+      }, DELAY);
 
       this.setState({
         timeoutId: timeout
@@ -85,10 +87,6 @@ const withFullVideoPlayer = (Component) => {
       video.src = this.props.film.videoLink;
       video.poster = this.props.film.bigPoster;
 
-      video.oncanplaythrough = () => {
-        this.playHandler();
-      };
-
       video.onplay = () => {
         this._startTimeout();
         window.addEventListener(`mousemove`, this._resetTimeout);
@@ -116,6 +114,7 @@ const withFullVideoPlayer = (Component) => {
       };
 
       window.addEventListener(`keydown`, this._playOnKeydownHandler);
+      this.playHandler();
     }
 
     componentDidUpdate() {

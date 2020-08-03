@@ -10,10 +10,9 @@ class SmallMovieCard extends React.PureComponent {
       renderVideoPlayer,
       startPlayHandler,
       stopPlayHandler,
-      isPlaing
     } = this.props;
 
-    const {preview, smallCardImg, id} = film;
+    const {id} = film;
 
     return (
       <article
@@ -26,7 +25,7 @@ class SmallMovieCard extends React.PureComponent {
         className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image">
 
-          {renderVideoPlayer(preview, smallCardImg, isPlaing)}
+          {renderVideoPlayer()}
 
         </div>
         <h3 className="small-movie-card__title">
@@ -49,12 +48,9 @@ SmallMovieCard.propTypes = {
   renderVideoPlayer: PropTypes.func.isRequired,
   startPlayHandler: PropTypes.func.isRequired,
   stopPlayHandler: PropTypes.func.isRequired,
-  isPlaing: PropTypes.bool.isRequired,
   film: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    preview: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    smallCardImg: PropTypes.string.isRequired,
   }).isRequired,
 };
 
