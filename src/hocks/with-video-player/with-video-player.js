@@ -47,7 +47,7 @@ const withVideoPlayer = (Component) => {
     renderVideoPlayer(preview, smallCardImg, isPlaing) {
       return (
         <VideoPlayer
-          preview={preview}
+          src={preview}
           poster={smallCardImg}
           isPlaying={isPlaing}
           settings={settings}

@@ -22,7 +22,7 @@ const MovieCardDescription = ({film, children}) => {
       </p>
 
       <div className="movie-card__buttons">
-        <ButtonPlay />
+        <ButtonPlay id={film.id} />
         <ButtonMyListWrraped film={film} />
         {children}
       </div>
@@ -35,6 +35,7 @@ MovieCardDescription.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired
   }).isRequired,
   children: PropTypes.node
 };

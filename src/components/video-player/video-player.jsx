@@ -9,10 +9,10 @@ class VideoPlayer extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {preview, poster} = this.props;
+    const {src, poster} = this.props;
     const video = this._videoRef.current;
 
-    video.src = preview;
+    video.src = src;
     video.poster = poster;
   }
 
@@ -26,7 +26,7 @@ class VideoPlayer extends React.PureComponent {
     const {settings} = this.props;
     return (
       <video
-        className={settings.className}
+        className="player__video"
         loop={settings.loop}
         ref={this._videoRef}
         muted={settings.muted}
@@ -40,7 +40,7 @@ class VideoPlayer extends React.PureComponent {
     const video = this._videoRef.current;
 
     if (this.props.isPlaying) {
-      video.src = this.props.preview;
+      video.src = this.props.src;
       video.play();
     } else {
       video.src = ``;
@@ -50,7 +50,7 @@ class VideoPlayer extends React.PureComponent {
 
 VideoPlayer.propTypes = {
   settings: PropTypes.object.isRequired,
-  preview: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   poster: PropTypes.string.isRequired
 };

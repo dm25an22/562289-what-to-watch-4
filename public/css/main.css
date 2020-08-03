@@ -332,12 +332,13 @@ body {
   line-height: 23px;
   color: #000000;
   background-color: #ffffff;
-  margin: 0;
+  margin: 110px;
   min-width: 1000px;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent; }
+
 
 main {
   display: block; }
@@ -1392,3 +1393,7 @@ main {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
+
+video::-webkit-media-controls-enclosure {
+  display:none !important;
+}

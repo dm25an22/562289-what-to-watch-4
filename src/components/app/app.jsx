@@ -15,9 +15,12 @@ import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js"
 import MyList from "../my-list/my-list.jsx";
 import AddReview from '../add-review/add-review.jsx';
 import withErrorStyle from "../../hocks/with-error-style/with-error-style";
+import VideoFullScreen from "../video-full-screen/video-full-creen.jsx";
+import withFullVideoPlayer from "../../hocks/with-full-video-player/with-full-video-player";
 
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
 const AddReviewWrraped = withCurrentFilm(withErrorStyle(AddReview));
+const VideoFullScreenWrraped = withCurrentFilm(withFullVideoPlayer(VideoFullScreen));
 class App extends PureComponent {
   render() {
     const {
@@ -76,6 +79,14 @@ class App extends PureComponent {
                 {...props}
                 films={films}
                 onSubmitAddReview={onSubmitAddReview}
+              />
+            )}
+          />
+          <Route exact path={`${AppRoute.PLAYER}/:id`}
+            render={(props) => (
+              <VideoFullScreenWrraped
+                {...props}
+                films={films}
               />
             )}
           />
