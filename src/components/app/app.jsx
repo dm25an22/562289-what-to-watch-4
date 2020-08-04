@@ -4,7 +4,7 @@ import MovieDetails from "../movie-details/movie-details.jsx";
 import PropTypes from "prop-types";
 import {Route, Switch, Router} from "react-router-dom";
 import {connect} from "react-redux";
-import {getFilms, getPromoFilm} from "../../reducer/data/selectors";
+import {getFilms, getPromoFilm, getUniqueGeners} from "../../reducer/data/selectors";
 import {getAuthStatus, getUserData} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user";
@@ -15,7 +15,7 @@ import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js"
 import MyList from "../my-list/my-list.jsx";
 import AddReview from '../add-review/add-review.jsx';
 import withErrorStyle from "../../hocks/with-error-style/with-error-style";
-import VideoFullScreen from "../video-full-screen/video-full-creen.jsx";
+import VideoFullScreen from "../video-full-screen/video-full-screen.jsx";
 import withFullVideoPlayer from "../../hocks/with-full-video-player/with-full-video-player";
 
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
@@ -30,12 +30,8 @@ class App extends PureComponent {
       onSubmitAuth,
       loadFavoriteList,
       onSubmitAddReview,
-      userData
+      genres
     } = this.props;
-
-    if (films === null || promoFilm === null || userData === null) {
-      return null;
-    }
 
     if (authStatus === AuthorizationStatus.AUTH) {
       loadFavoriteList();
@@ -48,6 +44,8 @@ class App extends PureComponent {
             render={() => (
               <Main
                 promoFilm={promoFilm}
+                films={films}
+                genres={genres}
               />
             )}
           >
@@ -105,7 +103,8 @@ App.propTypes = {
   onSubmitAuth: PropTypes.func.isRequired,
   loadFavoriteList: PropTypes.func.isRequired,
   onSubmitAddReview: PropTypes.func.isRequired,
-  userData: PropTypes.any
+  userData: PropTypes.any,
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -113,7 +112,8 @@ const mapStateToProps = (state) => {
     films: getFilms(state),
     promoFilm: getPromoFilm(state),
     authStatus: getAuthStatus(state),
-    userData: getUserData(state)
+    userData: getUserData(state),
+    genres: getUniqueGeners(state),
   };
 };
 

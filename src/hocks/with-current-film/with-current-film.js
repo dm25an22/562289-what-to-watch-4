@@ -11,7 +11,6 @@ const withCurrentFilm = (Component) => {
     render() {
       const {films, match} = this.props;
       const id = match.params.id;
-
       return (
         <Component
           {...this.props}

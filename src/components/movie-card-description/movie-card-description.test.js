@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCardDescription from "./movie-card-description.jsx";
+import {MovieCardDescription} from "./movie-card-description.jsx";
 import {mockFilms} from "../../mocks/mock-for-tests";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
@@ -31,6 +31,9 @@ it(`render MovieCardDescription component`, () => {
         <Router history={history}>
           <MovieCardDescription
             film={mockFilms[0]}
+            favoriteList={[]}
+            onMyListBtnClick={() => {}}
+            authStatus={`AUTH`}
           />
         </Router>
 
@@ -44,9 +47,11 @@ it(`render MovieCardDescription component with children`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <Router history={history}>
-
           <MovieCardDescription
             film={mockFilms[0]}
+            favoriteList={[]}
+            onMyListBtnClick={() => {}}
+            authStatus={`AUTH`}
           >
             <React.Fragment>
               <h1>Text</h1>

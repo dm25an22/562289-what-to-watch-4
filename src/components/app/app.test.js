@@ -58,6 +58,7 @@ it(`renders App component without authorization user`, () => {
           authStatus={AuthorizationStatus.NO_AUTH}
           onSubmitAuth={() => {}}
           loadFavoriteList={() => {}}
+          genres={[`All genre`, `Drama`, `Action`]}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -93,6 +94,7 @@ it(`renders App component with authorization user`, () => {
           authStatus={AuthorizationStatus.AUTH}
           onSubmitAuth={() => {}}
           loadFavoriteList={() => {}}
+          genres={[`All genre`, `Drama`, `Action`]}
         />
       </Provider>, {
         createNodeMock: () => {

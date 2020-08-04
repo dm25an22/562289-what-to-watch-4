@@ -1,5 +1,6 @@
 import React from "react";
 
+const DELAY = 1700;
 const ERROR_STYLE = {
   NONE: `none`,
   RED_BORDER: `1px solid red`
@@ -29,7 +30,7 @@ const withErrorStyle = (Component) => {
         this.setState({
           errorStyle: ERROR_STYLE.NONE
         });
-      }, 1700);
+      }, DELAY);
     }
 
     render() {

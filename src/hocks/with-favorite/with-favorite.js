@@ -1,10 +1,5 @@
 import React from "react";
 import PropTepes from "prop-types";
-import {connect} from "react-redux";
-import {Operation as DataOperation} from "../../reducer/data/data";
-import {getFavorites} from "../../reducer/data/selectors";
-import {getAuthStatus} from "../../reducer/user/selectors";
-
 
 const withFavorite = (Component) => {
   class WithFavorite extends React.PureComponent {
@@ -35,23 +30,7 @@ const withFavorite = (Component) => {
     onMyListBtnClick: PropTepes.func.isRequired
   };
 
-  const mapStateToProps = (state) => {
-    return {
-      favoriteList: getFavorites(state),
-      authStatus: getAuthStatus(state)
-    };
-  };
-
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      onMyListBtnClick(film, status) {
-        dispatch(DataOperation.toggleFavorite(film, status));
-      }
-    };
-  };
-
-  return connect(mapStateToProps, mapDispatchToProps)(WithFavorite);
+  return WithFavorite;
 };
-
 
 export default withFavorite;

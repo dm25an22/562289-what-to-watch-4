@@ -37,10 +37,10 @@ const VideoFullScreen = (props) => {
             </div>
 
             <div className="player__controls-row">
-              <button type="button" className="player__play">
+              <button onClick={playHandler} type="button" className="player__play">
                 {isPlaying ?
                   <React.Fragment>
-                    <svg onClick={playHandler} viewBox="0 0 19 19" width="19" height="19">
+                    <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
                     <span>Play</span>
@@ -48,7 +48,7 @@ const VideoFullScreen = (props) => {
 
                   :
                   <React.Fragment>
-                    <svg onClick={playHandler} viewBox="0 0 14 21" width="14" height="21">
+                    <svg viewBox="0 0 14 21" width="14" height="21">
                       <use xlinkHref="#pause"></use>
                     </svg>
                     <span>Pause</span>

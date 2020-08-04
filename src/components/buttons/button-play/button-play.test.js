@@ -8,7 +8,7 @@ import {history} from "../../../history";
 it(`render ButtonPlay component`, () => {
   const tree = renderer.create(
       <Router history={history}>
-        <ButtonPlay />
+        <ButtonPlay id={1}/>
       </Router>
   ).toJSON();
 

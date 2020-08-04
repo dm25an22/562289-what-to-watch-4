@@ -37,7 +37,6 @@ const withSmallVideoPlayer = (Component) => {
 
     componentDidUpdate() {
       const video = this._videoRef.current;
-
       if (this.state.isPlaying) {
         video.src = this.props.film.preview;
         video.play();

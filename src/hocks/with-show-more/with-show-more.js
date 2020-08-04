@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {connect} from 'react-redux';
-import {getFilms} from "../../reducer/data/selectors";
 import LoadMoreButton from '../../components/load-more-button/load-more-button.jsx';
 import {getFilmsByGener} from '../../utils';
 
@@ -15,7 +13,8 @@ const withShowMore = (Component) => {
 
       this.state = {
         showCards: START_SHOW_CARDS,
-        films: getFilmsByGener(this.props.films, this.props.genre)
+        films: getFilmsByGener(this.props.films, this.props.genre),
+        showMoreBtn: false
       };
 
       this.changeCountShowCrads = this.changeCountShowCrads.bind(this);
@@ -23,6 +22,20 @@ const withShowMore = (Component) => {
 
     _getShowfilms() {
       return this.state.films.slice(0, this.state.showCards);
+    }
+
+    _checkShouldRenderShowMoreBtn() {
+      this.setState({
+        showMoreBtn: this.state.showCards < this.state.films.length
+      });
+    }
+
+    componentDidMount() {
+      this._checkShouldRenderShowMoreBtn();
+    }
+
+    componentDidUpdate() {
+      this._checkShouldRenderShowMoreBtn();
     }
 
     changeCountShowCrads() {
@@ -35,9 +48,7 @@ const withShowMore = (Component) => {
           {...this.props}
           filmsByFilter={this._getShowfilms()}
         >
-
-          {this.state.showCards < this.state.films.length && <LoadMoreButton changeCountShowCrads={this.changeCountShowCrads} />}
-
+          {this.state.showMoreBtn && <LoadMoreButton changeCountShowCrads={this.changeCountShowCrads} />}
         </Component>
       );
     }
@@ -48,13 +59,7 @@ const withShowMore = (Component) => {
     genre: PropTypes.string.isRequired
   };
 
-  const mapStateToProps = (state) => {
-    return {
-      films: getFilms(state),
-    };
-  };
-
-  return connect(mapStateToProps)(WithShowMore);
+  return WithShowMore;
 };
 
 export default withShowMore;

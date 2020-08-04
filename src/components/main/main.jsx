@@ -7,14 +7,17 @@ import withCurrentGenre from "../../hocks/with-current-genre/with-current-genre"
 
 const CatalogWrraped = withCurrentGenre(Catalog);
 
-const Main = ({promoFilm}) => {
+const Main = ({promoFilm, films, genres}) => {
   scrollTo(0, 0);
 
   return (
     <React.Fragment>
       <Promo film={promoFilm} />
       <PageContent>
-        <CatalogWrraped />
+        <CatalogWrraped
+          films={films}
+          genres={genres}
+        />
       </PageContent>
     </React.Fragment>
   );
@@ -22,6 +25,8 @@ const Main = ({promoFilm}) => {
 
 Main.propTypes = {
   promoFilm: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 export default Main;

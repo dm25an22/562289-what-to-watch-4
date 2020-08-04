@@ -174,7 +174,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Action
+            Drama
           </a>
         </li>
         <li
@@ -185,7 +185,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Drama
+            Action
           </a>
         </li>
       </ul>

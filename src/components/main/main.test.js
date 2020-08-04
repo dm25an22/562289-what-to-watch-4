@@ -54,6 +54,8 @@ it(`Render Main`, () => {
         <Router history={history} >
           <Main
             promoFilm={promo}
+            films={mockFilms}
+            genres={[`All genre`, `Drama`, `Action`]}
           />
         </Router>
       </Provider>

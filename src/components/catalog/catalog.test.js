@@ -27,6 +27,7 @@ it(`render Comment component`, () => {
             currentGenre={`Action`}
             onGenreClick={() => {}}
             genres={[`All genre`, `Drama`, `Action`]}
+            films={mockFilms}
           />
         </Router>
       </Provider>, {
