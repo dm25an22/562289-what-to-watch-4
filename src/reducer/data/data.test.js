@@ -134,7 +134,10 @@ it(`Should make a correct API call to /comments/id get current comments`, functi
   const apiMock = new MockAdapter(api);
   const dispatch = jest.fn();
   const id = 1;
-  const commentsLoader = Operation.loadComments(1);
+  const onSuccess = jest.fn();
+  const onError = jest.fn();
+
+  const commentsLoader = Operation.loadComments(1, onSuccess, onError);
 
   apiMock
     .onGet(`/comments/${id}`)
@@ -142,11 +145,11 @@ it(`Should make a correct API call to /comments/id get current comments`, functi
 
   return commentsLoader(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.LOAD_COMMENTS,
         payload: commentMock,
       });
+      expect(onSuccess).toHaveBeenCalledTimes(1);
     });
 });
 

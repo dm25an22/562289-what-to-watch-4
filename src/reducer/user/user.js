@@ -1,6 +1,10 @@
 import {extend} from "../../utils";
 import {getAdaptedUserData} from "../adapter";
 
+const STATUS_CODE = {
+  badRequest: 400
+};
+
 const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
   AUTH: `AUTH`
@@ -46,7 +50,7 @@ const Operation = {
       });
   },
 
-  login: (authData) => (dispatch, getState, api) => {
+  login: (authData, onSuccess, onError) => (dispatch, getState, api) => {
     return api.post(`/login`, {
       email: authData.email,
       password: authData.password
@@ -56,6 +60,12 @@ const Operation = {
 
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserData(adaptedUserData));
+        onSuccess();
+      })
+      .catch((err) => {
+        if (err.response.status === STATUS_CODE.badRequest) {
+          onError();
+        }
       });
   }
 };

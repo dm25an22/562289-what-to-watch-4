@@ -3,6 +3,9 @@ import {TabName} from "../../consts";
 import OverviewInfo from "../../components/overview-info/overview-info.jsx";
 import DetailsInfo from "../../components/details-info/details-info.jsx";
 import ReviewsInfo from "../../components/reviews-info/reviews-info.jsx";
+import withLoadStatus from "../with-load-status/with-load-status";
+
+const ReviewsInfoWrraped = withLoadStatus(ReviewsInfo);
 
 const withCurrentTab = (Component) => {
   class WithCurrentTab extends React.PureComponent {
@@ -32,7 +35,7 @@ const withCurrentTab = (Component) => {
           return <DetailsInfo film={film} />;
 
         case TabName.REVIEWS:
-          return <ReviewsInfo id={film.id} />;
+          return <ReviewsInfoWrraped id={film.id} />;
       }
 
       return null;

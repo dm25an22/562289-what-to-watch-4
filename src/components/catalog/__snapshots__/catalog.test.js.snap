@@ -63,6 +63,7 @@ exports[`render Comment component 1`] = `
           height="175px"
           loop={true}
           muted={true}
+          poster="img/macbeth.jpg"
           width="280px"
         />
       </div>

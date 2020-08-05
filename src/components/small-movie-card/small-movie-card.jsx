@@ -24,9 +24,7 @@ class SmallMovieCard extends React.PureComponent {
         onMouseLeave={stopPlayHandler}
         className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image">
-
           {renderVideoPlayer()}
-
         </div>
         <h3 className="small-movie-card__title">
           <Link
@@ -51,6 +49,7 @@ SmallMovieCard.propTypes = {
   film: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    smallCardImg: PropTypes.string.isRequired,
   }).isRequired,
 };
 

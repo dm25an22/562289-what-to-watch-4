@@ -1,37 +1,23 @@
-import React, {createRef} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Footer from "../footer/footer.jsx";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {history} from "../../history.js";
 import Logo from "../logo/logo.jsx";
 
+
 class SignIn extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._loginRef = createRef();
-    this._passwordRef = createRef();
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(evt) {
-    evt.preventDefault();
-
-    const {onSubmit} = this.props;
-
-    onSubmit({
-      email: this._loginRef.current.value,
-      password: this._passwordRef.current.value
-    });
-  }
-
   render() {
-    const {authStatus} = this.props;
-
-    if (authStatus === AuthorizationStatus.AUTH) {
-      history.goBack();
-    }
+    const {
+      handleSubmit,
+      loginClass,
+      passwordClass,
+      resetLoginClassName,
+      resetPasswordClassName,
+      invalidLogin,
+      badRequest,
+      invalidPassword,
+      getLoginValue,
+      getPasswordValue
+    } = this.props;
 
     return (
       <div className="user-page">
@@ -42,14 +28,49 @@ class SignIn extends React.PureComponent {
         </header>
 
         <div className="sign-in user-page__content">
-          <form onSubmit={this.handleSubmit} action="#" className="sign-in__form">
+          <form
+            onSubmit={(evt) => {
+              evt.preventDefault();
+              handleSubmit();
+            }}
+            action="#"
+            className="sign-in__form"
+            noValidate
+          >
+
+            <div className="sign-in__message">
+              {invalidLogin && <p>Please enter a valid email address</p>}
+              {badRequest && <p>We can’t recognize this email <br /> and password combination. Please try again.</p>}
+              {invalidPassword && <p>Your password must contain at least one character</p>}
+            </div>
+
             <div className="sign-in__fields">
-              <div className="sign-in__field">
-                <input ref={this._loginRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" required/>
+              <div className={loginClass}>
+                <input
+                  onFocus={resetLoginClassName}
+                  onChange={(evt) => {
+                    getLoginValue(evt.target.value);
+                  }}
+                  className="sign-in__input"
+                  type="email"
+                  placeholder="Email address"
+                  name="user-email"
+                  id="user-email"/
+                >
                 <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
               </div>
-              <div className="sign-in__field">
-                <input ref={this._passwordRef} className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" required/>
+              <div className={passwordClass}>
+                <input
+                  onFocus={resetPasswordClassName}
+                  onChange={(evt) => {
+                    getPasswordValue(evt.target.value);
+                  }}
+                  className="sign-in__input"
+                  type="password"
+                  placeholder="Password"
+                  name="user-password"
+                  id="user-password"/
+                >
                 <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
               </div>
             </div>
@@ -66,8 +87,16 @@ class SignIn extends React.PureComponent {
 }
 
 SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  authStatus: PropTypes.string.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  loginClass: PropTypes.string.isRequired,
+  passwordClass: PropTypes.string.isRequired,
+  resetLoginClassName: PropTypes.func.isRequired,
+  resetPasswordClassName: PropTypes.func.isRequired,
+  invalidLogin: PropTypes.bool.isRequired,
+  badRequest: PropTypes.bool.isRequired,
+  invalidPassword: PropTypes.bool.isRequired,
+  getLoginValue: PropTypes.func.isRequired,
+  getPasswordValue: PropTypes.func.isRequired
 };
 
 export default SignIn;

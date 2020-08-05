@@ -74,6 +74,7 @@ exports[`render MyList component with favorites films 1`] = `
             height="175px"
             loop={true}
             muted={true}
+            poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
             width="280px"
           />
         </div>

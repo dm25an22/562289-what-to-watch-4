@@ -9,6 +9,8 @@ import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Operation as DataOperation} from "./reducer/data/data";
 import {Operation as UserOperation, ActionCreator, AuthorizationStatus} from "./reducer/user/user";
+import PageWarring from "./components/page-warring/page-warring.jsx";
+import ErrorMessage from "./components/error-message/error-message.jsx";
 
 const onUnauthorized = () => {
   store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
@@ -37,6 +39,11 @@ Promise.all([
     );
   })
     .catch((err) => {
-      console.log(err);
+      ReactDom.render(
+          <PageWarring>
+            <ErrorMessage errorCode={err.response.status} />
+          </PageWarring>,
+          document.querySelector(`#root`)
+      );
     });
 

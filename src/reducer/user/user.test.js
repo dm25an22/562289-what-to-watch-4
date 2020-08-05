@@ -49,6 +49,8 @@ it(`Should make a correct login call to /login `, function () {
   const apiMock = new MockAdapter(api);
   const dispatch = jest.fn();
   const login = Operation.login(authData);
+  const onSuccess = jest.fn();
+  const onError = jest.fn();
 
   apiMock
     .onPost(`/login`, authData)
@@ -56,9 +58,33 @@ it(`Should make a correct login call to /login `, function () {
 
   return login(dispatch, () => {}, api)
     .then(() => {
+      onSuccess();
+      expect(onSuccess).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.REQUIRED_AUTHORIZATION,
         payload: AuthorizationStatus.AUTH,
       });
+    })
+    .catch(() => {
+      onError();
+    });
+});
+
+it(`Should check error work to /login with failed data`, function () {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const login = Operation.login(authData);
+  const onError = jest.fn();
+
+  apiMock
+    .onPost(`/login`, {})
+    .reply(200, authData);
+
+  return login(dispatch, () => {}, api)
+    .then(() => {
+    })
+    .catch(() => {
+      onError();
+      expect(onError).toHaveBeenCalledTimes(1);
     });
 });

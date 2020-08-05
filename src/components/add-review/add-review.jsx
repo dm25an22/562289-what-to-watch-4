@@ -47,8 +47,7 @@ class AddReview extends React.PureComponent {
     hideErrorStyle();
   }
 
-  handlerSubmit(evt) {
-    evt.preventDefault();
+  handlerSubmit() {
     this._disabledForm(true);
     const {onSubmitAddReview, film} = this.props;
 
@@ -101,7 +100,15 @@ class AddReview extends React.PureComponent {
         </div>
 
         <div className="add-review">
-          <form ref={this._formRef} onSubmit={this.handlerSubmit} action="#" className="add-review__form">
+          <form
+            ref={this._formRef}
+            onSubmit={(evt) => {
+              evt.preventDefault();
+              this.handlerSubmit();
+            }}
+            action="#"
+            className="add-review__form"
+          >
             <div className="rating">
               <div className="rating__stars">
                 <input className="rating__input" id="star-1" type="radio" name="rating" value="1" />

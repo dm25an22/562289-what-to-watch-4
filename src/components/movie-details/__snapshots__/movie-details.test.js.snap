@@ -273,6 +273,7 @@ Array [
               height="175px"
               loop={true}
               muted={true}
+              poster="img/bohemian-rhapsody.jpg"
               width="280px"
             />
           </div>

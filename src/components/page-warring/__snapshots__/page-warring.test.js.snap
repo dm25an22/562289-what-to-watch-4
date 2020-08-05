@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render PageWarring component 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundImage": "linear-gradient(-180deg,#180202 0%,#000 100%)",
+      "color": "#dfcf77",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontFamily": "\\"Arial\\", \\"Helvetica\\", \\"sans-serif\\"",
+      "height": "100vh",
+      "justifyContent": "center",
+      "width": "100vw",
+    }
+  }
+/>
+`;
+
+exports[`render PageWarring component with children 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundImage": "linear-gradient(-180deg,#180202 0%,#000 100%)",
+      "color": "#dfcf77",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontFamily": "\\"Arial\\", \\"Helvetica\\", \\"sans-serif\\"",
+      "height": "100vh",
+      "justifyContent": "center",
+      "width": "100vw",
+    }
+  }
+>
+  <div />
+</div>
+`;

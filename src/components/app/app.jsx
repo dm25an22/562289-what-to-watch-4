@@ -17,10 +17,15 @@ import AddReview from '../add-review/add-review.jsx';
 import withErrorStyle from "../../hocks/with-error-style/with-error-style";
 import VideoFullScreen from "../video-full-screen/video-full-screen.jsx";
 import withFullVideoPlayer from "../../hocks/with-full-video-player/with-full-video-player";
+import withValidateSignIn from '../../hocks/with-validate-sign-in/with-validate-sign-in';
+import PrivateRoute from "../private-route/private-route.jsx";
+import PageWarring from "../page-warring/page-warring.jsx";
+import NotFoundMessage from "../page-not-found/page-not-found.jsx";
 
 const MovieDetailsWrraped = withCurrentFilm(MovieDetails);
 const AddReviewWrraped = withCurrentFilm(withErrorStyle(AddReview));
 const VideoFullScreenWrraped = withCurrentFilm(withFullVideoPlayer(VideoFullScreen));
+const SignInWrraped = withValidateSignIn(SignIn);
 class App extends PureComponent {
   render() {
     const {
@@ -52,9 +57,8 @@ class App extends PureComponent {
           </Route>
           <Route exact path={AppRoute.LOGIN}
             render={() => (
-              <SignIn
+              <SignInWrraped
                 onSubmit={onSubmitAuth}
-                authStatus={authStatus}
               />
             )}
           >
@@ -69,17 +73,27 @@ class App extends PureComponent {
             )}
           >
           </Route>
-          <Route exact path={AppRoute.MY_LIST}>
-            <MyList />
-          </Route>
-          <Route exact path={`${AppRoute.FILM}/:id${AppRoute.ADD_REVIEW}/:id`}
-            render={(props) => (
-              <AddReviewWrraped
-                {...props}
-                films={films}
-                onSubmitAddReview={onSubmitAddReview}
-              />
-            )}
+          <PrivateRoute
+            exact
+            path={AppRoute.MY_LIST}
+            render={(props) => {
+              return (
+                <MyList {...props} />
+              );
+            }}
+          />
+          <PrivateRoute
+            exact
+            path={`${AppRoute.FILM}/:id${AppRoute.ADD_REVIEW}`}
+            render={(props) => {
+              return (
+                <AddReviewWrraped
+                  {...props}
+                  films={films}
+                  onSubmitAddReview={onSubmitAddReview}
+                />
+              );
+            }}
           />
           <Route exact path={`${AppRoute.PLAYER}/:id`}
             render={(props) => (
@@ -88,6 +102,15 @@ class App extends PureComponent {
                 films={films}
               />
             )}
+          />
+          <Route
+            render={() => {
+              return (
+                <PageWarring>
+                  <NotFoundMessage />
+                </PageWarring>
+              );
+            }}
           />
         </Switch>
       </Router>
@@ -119,8 +142,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmitAuth(authData) {
-      dispatch(UserOperation.login(authData));
+    onSubmitAuth(authData, onSuccess, onError) {
+      dispatch(UserOperation.login(authData, onSuccess, onError));
     },
 
     loadFavoriteList() {

@@ -54,6 +54,11 @@ it(`render ReviewsInfo component with 3 comments`, () => {
           setInitialComments={() => {}}
           comments={commentsMock}
           loadComments={() => {}}
+          onSuccess={() => {}}
+          onError={() => {}}
+          errorCode={null}
+          isLoaded={true}
+          isLoading={false}
         />
       </Provider>
   ).toJSON();
@@ -75,6 +80,11 @@ it(`render ReviewsInfo component with 1 comments`, () => {
           setInitialComments={() => {}}
           comments={commentsMock.slice(0, 1)}
           loadComments={() => {}}
+          onSuccess={() => {}}
+          onError={() => {}}
+          isLoaded={true}
+          errorCode={null}
+          isLoading={false}
         />
       </Provider>
   ).toJSON();
@@ -96,6 +106,11 @@ it(`render ReviewsInfo component with 2 comments`, () => {
           setInitialComments={() => {}}
           comments={commentsMock.slice(0, 2)}
           loadComments={() => {}}
+          onSuccess={() => {}}
+          onError={() => {}}
+          isLoaded={true}
+          errorCode={null}
+          isLoading={false}
         />
       </Provider>
   ).toJSON();
@@ -117,6 +132,11 @@ it(`render ReviewsInfo component without comments`, () => {
           setInitialComments={() => {}}
           comments={null}
           loadComments={() => {}}
+          onSuccess={() => {}}
+          onError={() => {}}
+          isLoaded={true}
+          errorCode={null}
+          isLoading={false}
         />
       </Provider>
   ).toJSON();

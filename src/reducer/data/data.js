@@ -86,12 +86,16 @@ const Operation = {
       });
   },
 
-  loadComments: (id) => (dispatch, getState, api) => {
+  loadComments: (id, onSuccess, onError) => (dispatch, getState, api) => {
     return api.get(`/comments/${id}`)
       .then((response) => {
         const cloneResponse = [...response.data].map((comment) => getAdaptedComment(comment));
         const sortCommentsByDate = cloneResponse.sort((a, b) => new Date(b.date) - new Date(a.date));
         dispatch(ActionCreator.loadComments(sortCommentsByDate));
+        onSuccess();
+      })
+      .catch((err) => {
+        onError(err.response.status);
       });
   },
 

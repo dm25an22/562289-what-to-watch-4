@@ -23,7 +23,7 @@ const withFullVideoPlayer = (Component) => {
         isPlaying: false,
         timeProgress: `0:00`,
         positionProgress: 0,
-        duration: null,
+        duration: 0,
         isShowConrollerBar: true,
         timeoutId: null
       };

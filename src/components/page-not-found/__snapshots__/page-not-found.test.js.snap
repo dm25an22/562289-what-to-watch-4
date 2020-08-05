@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render PageNotFound component 1`] = `
+Array [
+  <h1
+    style={
+      Object {
+        "fontSize": "60px",
+      }
+    }
+  >
+    Page not found 404
+  </h1>,
+  <a
+    href="/"
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "inherit",
+        "fontSize": "25px",
+        "listStyle": "none",
+        "textDecoration": "none",
+      }
+    }
+  >
+    Go to main page
+  </a>,
+]
+`;
