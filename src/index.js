@@ -25,8 +25,9 @@ const store = createStore(
     )
 );
 
+store.dispatch(UserOperation.checkAuth());
+
 Promise.all([
-  store.dispatch(UserOperation.checkAuth()),
   store.dispatch(DataOperation.loadFilm()),
   store.dispatch(DataOperation.loadPromo())
 ])
