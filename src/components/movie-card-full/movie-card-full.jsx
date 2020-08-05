@@ -5,10 +5,11 @@ import withCurrentTab from "../../hocks/with-current-tab/with-current-tab";
 import HeaderMovie from "../header/header-movie.jsx";
 import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
 import ButtonAddReview from "../buttons/button-add-review/button-add-review.jsx";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const MovieCardInfoWrraped = withCurrentTab(MovieCardInfo);
 
-const MovieCardFull = ({film}) => {
+const MovieCardFull = ({film, authStatus}) => {
   const {
     title,
     bigPoster,
@@ -29,7 +30,7 @@ const MovieCardFull = ({film}) => {
 
         <div className="movie-card__wrap">
           <MovieCardDescription film={film}>
-            <ButtonAddReview />
+            {authStatus === AuthorizationStatus.AUTH && <ButtonAddReview id={film.id} />}
           </MovieCardDescription>
         </div>
       </div>
@@ -59,6 +60,7 @@ MovieCardFull.propTypes = {
     moviePoster: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
   }).isRequired,
+  authStatus: PropTypes.string.isRequired
 };
 
 export default MovieCardFull;

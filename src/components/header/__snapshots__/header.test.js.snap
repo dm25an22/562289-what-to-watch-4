@@ -39,7 +39,7 @@ exports[`renders Headers component with authorization 1`] = `
       <img
         alt="User avatar"
         height="63"
-        src="/img/avatar.jpg"
+        src="https://htmlacademy-react-3.appspot.comimg/1.png"
         width="63"
       />
     </div>
@@ -86,7 +86,7 @@ exports[`renders Headers component with class "movie-card__head" 1`] = `
       <img
         alt="User avatar"
         height="63"
-        src="/img/avatar.jpg"
+        src="https://htmlacademy-react-3.appspot.comimg/1.png"
         width="63"
       />
     </div>
@@ -138,7 +138,7 @@ exports[`renders Headers component with class "user-page__head" and children 1`]
       <img
         alt="User avatar"
         height="63"
-        src="/img/avatar.jpg"
+        src="https://htmlacademy-react-3.appspot.comimg/1.png"
         width="63"
       />
     </div>

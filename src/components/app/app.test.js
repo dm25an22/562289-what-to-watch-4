@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {App} from "./app";
-import {mockFilms} from "../../mocks/mock-for-tests";
+import {mockFilms, userDataMock} from "../../mocks/mock-for-tests";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
@@ -43,6 +43,7 @@ it(`renders App component without authorization user`, () => {
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
+      userData: null
     }
   });
 
@@ -51,6 +52,7 @@ it(`renders App component without authorization user`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <App
+          onSubmitAddReview={() => {}}
           films={mockFilms}
           promoFilm={promo}
           authStatus={AuthorizationStatus.NO_AUTH}
@@ -76,6 +78,7 @@ it(`renders App component with authorization user`, () => {
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.AUTH,
+      userData: userDataMock
     }
   });
 
@@ -84,6 +87,7 @@ it(`renders App component with authorization user`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <App
+          onSubmitAddReview={() => {}}
           films={mockFilms}
           promoFilm={promo}
           authStatus={AuthorizationStatus.AUTH}

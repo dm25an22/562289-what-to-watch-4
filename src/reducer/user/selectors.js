@@ -4,4 +4,8 @@ const getAuthStatus = (state) => {
   return state[NameSpace.USER].authorizationStatus;
 };
 
-export {getAuthStatus};
+const getUserData = (state) => {
+  return state[NameSpace.USER].userData;
+};
+
+export {getAuthStatus, getUserData};

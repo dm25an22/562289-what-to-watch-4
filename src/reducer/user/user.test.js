@@ -1,6 +1,8 @@
 import {reducer, ActionType, AuthorizationStatus, Operation} from "./user";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
+import {userDataMock} from "../../mocks/mock-for-tests";
+import {getAdaptedUserData} from "../adapter";
 
 const api = createAPI(() => {});
 it(`Reducer with type REQUIRED_AUTHORIZATION should return payload `, () => {
@@ -22,14 +24,18 @@ it(`Should make a correct checkAuth call to /login `, function () {
 
   apiMock
     .onGet(`/login`)
-    .reply(200, {});
+    .reply(200, userDataMock);
 
   return checkAuth(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.REQUIRED_AUTHORIZATION,
         payload: AuthorizationStatus.AUTH,
+      });
+      expect(dispatch).toHaveBeenNthCalledWith(2, {
+        type: ActionType.SET_USER_DATA,
+        payload: getAdaptedUserData(userDataMock),
       });
     });
 });

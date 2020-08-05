@@ -32,6 +32,7 @@ it(`Render MoviePage`, () => {
       <Provider store={store} >
         <Router history={history} >
           <MovieDetails
+            authStatus={ AuthorizationStatus.NO_AUTH}
             film={mockFilms[0]}
             films={mockFilms}
           />
