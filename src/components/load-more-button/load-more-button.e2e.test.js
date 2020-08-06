@@ -6,7 +6,7 @@ it(`check click on button`, () => {
   const clickOnButton = jest.fn();
   const tree = shallow(
       <LoadMoreButton
-        changeCountShowCrads={clickOnButton}
+        onChangeCountShowCrads={clickOnButton}
       />
   );
 

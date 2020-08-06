@@ -2,7 +2,7 @@ import {reducer, ActionType, AuthorizationStatus, Operation} from "./user";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
 import {userDataMock} from "../../mocks/mock-for-tests";
-import {getAdaptedUserData} from "../adapter";
+import {getAdaptedUserData} from "../../adapter";
 
 const api = createAPI(() => {});
 it(`Reducer with type REQUIRED_AUTHORIZATION should return payload `, () => {
@@ -16,7 +16,6 @@ it(`Reducer with type REQUIRED_AUTHORIZATION should return payload `, () => {
   });
 });
 
-
 it(`Should make a correct checkAuth call to /login `, function () {
   const apiMock = new MockAdapter(api);
   const dispatch = jest.fn();
@@ -28,7 +27,7 @@ it(`Should make a correct checkAuth call to /login `, function () {
 
   return checkAuth(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch).toHaveBeenCalledTimes(3);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.REQUIRED_AUTHORIZATION,
         payload: AuthorizationStatus.AUTH,
@@ -60,6 +59,7 @@ it(`Should make a correct login call to /login `, function () {
     .then(() => {
       onSuccess();
       expect(onSuccess).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(3);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.REQUIRED_AUTHORIZATION,
         payload: AuthorizationStatus.AUTH,

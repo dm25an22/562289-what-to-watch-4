@@ -8,16 +8,17 @@ it(`Render SignIn default`, () => {
   const tree = renderer.create(
       <Router history={history}>
         <SignIn
-          handleSubmit={() => {}}
+          onHandleSubmit={() => {}}
           loginClass={`loginClass`}
           passwordClass={`passwordClass`}
-          resetLoginClassName={() => {}}
-          resetPasswordClassName={() => {}}
+          onResetLoginClassName={() => {}}
+          onResetPasswordClassName={() => {}}
           invalidLogin={false}
           badRequest={false}
           invalidPassword={false}
-          getLoginValue={() => {}}
-          getPasswordValue={() => {}}
+          onGetLoginValue={() => {}}
+          onGetPasswordValue={() => {}}
+          authStatus={`NO_AUTH`}
         />
       </Router>
   ).toJSON();
@@ -29,16 +30,17 @@ it(`Render SignIn with invalid login`, () => {
   const tree = renderer.create(
       <Router history={history}>
         <SignIn
-          handleSubmit={() => {}}
+          onHandleSubmit={() => {}}
           loginClass={`loginClass-error`}
           passwordClass={`passwordClass`}
-          resetLoginClassName={() => {}}
-          resetPasswordClassName={() => {}}
+          onResetLoginClassName={() => {}}
+          onResetPasswordClassName={() => {}}
           invalidLogin={true}
           badRequest={false}
           invalidPassword={false}
-          getLoginValue={() => {}}
-          getPasswordValue={() => {}}
+          onGetLoginValue={() => {}}
+          onGetPasswordValue={() => {}}
+          authStatus={`NO_AUTH`}
         />
       </Router>
   ).toJSON();
@@ -50,16 +52,17 @@ it(`Render SignIn with invalid password`, () => {
   const tree = renderer.create(
       <Router history={history}>
         <SignIn
-          handleSubmit={() => {}}
+          onHandleSubmit={() => {}}
           loginClass={`loginClass-error`}
           passwordClass={`passwordClass-error`}
-          resetLoginClassName={() => {}}
-          resetPasswordClassName={() => {}}
+          onResetLoginClassName={() => {}}
+          onResetPasswordClassName={() => {}}
           invalidLogin={false}
           badRequest={false}
           invalidPassword={true}
-          getLoginValue={() => {}}
-          getPasswordValue={() => {}}
+          onGetLoginValue={() => {}}
+          onGetPasswordValue={() => {}}
+          authStatus={`NO_AUTH`}
         />
       </Router>
   ).toJSON();
@@ -72,16 +75,17 @@ it(`Render SignIn with bad request`, () => {
   const tree = renderer.create(
       <Router history={history}>
         <SignIn
-          handleSubmit={() => {}}
+          onHandleSubmit={() => {}}
           loginClass={`loginClass-error`}
           passwordClass={`passwordClass`}
-          resetLoginClassName={() => {}}
-          resetPasswordClassName={() => {}}
+          onResetLoginClassName={() => {}}
+          onResetPasswordClassName={() => {}}
           invalidLogin={false}
           badRequest={true}
           invalidPassword={false}
-          getLoginValue={() => {}}
-          getPasswordValue={() => {}}
+          onGetLoginValue={() => {}}
+          onGetPasswordValue={() => {}}
+          authStatus={`NO_AUTH`}
         />
       </Router>
   ).toJSON();

@@ -1,5 +1,6 @@
 import {extend} from "../../utils";
-import {getAdaptedUserData} from "../adapter";
+import {getAdaptedUserData} from "../../adapter";
+import {Operation as DataOperation} from "../data/data";
 
 const STATUS_CODE = {
   badRequest: 400
@@ -44,6 +45,7 @@ const Operation = {
 
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserData(adaptedUserData));
+        dispatch(DataOperation.loadFavorites());
       })
       .catch((err) => {
         throw err;
@@ -60,6 +62,7 @@ const Operation = {
 
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserData(adaptedUserData));
+        dispatch(DataOperation.loadFavorites());
         onSuccess();
       })
       .catch((err) => {

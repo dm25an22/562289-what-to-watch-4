@@ -25,20 +25,22 @@ const store = createStore(
     )
 );
 
-store.dispatch(UserOperation.checkAuth());
-
-Promise.all([
-  store.dispatch(DataOperation.loadFilm()),
-  store.dispatch(DataOperation.loadPromo())
-])
-  .then(() => {
-    ReactDom.render(
-        <Provider store={store}>
-          <App />
-        </Provider>,
-        document.querySelector(`#root`)
-    );
-  })
+new Promise((resolve) => {
+  resolve(store.dispatch(UserOperation.checkAuth()));
+})
+  .finally(() => {
+    Promise.all([
+      store.dispatch(DataOperation.loadFilm()),
+      store.dispatch(DataOperation.loadPromo())
+    ])
+    .then(() => {
+      ReactDom.render(
+          <Provider store={store}>
+            <App />
+          </Provider>,
+          document.querySelector(`#root`)
+      );
+    })
     .catch((err) => {
       ReactDom.render(
           <PageWarring>
@@ -47,4 +49,4 @@ Promise.all([
           document.querySelector(`#root`)
       );
     });
-
+  });

@@ -1,11 +1,11 @@
 import React from "react";
 import PropType from "prop-types";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../../consts";
+import {APP_ROUTE} from "../../../constans";
 
 const ButtonAddReview = ({id}) => {
   return (
-    <Link to={`${AppRoute.FILM}/${id}${AppRoute.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>
+    <Link to={`${APP_ROUTE.FILM}/${id}${APP_ROUTE.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>
   );
 };
 

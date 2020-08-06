@@ -15,8 +15,8 @@ it(`Render SmallMovieCard`, () => {
           film={film}
           index={1}
           renderVideoPlayer={() => {}}
-          startPlayHandler={() => {}}
-          stopPlayHandler={() => {}}
+          onStartPlayHandler={() => {}}
+          onStopPlayHandler={() => {}}
           isPlaing={false}
         />
       </Router>, {

@@ -9,13 +9,13 @@ const VideoFullScreen = (props) => {
     timeProgress,
     positionProgress,
     renderVideo,
-    toggleFullscreen,
+    onToggleFullscreen,
     onPrgressBarHandler,
-    drugTogglerHandler,
+    onDrugTogglerHandler,
     containerRef,
     togglerRef,
     isShowConrollerBar,
-    playHandler
+    onPlayHandler
   } = props;
 
   return (
@@ -31,13 +31,13 @@ const VideoFullScreen = (props) => {
             <div className="player__controls-row">
               <div ref={containerRef} className="player__time">
                 <progress onClick={onPrgressBarHandler} className="player__progress" value={positionProgress} max="100"></progress>
-                <div ref={togglerRef} onMouseDown={drugTogglerHandler} className="player__toggler" style={{left: `${positionProgress}%`}}>Toggler</div>
+                <div ref={togglerRef} onMouseDown={onDrugTogglerHandler} className="player__toggler" style={{left: `${positionProgress}%`}}>Toggler</div>
               </div>
               <div className="player__time-value">{timeProgress}</div>
             </div>
 
             <div className="player__controls-row">
-              <button onClick={playHandler} type="button" className="player__play">
+              <button onClick={onPlayHandler} type="button" className="player__play">
                 {isPlaying ?
                   <React.Fragment>
                     <svg viewBox="0 0 19 19" width="19" height="19">
@@ -57,7 +57,7 @@ const VideoFullScreen = (props) => {
               </button>
               <div className="player__name">{film.title}</div>
               <button
-                onClick={toggleFullscreen}
+                onClick={onToggleFullscreen}
                 type="button" className="player__full-screen">
                 <svg viewBox="0 0 27 27" width="27" height="27">
                   <use xlinkHref="#full-screen"></use>
@@ -79,9 +79,9 @@ VideoFullScreen.propTypes = {
   timeProgress: PropTypes.string.isRequired,
   positionProgress: PropTypes.number.isRequired,
   renderVideo: PropTypes.func.isRequired,
-  toggleFullscreen: PropTypes.func.isRequired,
+  onToggleFullscreen: PropTypes.func.isRequired,
   onPrgressBarHandler: PropTypes.func.isRequired,
-  drugTogglerHandler: PropTypes.func.isRequired,
+  onDrugTogglerHandler: PropTypes.func.isRequired,
   containerRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({current: PropTypes.instanceOf(Element)})
@@ -91,7 +91,7 @@ VideoFullScreen.propTypes = {
     PropTypes.shape({current: PropTypes.instanceOf(Element)})
   ]),
   isShowConrollerBar: PropTypes.bool.isRequired,
-  playHandler: PropTypes.func.isRequired,
+  onPlayHandler: PropTypes.func.isRequired,
 };
 
 export default VideoFullScreen;

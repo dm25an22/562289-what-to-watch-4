@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import HeaderMovie from "../header/header-movie.jsx";
 import MovieCardDescription from "../movie-card-description/movie-card-description.jsx";
 
-
 const Promo = ({film}) => {
   const {
     bigPoster,
@@ -15,11 +14,8 @@ const Promo = ({film}) => {
       <div className="movie-card__bg">
         <img src={bigPoster} alt="The Grand Budapest Hotel" />
       </div>
-
       <h1 className="visually-hidden">WTW</h1>
-
       <HeaderMovie />
-
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">

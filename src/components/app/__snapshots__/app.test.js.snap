@@ -209,7 +209,6 @@ Array [
               className="player__video"
               height="175px"
               loop={true}
-              muted={true}
               poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280px"
             />
@@ -239,7 +238,6 @@ Array [
               className="player__video"
               height="175px"
               loop={true}
-              muted={true}
               poster="img/bohemian-rhapsody.jpg"
               width="280px"
             />
@@ -269,7 +267,6 @@ Array [
               className="player__video"
               height="175px"
               loop={true}
-              muted={true}
               poster="img/macbeth.jpg"
               width="280px"
             />
@@ -533,7 +530,6 @@ Array [
               className="player__video"
               height="175px"
               loop={true}
-              muted={true}
               poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280px"
             />
@@ -563,7 +559,6 @@ Array [
               className="player__video"
               height="175px"
               loop={true}
-              muted={true}
               poster="img/bohemian-rhapsody.jpg"
               width="280px"
             />
@@ -593,7 +588,6 @@ Array [
               className="player__video"
               height="175px"
               loop={true}
-              muted={true}
               poster="img/macbeth.jpg"
               width="280px"
             />

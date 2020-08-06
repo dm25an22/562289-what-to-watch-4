@@ -1,5 +1,5 @@
 import {extend, removeFilmFromFavorites} from "../../utils";
-import {getAdaptedFilm, getAdaptedComment} from "../adapter";
+import {getAdaptedFilm, getAdaptedComment} from "../../adapter";
 
 const initialState = {
   films: null,

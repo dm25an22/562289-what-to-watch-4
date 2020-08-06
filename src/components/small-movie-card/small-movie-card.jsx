@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../consts";
+import {APP_ROUTE} from "../../constans";
 import {history} from "../../history";
 class SmallMovieCard extends React.PureComponent {
   render() {
     const {
       film,
       renderVideoPlayer,
-      startPlayHandler,
-      stopPlayHandler,
+      onStartPlayHandler,
+      onStopPlayHandler,
     } = this.props;
 
     const {id} = film;
@@ -17,21 +17,21 @@ class SmallMovieCard extends React.PureComponent {
     return (
       <article
         onClick={() => {
-          history.push(`${AppRoute.FILM}/${id}`);
-          stopPlayHandler();
+          history.push(`${APP_ROUTE.FILM}/${id}`);
+          onStopPlayHandler();
         }}
-        onMouseEnter={startPlayHandler}
-        onMouseLeave={stopPlayHandler}
+        onMouseEnter={onStartPlayHandler}
+        onMouseLeave={onStopPlayHandler}
         className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image">
           {renderVideoPlayer()}
         </div>
         <h3 className="small-movie-card__title">
           <Link
-            to={`${AppRoute.FILM}/${id}`}
+            to={`${APP_ROUTE.FILM}/${id}`}
             className="small-movie-card__link"
             onClick={() => {
-              stopPlayHandler();
+              onStopPlayHandler();
             }}
           >{film.title}
           </Link>
@@ -44,8 +44,8 @@ class SmallMovieCard extends React.PureComponent {
 
 SmallMovieCard.propTypes = {
   renderVideoPlayer: PropTypes.func.isRequired,
-  startPlayHandler: PropTypes.func.isRequired,
-  stopPlayHandler: PropTypes.func.isRequired,
+  onStartPlayHandler: PropTypes.func.isRequired,
+  onStopPlayHandler: PropTypes.func.isRequired,
   film: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

@@ -1,6 +1,7 @@
 import NameSpace from "../name-space";
 import {createSelector} from "reselect";
-import {ALL_GENRE, checkLengthGenres} from "../../utils";
+import {checkLengthGenres} from "../../utils";
+import {ALL_GENRE} from "../../constans";
 
 const getFilms = (state) => {
   return state[NameSpace.DATA].films;
@@ -25,7 +26,6 @@ const getComments = (state) => {
 const getFavorites = (state) => {
   return state[NameSpace.DATA].favorites;
 };
-
 
 export {
   getFilms,

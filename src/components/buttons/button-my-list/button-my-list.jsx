@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {AuthorizationStatus} from "../../../reducer/user/user";
-import {AppRoute} from "../../../consts";
+import {APP_ROUTE} from "../../../constans";
 import {history} from "../../../history";
 
 const ButtonMyList = ({authStatus, onMyListBtnClick, film, status}) => {
@@ -9,7 +9,7 @@ const ButtonMyList = ({authStatus, onMyListBtnClick, film, status}) => {
     <button
       onClick={() => {
         if (authStatus === AuthorizationStatus.NO_AUTH) {
-          history.push(AppRoute.LOGIN);
+          history.push(APP_ROUTE.LOGIN);
         } else {
           onMyListBtnClick(film, status);
         }

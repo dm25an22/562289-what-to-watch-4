@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {TabName} from "../../consts";
+import {TabName} from "../../hocks/with-current-tab/with-current-tab";
 
-const MovieNav = ({currentTab, clickOnTab}) => {
+const MovieNav = ({currentTab, onClickTab}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
@@ -12,7 +12,7 @@ const MovieNav = ({currentTab, clickOnTab}) => {
               <a onClick={(evt) => {
                 evt.preventDefault();
 
-                clickOnTab(it);
+                onClickTab(it);
               }}
               href="#"
               className="movie-nav__link">{it}</a>
@@ -26,7 +26,7 @@ const MovieNav = ({currentTab, clickOnTab}) => {
 
 MovieNav.propTypes = {
   currentTab: PropTypes.string.isRequired,
-  clickOnTab: PropTypes.func.isRequired
+  onClickTab: PropTypes.func.isRequired
 };
 
 export default MovieNav;

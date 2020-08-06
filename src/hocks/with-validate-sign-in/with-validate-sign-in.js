@@ -24,16 +24,16 @@ const withValidateSignIn = (Component) => {
         passwordValue: ``
       };
 
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.resetLoginClassName = this.resetLoginClassName.bind(this);
-      this.resetPasswordClassName = this.resetPasswordClassName.bind(this);
+      this.onHandleSubmit = this.onHandleSubmit.bind(this);
+      this.onResetLoginClassName = this.onResetLoginClassName.bind(this);
+      this.onResetPasswordClassName = this.onResetPasswordClassName.bind(this);
       this.onSuccess = this.onSuccess.bind(this);
       this.onError = this.onError.bind(this);
-      this.getLoginValue = this.getLoginValue.bind(this);
-      this.getPasswordValue = this.getPasswordValue.bind(this);
+      this.onGetLoginValue = this.onGetLoginValue.bind(this);
+      this.onGetPasswordValue = this.onGetPasswordValue.bind(this);
     }
 
-    handleSubmit() {
+    onHandleSubmit() {
       const emailValue = this.state.loginValue;
       const passwordValue = this.state.passwordValue;
 
@@ -96,25 +96,25 @@ const withValidateSignIn = (Component) => {
       return passwordValue.length > 0;
     }
 
-    resetLoginClassName() {
+    onResetLoginClassName() {
       this.setState({
         loginClass: CLASS_NAME_FIELDS.OK
       });
     }
 
-    resetPasswordClassName() {
+    onResetPasswordClassName() {
       this.setState({
         passwordClass: CLASS_NAME_FIELDS.OK
       });
     }
 
-    getLoginValue(value) {
+    onGetLoginValue(value) {
       this.setState({
         loginValue: value
       });
     }
 
-    getPasswordValue(value) {
+    onGetPasswordValue(value) {
       this.setState({
         passwordValue: value
       });
@@ -124,16 +124,16 @@ const withValidateSignIn = (Component) => {
       return (
         <Component
           {...this.props}
-          handleSubmit={this.handleSubmit}
+          onHandleSubmit={this.onHandleSubmit}
           loginClass={this.state.loginClass}
           passwordClass={this.state.passwordClass}
-          resetLoginClassName={this.resetLoginClassName}
-          resetPasswordClassName={this.resetPasswordClassName}
+          onResetLoginClassName={this.onResetLoginClassName}
+          onResetPasswordClassName={this.onResetPasswordClassName}
           invalidLogin={this.state.invalidLogin}
           badRequest={this.state.badRequest}
           invalidPassword={this.state.invalidPassword}
-          getLoginValue={this.getLoginValue}
-          getPasswordValue={this.getPasswordValue}
+          onGetLoginValue={this.onGetLoginValue}
+          onGetPasswordValue={this.onGetPasswordValue}
         />
       );
     }

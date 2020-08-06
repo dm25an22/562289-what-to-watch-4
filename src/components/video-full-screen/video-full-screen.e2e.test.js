@@ -16,13 +16,13 @@ it(`check click event on elements`, () => {
         timeProgress={`0.00`}
         positionProgress={0}
         renderVideo={() => {}}
-        toggleFullscreen={fullScreenClick}
+        onToggleFullscreen={fullScreenClick}
         onPrgressBarHandler={progressBarClick}
-        drugTogglerHandler={togglerMouseDown}
+        onDrugTogglerHandler={togglerMouseDown}
         containerRef={React.createRef()}
         togglerRef={React.createRef()}
         isShowConrollerBar={true}
-        playHandler={playClick}
+        onPlayHandler={playClick}
       />
   );
 

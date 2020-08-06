@@ -1,9 +1,5 @@
 import React from "react";
-import {MONTHS} from './consts';
-
-const ALL_GENRE = `All genre`;
-const MAX_GENRES = 9;
-
+import {MONTHS, ALL_GENRE, MAX_GENRES} from './constans';
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -109,9 +105,18 @@ const convertColor = (color) => {
   return `rgb(${rgbColor.r},${rgbColor.g},${rgbColor.b})`;
 };
 
+const getTimeForVideoPlayer = (time) => {
+  const timeFloor = Math.floor(time);
+  const hours = Math.floor(timeFloor / 60 / 60);
+  const minutes = Math.floor(timeFloor / 60) - (hours * 60);
+  const seconds = timeFloor % 60;
+  const castomTime = `${hours > 0 ? `${hours}:` : ``}${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+
+  return castomTime;
+};
+
 export {
   extend,
-  ALL_GENRE,
   checkLengthGenres,
   getDescriptionRating,
   getFormatedRunTime,
@@ -121,5 +126,6 @@ export {
   getFilmsByGener,
   checkFilmInFavorite,
   removeFilmFromFavorites,
-  convertColor
+  convertColor,
+  getTimeForVideoPlayer
 };

@@ -7,7 +7,6 @@ import {getFavorites} from "../../reducer/data/selectors.js";
 import HeaderUser from "../header/header-user.jsx";
 
 class MyList extends React.PureComponent {
-
   render() {
     const films = this.props.favorites;
 

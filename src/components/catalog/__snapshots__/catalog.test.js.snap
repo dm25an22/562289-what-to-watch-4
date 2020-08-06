@@ -62,7 +62,6 @@ exports[`render Comment component 1`] = `
           className="player__video"
           height="175px"
           loop={true}
-          muted={true}
           poster="img/macbeth.jpg"
           width="280px"
         />

@@ -17,7 +17,7 @@ const withShowMore = (Component) => {
         showMoreBtn: false
       };
 
-      this.changeCountShowCrads = this.changeCountShowCrads.bind(this);
+      this.onChangeCountShowCrads = this.onChangeCountShowCrads.bind(this);
     }
 
     _getShowfilms() {
@@ -38,7 +38,7 @@ const withShowMore = (Component) => {
       this._checkShouldRenderShowMoreBtn();
     }
 
-    changeCountShowCrads() {
+    onChangeCountShowCrads() {
       this.setState((prevState) => ({showCards: prevState.showCards + SHOW_MORE_STEP}));
     }
 
@@ -48,7 +48,7 @@ const withShowMore = (Component) => {
           {...this.props}
           filmsByFilter={this._getShowfilms()}
         >
-          {this.state.showMoreBtn && <LoadMoreButton changeCountShowCrads={this.changeCountShowCrads} />}
+          {this.state.showMoreBtn && <LoadMoreButton onChangeCountShowCrads={this.onChangeCountShowCrads} />}
         </Component>
       );
     }

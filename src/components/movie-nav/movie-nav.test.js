@@ -6,7 +6,7 @@ it(`renders MovieNav component with activeClass on Overview`, () => {
   const tree = renderer.create(
       <MovieNav
         currentTab={`Overview`}
-        clickOnTab={() => {}}
+        onClickTab={() => {}}
       />
   ).toJSON();
 
@@ -17,7 +17,7 @@ it(`renders MovieNav component with activeClass on Details`, () => {
   const tree = renderer.create(
       <MovieNav
         currentTab={`Details`}
-        clickOnTab={() => {}}
+        onClickTab={() => {}}
       />
   ).toJSON();
 
@@ -28,7 +28,7 @@ it(`renders MovieNav component with activeClass on Reviews`, () => {
   const tree = renderer.create(
       <MovieNav
         currentTab={`Reviews`}
-        clickOnTab={() => {}}
+        onClickTab={() => {}}
       />
   ).toJSON();
 

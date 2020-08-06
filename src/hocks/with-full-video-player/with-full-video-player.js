@@ -1,9 +1,11 @@
 import React, {createRef} from 'react';
 import PropTypes from "prop-types";
+import {getTimeForVideoPlayer} from '../../utils';
 
-const KEY_NAME = {
-  SPACE: `Space`
+const KEY_CODE = {
+  SPACE: 32
 };
+const DELAY = 6000;
 
 const Settings = {
   loop: false,
@@ -12,15 +14,13 @@ const Settings = {
   height: `100%`
 };
 
-const DELAY = 6000;
-
 const withFullVideoPlayer = (Component) => {
   class WithFullVideoPlayer extends React.PureComponent {
     constructor(props) {
       super(props);
 
       this.state = {
-        isPlaying: false,
+        isPlaying: true,
         timeProgress: `0:00`,
         positionProgress: 0,
         duration: 0,
@@ -32,10 +32,10 @@ const withFullVideoPlayer = (Component) => {
       this.containerRef = createRef();
       this.togglerRef = createRef();
 
-      this.playHandler = this.playHandler.bind(this);
-      this.toggleFullscreenHandler = this.toggleFullscreenHandler.bind(this);
+      this.onPlayHandler = this.onPlayHandler.bind(this);
+      this.onToggleFullscreenHandler = this.onToggleFullscreenHandler.bind(this);
       this.onPrgressBarHandler = this.onPrgressBarHandler.bind(this);
-      this.drugTogglerHandler = this.drugTogglerHandler.bind(this);
+      this.onDrugTogglerHandler = this.onDrugTogglerHandler.bind(this);
       this._playOnKeydownHandler = this._playOnKeydownHandler.bind(this);
       this._startTimeout = this._startTimeout.bind(this);
       this._resetTimeout = this._resetTimeout.bind(this);
@@ -66,18 +66,12 @@ const withFullVideoPlayer = (Component) => {
     }
 
     _getTimeProgress(time) {
-      const timeFloor = Math.floor(time);
-      const hours = Math.floor(timeFloor / 60 / 60);
-      const minutes = Math.floor(timeFloor / 60) - (hours * 60);
-      const seconds = timeFloor % 60;
-      const castomTime = `${hours > 0 ? `${hours}:` : ``}${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
-
-      return castomTime;
+      return getTimeForVideoPlayer(time);
     }
 
     _playOnKeydownHandler(evt) {
-      if (evt.code === KEY_NAME.SPACE) {
-        this.playHandler();
+      if (evt.keyCode === KEY_CODE.SPACE) {
+        this.onPlayHandler();
       }
     }
 
@@ -114,7 +108,6 @@ const withFullVideoPlayer = (Component) => {
       };
 
       window.addEventListener(`keydown`, this._playOnKeydownHandler);
-      this.playHandler();
     }
 
     componentDidUpdate() {
@@ -143,14 +136,14 @@ const withFullVideoPlayer = (Component) => {
     onPrgressBarHandler(evt) {
       const clientX = evt.clientX;
       const boundingClientRect = evt.target.getBoundingClientRect();
-      const positionInPx = clientX - boundingClientRect.x;
+      const positionInPx = clientX - boundingClientRect.left;
       const positionInPercent = (positionInPx / boundingClientRect.width) * 100;
       const newTime = this.state.duration * positionInPercent / 100;
 
       this.videoRef.current.currentTime = newTime;
     }
 
-    drugTogglerHandler(evt) {
+    onDrugTogglerHandler(evt) {
       event.preventDefault();
 
       const container = this.containerRef.current;
@@ -190,14 +183,24 @@ const withFullVideoPlayer = (Component) => {
       window.addEventListener(`mouseup`, onMouseUp);
     }
 
-    playHandler() {
+    onPlayHandler() {
       this.setState((prevState) => ({
         isPlaying: !prevState.isPlaying
       }));
     }
 
-    toggleFullscreenHandler() {
-      this.videoRef.current.requestFullscreen();
+    onToggleFullscreenHandler() {
+      const video = this.videoRef.current;
+
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) {
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
     }
 
     render() {
@@ -208,17 +211,18 @@ const withFullVideoPlayer = (Component) => {
           isPlaying={this.state.isPlaying}
           timeProgress={this.state.timeProgress}
           positionProgress={this.state.positionProgress}
-          drugTogglerHandler={this.drugTogglerHandler}
-          toggleFullscreen={this.toggleFullscreenHandler}
+          onDrugTogglerHandler={this.onDrugTogglerHandler}
+          onToggleFullscreen={this.onToggleFullscreenHandler}
           containerRef={this.containerRef}
           togglerRef={this.togglerRef}
-          playHandler={this.playHandler}
+          onPlayHandler={this.onPlayHandler}
           isShowConrollerBar={this.state.isShowConrollerBar}
           renderVideo={() => {
             return (
               <video
+                autoPlay={true}
                 ref={this.videoRef}
-                onClick={this.playHandler}
+                onClick={this.onPlayHandler}
                 className="player__video"
                 muted={Settings.muted}
                 width={Settings.width}

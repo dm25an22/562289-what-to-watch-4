@@ -1,5 +1,5 @@
 import React from 'react';
-import {ALL_GENRE} from '../../utils';
+import {ALL_GENRE} from '../../constans';
 
 const withCurrentGenre = (Component) => {
   class WithCurrentGenre extends React.PureComponent {

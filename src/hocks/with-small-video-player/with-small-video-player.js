@@ -1,16 +1,15 @@
 import React, {createRef} from 'react';
 import PropTypes from "prop-types";
 
+const DELAY = 800;
+
 const Settings = {
   className: `player__video`,
   loop: true,
-  muted: true,
   width: `280px`,
   height: `175px`,
   autoPlay: true
 };
-
-const delay = 600;
 
 const withSmallVideoPlayer = (Component) => {
   class WithSmallVideoPlayer extends React.PureComponent {
@@ -20,30 +19,39 @@ const withSmallVideoPlayer = (Component) => {
       this._videoRef = createRef();
 
       this.state = {
-        timeoutId: null
+        timeoutId: null,
+        isPlaying: false
       };
 
-      this.startPlayHandler = this.startPlayHandler.bind(this);
-      this.stopPlayHandler = this.stopPlayHandler.bind(this);
+      this.onStartPlayHandler = this.onStartPlayHandler.bind(this);
+      this.onStopPlayHandler = this.onStopPlayHandler.bind(this);
     }
 
-    _changeIsPlaingState(bool) {
-      this.setState({isPlaying: bool});
-    }
+    onStartPlayHandler() {
+      const video = this._videoRef.current;
+      video.src = this.props.film.preview;
+      video.muted = true;
 
-    startPlayHandler() {
       const timeoutId = setTimeout(() => {
-        this._videoRef.current.src = this.props.film.preview;
-        this._videoRef.current.play();
-      }, delay);
+        if (!this.state.isPlaying && video.paused) {
+          video.play();
+          this.setState({isPlaying: true});
+        }
+      }, DELAY);
 
       this.setState({timeoutId});
     }
 
+    onStopPlayHandler() {
+      const video = this._videoRef.current;
 
-    stopPlayHandler() {
-      this._videoRef.current.pause();
-      this._videoRef.current.src = ``;
+      if (this.state.isPlaying && !video.paused) {
+        video.pause();
+      }
+
+      this.setState({isPlaying: false});
+      video.src = ``;
+
       clearTimeout(this.state.timeoutId);
     }
 
@@ -51,14 +59,13 @@ const withSmallVideoPlayer = (Component) => {
       return (
         <Component
           {...this.props}
-          startPlayHandler={this.startPlayHandler}
-          stopPlayHandler={this.stopPlayHandler}
+          onStartPlayHandler={this.onStartPlayHandler}
+          onStopPlayHandler={this.onStopPlayHandler}
           renderVideoPlayer={() => (
             <video
               poster={this.props.film.smallCardImg}
               height={Settings.height}
               width={Settings.width}
-              muted={Settings.muted}
               loop={Settings.loop}
               className={Settings.className}
               ref={this._videoRef}
@@ -73,7 +80,8 @@ const withSmallVideoPlayer = (Component) => {
   WithSmallVideoPlayer.propTypes = {
     film: PropTypes.shape({
       smallCardImg: PropTypes.string,
-      videoLink: PropTypes.string
+      videoLink: PropTypes.string,
+      preview: PropTypes.string
     }).isRequired
   };
 

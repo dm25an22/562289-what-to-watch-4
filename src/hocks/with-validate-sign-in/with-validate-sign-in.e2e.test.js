@@ -31,8 +31,8 @@ it(`check with invalid email, form not send`, () => {
       />
   );
 
-  tree.props().getLoginValue(`123`);
-  tree.props().handleSubmit();
+  tree.props().onGetLoginValue(`123`);
+  tree.props().onHandleSubmit();
 
   expect(tree.state().loginClass).toEqual(CLASS_NAME_FIELDS.ERROR);
   expect(tree.props().invalidLogin).toEqual(true);
@@ -47,9 +47,9 @@ it(`check with invalid password, form not send`, () => {
       />
   );
 
-  tree.props().getLoginValue(`max@gmail.com`);
-  tree.props().getPasswordValue(``);
-  tree.props().handleSubmit();
+  tree.props().onGetLoginValue(`max@gmail.com`);
+  tree.props().onGetPasswordValue(``);
+  tree.props().onHandleSubmit();
 
   expect(tree.props().invalidLogin).toEqual(false);
   expect(tree.state().passwordClass).toEqual(CLASS_NAME_FIELDS.ERROR);
@@ -67,9 +67,9 @@ it(`check sent form with valid data`, () => {
       />
   );
 
-  tree.props().getLoginValue(`max@gmail.com`);
-  tree.props().getPasswordValue(`123`);
-  tree.props().handleSubmit();
+  tree.props().onGetLoginValue(`max@gmail.com`);
+  tree.props().onGetPasswordValue(`123`);
+  tree.props().onHandleSubmit();
 
   expect(onSubmit).toHaveBeenCalledTimes(1);
 });

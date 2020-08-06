@@ -2,21 +2,29 @@ import React from "react";
 import PropTypes from "prop-types";
 import Footer from "../footer/footer.jsx";
 import Logo from "../logo/logo.jsx";
-
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {APP_ROUTE} from "../../constans.js";
+import {history} from "../../history.js";
 
 class SignIn extends React.PureComponent {
+  componentDidMount() {
+    if (this.props.authStatus === AuthorizationStatus.AUTH) {
+      history.push(APP_ROUTE.ROOT);
+    }
+  }
+
   render() {
     const {
-      handleSubmit,
+      onHandleSubmit,
       loginClass,
       passwordClass,
-      resetLoginClassName,
-      resetPasswordClassName,
+      onResetLoginClassName,
+      onResetPasswordClassName,
       invalidLogin,
       badRequest,
       invalidPassword,
-      getLoginValue,
-      getPasswordValue
+      onGetLoginValue,
+      onGetPasswordValue,
     } = this.props;
 
     return (
@@ -31,7 +39,7 @@ class SignIn extends React.PureComponent {
           <form
             onSubmit={(evt) => {
               evt.preventDefault();
-              handleSubmit();
+              onHandleSubmit();
             }}
             action="#"
             className="sign-in__form"
@@ -47,9 +55,9 @@ class SignIn extends React.PureComponent {
             <div className="sign-in__fields">
               <div className={loginClass}>
                 <input
-                  onFocus={resetLoginClassName}
+                  onFocus={onResetLoginClassName}
                   onChange={(evt) => {
-                    getLoginValue(evt.target.value);
+                    onGetLoginValue(evt.target.value);
                   }}
                   className="sign-in__input"
                   type="email"
@@ -61,9 +69,9 @@ class SignIn extends React.PureComponent {
               </div>
               <div className={passwordClass}>
                 <input
-                  onFocus={resetPasswordClassName}
+                  onFocus={onResetPasswordClassName}
                   onChange={(evt) => {
-                    getPasswordValue(evt.target.value);
+                    onGetPasswordValue(evt.target.value);
                   }}
                   className="sign-in__input"
                   type="password"
@@ -87,16 +95,17 @@ class SignIn extends React.PureComponent {
 }
 
 SignIn.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
+  onHandleSubmit: PropTypes.func.isRequired,
   loginClass: PropTypes.string.isRequired,
   passwordClass: PropTypes.string.isRequired,
-  resetLoginClassName: PropTypes.func.isRequired,
-  resetPasswordClassName: PropTypes.func.isRequired,
+  onResetLoginClassName: PropTypes.func.isRequired,
+  onResetPasswordClassName: PropTypes.func.isRequired,
   invalidLogin: PropTypes.bool.isRequired,
   badRequest: PropTypes.bool.isRequired,
   invalidPassword: PropTypes.bool.isRequired,
-  getLoginValue: PropTypes.func.isRequired,
-  getPasswordValue: PropTypes.func.isRequired
+  onGetLoginValue: PropTypes.func.isRequired,
+  onGetPasswordValue: PropTypes.func.isRequired,
+  authStatus: PropTypes.string.isRequired
 };
 
 export default SignIn;

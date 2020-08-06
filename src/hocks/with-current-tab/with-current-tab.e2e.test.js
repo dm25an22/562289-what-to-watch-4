@@ -24,7 +24,7 @@ it(`return correctly tab "Details`, () => {
       <MockComponentWrapped />
   );
 
-  tree.props().clickOnTab(TabName.DETAILS);
+  tree.props().onClickTab(TabName.DETAILS);
   expect(tree.props().currentTab).toEqual(TabName.DETAILS);
 });
 
@@ -33,6 +33,6 @@ it(`return correctly tab "Reviews`, () => {
       <MockComponentWrapped />
   );
 
-  tree.props().clickOnTab(TabName.REVIEWS);
+  tree.props().onClickTab(TabName.REVIEWS);
   expect(tree.props().currentTab).toEqual(TabName.REVIEWS);
 });

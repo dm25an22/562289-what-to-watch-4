@@ -11,13 +11,13 @@ it(`render VideoFullScreen with controlls bar and play state`, () => {
         timeProgress={`0.00`}
         positionProgress={0}
         renderVideo={() => {}}
-        toggleFullscreen={() => {}}
+        onToggleFullscreen={() => {}}
         onPrgressBarHandler={() => {}}
-        drugTogglerHandler={() => {}}
+        onDrugTogglerHandler={() => {}}
         containerRef={React.createRef()}
         togglerRef={React.createRef()}
         isShowConrollerBar={true}
-        playHandler={() => {}}
+        onPlayHandler={() => {}}
       />
   ).toJSON();
 
@@ -32,13 +32,13 @@ it(`render VideoFullScreen without controlls bar`, () => {
         timeProgress={`0.00`}
         positionProgress={0}
         renderVideo={() => {}}
-        toggleFullscreen={() => {}}
+        onToggleFullscreen={() => {}}
         onPrgressBarHandler={() => {}}
-        drugTogglerHandler={() => {}}
+        onDrugTogglerHandler={() => {}}
         containerRef={React.createRef()}
         togglerRef={React.createRef()}
         isShowConrollerBar={false}
-        playHandler={() => {}}
+        onPlayHandler={() => {}}
       />
   ).toJSON();
 
@@ -53,13 +53,13 @@ it(`render VideoFullScreen with pause state`, () => {
         timeProgress={`0.00`}
         positionProgress={0}
         renderVideo={() => {}}
-        toggleFullscreen={() => {}}
+        onToggleFullscreen={() => {}}
         onPrgressBarHandler={() => {}}
-        drugTogglerHandler={() => {}}
+        onDrugTogglerHandler={() => {}}
         containerRef={React.createRef()}
         togglerRef={React.createRef()}
         isShowConrollerBar={true}
-        playHandler={() => {}}
+        onPlayHandler={() => {}}
       />
   ).toJSON();
 
@@ -74,13 +74,13 @@ it(`render VideoFullScreen with 50% progress`, () => {
         timeProgress={`12:40`}
         positionProgress={50}
         renderVideo={() => {}}
-        toggleFullscreen={() => {}}
+        onToggleFullscreen={() => {}}
         onPrgressBarHandler={() => {}}
-        drugTogglerHandler={() => {}}
+        onDrugTogglerHandler={() => {}}
         containerRef={React.createRef()}
         togglerRef={React.createRef()}
         isShowConrollerBar={true}
-        playHandler={() => {}}
+        onPlayHandler={() => {}}
       />
   ).toJSON();
 

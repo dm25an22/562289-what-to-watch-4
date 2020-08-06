@@ -9,7 +9,7 @@ describe(`MovieNav`, () => {
     const tree = shallow(
         <MovieNav
           currentTab={`Overview`}
-          clickOnTab={clickOnTab}
+          onClickTab={clickOnTab}
         />
     );
 
@@ -25,7 +25,7 @@ describe(`MovieNav`, () => {
     const tree = shallow(
         <MovieNav
           currentTab={`Overview`}
-          clickOnTab={clickOnTab}
+          onClickTab={clickOnTab}
         />
     );
 

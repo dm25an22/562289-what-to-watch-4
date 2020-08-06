@@ -1,9 +1,14 @@
 import React from "react";
-import {TabName} from "../../consts";
 import OverviewInfo from "../../components/overview-info/overview-info.jsx";
 import DetailsInfo from "../../components/details-info/details-info.jsx";
 import ReviewsInfo from "../../components/reviews-info/reviews-info.jsx";
 import withLoadStatus from "../with-load-status/with-load-status";
+
+export const TabName = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`
+};
 
 const ReviewsInfoWrraped = withLoadStatus(ReviewsInfo);
 
@@ -16,11 +21,11 @@ const withCurrentTab = (Component) => {
         currentTab: TabName.OVERVIEW
       };
 
-      this.clickOnTab = this.clickOnTab.bind(this);
+      this.onClickTab = this.onClickTab.bind(this);
       this.renderCurrentInfo = this.renderCurrentInfo.bind(this);
     }
 
-    clickOnTab(tabName) {
+    onClickTab(tabName) {
       this.setState({
         currentTab: tabName
       });
@@ -46,7 +51,7 @@ const withCurrentTab = (Component) => {
         <Component
           {...this.props}
           currentTab={this.state.currentTab}
-          clickOnTab={this.clickOnTab}
+          onClickTab={this.onClickTab}
           renderCurrentInfo={this.renderCurrentInfo}
         />
       );

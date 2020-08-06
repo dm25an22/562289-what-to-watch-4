@@ -9,7 +9,7 @@ it(`render MovieCardInfo component with active tab "Overview"`, () => {
         film={mockFilms[1]}
         renderCurrentInfo={() => {}}
         currentTab={`Overview`}
-        clickOnTab={() => {}}
+        onClickTab={() => {}}
       />
   ).toJSON();
 
@@ -22,7 +22,7 @@ it(`render MovieCardInfo component with active tab "Details"`, () => {
         film={mockFilms[1]}
         renderCurrentInfo={() => {}}
         currentTab={`Details`}
-        clickOnTab={() => {}}
+        onClickTab={() => {}}
       />
   ).toJSON();
 
@@ -35,7 +35,7 @@ it(`render MovieCardInfo component with active tab "Reviews"`, () => {
         film={mockFilms[1]}
         renderCurrentInfo={() => {}}
         currentTab={`Reviews`}
-        clickOnTab={() => {}}
+        onClickTab={() => {}}
       />
   ).toJSON();
 

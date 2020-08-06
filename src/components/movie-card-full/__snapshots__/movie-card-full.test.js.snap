@@ -136,7 +136,7 @@ exports[`render MovieCardFull component with buttonAddReview 1`] = `
           </button>
           <a
             className="btn movie-card__button"
-            href="/film/1/add-review"
+            href="/film/1/review"
             onClick={[Function]}
           >
             Add review

@@ -6,7 +6,7 @@ describe(`SmallMovieCard`, () => {
   it(`mouseEnter on the card and change isPlaing on true `, () => {
     const film = mockFilms[1];
     let isPlaing = false;
-    const startPlayHandler = jest.fn(() => {
+    const onStartPlayHandler = jest.fn(() => {
       isPlaing = true;
     });
 
@@ -15,8 +15,8 @@ describe(`SmallMovieCard`, () => {
           film={film}
           index={1}
           renderVideoPlayer={() => {}}
-          startPlayHandler={startPlayHandler}
-          stopPlayHandler={() => {}}
+          onStartPlayHandler={onStartPlayHandler}
+          onStopPlayHandler={() => {}}
           isPlaing={isPlaing}
         />
     );
@@ -24,14 +24,14 @@ describe(`SmallMovieCard`, () => {
     const card = tree.find(`article`);
     card.props().onMouseEnter();
 
-    expect(startPlayHandler).toHaveBeenCalledTimes(1);
+    expect(onStartPlayHandler).toHaveBeenCalledTimes(1);
     expect(isPlaing).toBeTruthy();
   });
 
   it(`mouseLeave from the card and change isPlaing on false `, () => {
     const film = mockFilms[1];
     let isPlaing = true;
-    const stopPlayHandler = jest.fn(() => {
+    const onStopPlayHandler = jest.fn(() => {
       isPlaing = false;
     });
 
@@ -40,8 +40,8 @@ describe(`SmallMovieCard`, () => {
           film={film}
           index={1}
           renderVideoPlayer={() => {}}
-          startPlayHandler={() => {}}
-          stopPlayHandler={stopPlayHandler}
+          onStartPlayHandler={() => {}}
+          onStopPlayHandler={onStopPlayHandler}
           isPlaing={isPlaing}
         />
     );
@@ -49,7 +49,7 @@ describe(`SmallMovieCard`, () => {
     const card = tree.find(`article`);
     card.props().onMouseLeave();
 
-    expect(stopPlayHandler).toHaveBeenCalledTimes(1);
+    expect(onStopPlayHandler).toHaveBeenCalledTimes(1);
     expect(isPlaing).toBeFalsy();
   });
 

@@ -1,7 +1,6 @@
 import React from "react";
 import PropsTypes from "prop-types";
 
-
 const Genre = ({genre, onGenreClick, active}) => {
   const className = `catalog__genres-item ${active && `catalog__genres-item--active`}`;
 
