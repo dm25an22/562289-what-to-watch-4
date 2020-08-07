@@ -16,7 +16,6 @@ const AuthorizationStatus = {
   AUTH: `AUTH`
 };
 
-
 it(`render AddReview component`, () => {
   const store = mockStore({
     [NameSpace.USER]: {

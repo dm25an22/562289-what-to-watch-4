@@ -175,6 +175,28 @@ it(`Should make a correct API call to /comments/id  add New Comment`, function (
     });
 });
 
+it(`Should make a correct API call to /comments/id  add New Comment`, function () {
+  const apiMock = new MockAdapter(api);
+  const onSuccess = jest.fn();
+  const onError = jest.fn();
+  const newComment = {
+    rating: 4,
+    comment: `Something`
+  };
+  const dispatch = jest.fn();
+  const id = 1;
+  const addNewComment = Operation.addNewComment(id, newComment, onSuccess, onError);
+
+  apiMock
+    .onPost(`/comments/${id}`)
+    .reply(200, []);
+
+  return addNewComment(dispatch, () => {}, api)
+    .then(() => {
+      expect(onSuccess).toHaveBeenCalledTimes(1);
+    });
+});
+
 it(`Should make a correct API call to /favorite `, function () {
   const apiMock = new MockAdapter(api);
   const dispatch = jest.fn();

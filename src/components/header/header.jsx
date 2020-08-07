@@ -8,7 +8,6 @@ import {AppRoute} from "../../enum";
 import {history} from "../../history";
 import Logo from "../logo/logo.jsx";
 
-
 const getMarkupByStatus = (authStatus, userData) => {
   if (authStatus === AuthorizationStatus.AUTH) {
     return (
