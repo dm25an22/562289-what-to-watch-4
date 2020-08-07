@@ -13,7 +13,6 @@ const containerStyle = {
   alignItems: `center`
 };
 
-
 const PageWarring = ({children}) => {
   return (
     <div style={containerStyle}>

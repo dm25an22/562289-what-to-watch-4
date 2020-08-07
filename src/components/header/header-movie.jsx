@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./header.jsx";
 import PropTypes from "prop-types";
 
-
 const HeaderMovie = (props) => {
   const className = `movie-card__head`;
   delete props.className;

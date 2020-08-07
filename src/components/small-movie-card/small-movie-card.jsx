@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {APP_ROUTE} from "../../constans";
+import {AppRoute} from "../../enum";
 import {history} from "../../history";
+
 class SmallMovieCard extends React.PureComponent {
   render() {
     const {
@@ -17,7 +18,7 @@ class SmallMovieCard extends React.PureComponent {
     return (
       <article
         onClick={() => {
-          history.push(`${APP_ROUTE.FILM}/${id}`);
+          history.push(`${AppRoute.FILM}/${id}`);
           onStopPlayHandler();
         }}
         onMouseEnter={onStartPlayHandler}
@@ -28,7 +29,7 @@ class SmallMovieCard extends React.PureComponent {
         </div>
         <h3 className="small-movie-card__title">
           <Link
-            to={`${APP_ROUTE.FILM}/${id}`}
+            to={`${AppRoute.FILM}/${id}`}
             className="small-movie-card__link"
             onClick={() => {
               onStopPlayHandler();

@@ -8,7 +8,6 @@ import {getFavorites} from "../../reducer/data/selectors.js";
 import {getAuthStatus} from "../../reducer/user/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data";
 
-
 const ButtonMyListWrraped = withFavorite(ButtonMyList);
 
 const MovieCardDescription = ({film, children, authStatus, favoriteList, onMyListBtnClick}) => {

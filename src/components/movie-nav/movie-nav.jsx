@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {TabName} from "../../hocks/with-current-tab/with-current-tab";
+import {TabName} from "../../enum.js";
 
 const MovieNav = ({currentTab, onClickTab}) => {
   return (

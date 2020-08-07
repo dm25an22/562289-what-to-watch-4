@@ -4,7 +4,7 @@ import {Route, Redirect} from "react-router-dom";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {getAuthStatus} from "../../reducer/user/selectors";
 import {connect} from "react-redux";
-import {APP_ROUTE} from "../../constans";
+import {AppRoute} from "../../enum";
 
 const PrivateRoute = ({exact, path, authStatus, render}) => {
   return (
@@ -15,7 +15,7 @@ const PrivateRoute = ({exact, path, authStatus, render}) => {
         return (
           AuthorizationStatus.AUTH === authStatus
             ? render(props)
-            : <Redirect to={APP_ROUTE.LOGIN} />
+            : <Redirect to={AppRoute.LOGIN} />
         );
       }}
     />

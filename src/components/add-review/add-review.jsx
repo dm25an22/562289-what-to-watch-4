@@ -2,7 +2,7 @@ import React, {createRef} from 'react';
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import {Link} from 'react-router-dom';
-import {APP_ROUTE} from '../../constans.js';
+import {AppRoute} from '../../enum.js';
 import {history} from '../../history.js';
 import {convertColor} from "../../utils";
 
@@ -36,7 +36,7 @@ class AddReview extends React.PureComponent {
 
   onSuccess() {
     this._disabledForm(false);
-    history.push(`${APP_ROUTE.FILM}/${this.props.film.id}`);
+    history.push(`${AppRoute.FILM}/${this.props.film.id}`);
   }
 
   onError() {
@@ -85,7 +85,7 @@ class AddReview extends React.PureComponent {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <Link to={`${APP_ROUTE.FILM}/${id}`} className="breadcrumbs__link">{title}</Link>
+                  <Link to={`${AppRoute.FILM}/${id}`} className="breadcrumbs__link">{title}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>

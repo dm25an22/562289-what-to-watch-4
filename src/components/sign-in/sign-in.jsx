@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import Footer from "../footer/footer.jsx";
 import Logo from "../logo/logo.jsx";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {APP_ROUTE} from "../../constans.js";
+import {AppRoute} from "../../enum.js";
 import {history} from "../../history.js";
 
 class SignIn extends React.PureComponent {
   componentDidMount() {
     if (this.props.authStatus === AuthorizationStatus.AUTH) {
-      history.push(APP_ROUTE.ROOT);
+      history.push(AppRoute.ROOT);
     }
   }
 

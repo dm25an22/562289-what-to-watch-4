@@ -2,7 +2,7 @@ import {extend} from "../../utils";
 import {getAdaptedUserData} from "../../adapter";
 import {Operation as DataOperation} from "../data/data";
 
-const STATUS_CODE = {
+const StatusCode = {
   badRequest: 400
 };
 
@@ -66,7 +66,7 @@ const Operation = {
         onSuccess();
       })
       .catch((err) => {
-        if (err.response.status === STATUS_CODE.badRequest) {
+        if (err.response.status === StatusCode.badRequest) {
           onError();
         }
       });

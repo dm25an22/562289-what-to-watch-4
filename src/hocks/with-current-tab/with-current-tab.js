@@ -3,12 +3,7 @@ import OverviewInfo from "../../components/overview-info/overview-info.jsx";
 import DetailsInfo from "../../components/details-info/details-info.jsx";
 import ReviewsInfo from "../../components/reviews-info/reviews-info.jsx";
 import withLoadStatus from "../with-load-status/with-load-status";
-
-export const TabName = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`
-};
+import {TabName} from "../../enum.js";
 
 const ReviewsInfoWrraped = withLoadStatus(ReviewsInfo);
 

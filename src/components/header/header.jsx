@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {getAuthStatus, getUserData} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
-import {APP_ROUTE} from "../../constans";
+import {AppRoute} from "../../enum";
 import {history} from "../../history";
 import Logo from "../logo/logo.jsx";
 
@@ -13,7 +13,7 @@ const getMarkupByStatus = (authStatus, userData) => {
   if (authStatus === AuthorizationStatus.AUTH) {
     return (
       <div onClick={() => {
-        history.push(APP_ROUTE.MY_LIST);
+        history.push(AppRoute.MY_LIST);
       }}
       className="user-block__avatar">
         <img src={userData.avatarUrl !== null ? `https://htmlacademy-react-3.appspot.com${userData.avatarUrl}` : ``} alt="User avatar" width="63" height="63" />
@@ -21,7 +21,7 @@ const getMarkupByStatus = (authStatus, userData) => {
     );
   } else {
     return (
-      <Link to={APP_ROUTE.LOGIN} className="user-block__link">Sign in</Link>
+      <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>
     );
   }
 };
@@ -34,7 +34,6 @@ const Header = ({className, authStatus, children, userData}) => {
       <div className="user-block">
         {getMarkupByStatus(authStatus, userData)}
       </div>
-
     </header>
   );
 };

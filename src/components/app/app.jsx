@@ -9,7 +9,7 @@ import {getAuthStatus, getUserData} from "../../reducer/user/selectors";
 import SignIn from "../sign-in/sign-in.jsx";
 import {Operation as UserOperation} from "../../reducer/user/user";
 import {Operation as DataOperation} from "../../reducer/data/data";
-import {APP_ROUTE} from "../../constans";
+import {AppRoute} from "../../enum";
 import {history} from "../../history";
 import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js";
 import MyList from "../my-list/my-list.jsx";
@@ -40,7 +40,7 @@ const App = (props) => {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path={APP_ROUTE.ROOT}
+        <Route exact path={AppRoute.ROOT}
           render={() => (
             <Main
               promoFilm={promoFilm}
@@ -50,7 +50,7 @@ const App = (props) => {
           )}
         >
         </Route>
-        <Route exact path={APP_ROUTE.LOGIN}
+        <Route exact path={AppRoute.LOGIN}
           render={() => (
             <SignInWrraped
               authStatus={authStatus}
@@ -59,7 +59,7 @@ const App = (props) => {
           )}
         >
         </Route>
-        <Route exact path={`${APP_ROUTE.FILM}/:id`}
+        <Route exact path={`${AppRoute.FILM}/:id`}
           render={(propsComponent) => (
             <MovieDetailsWrraped
               {...propsComponent}
@@ -71,7 +71,7 @@ const App = (props) => {
         </Route>
         <PrivateRoute
           exact
-          path={APP_ROUTE.MY_LIST}
+          path={AppRoute.MY_LIST}
           render={() => {
             return (
               <MyList />
@@ -80,7 +80,7 @@ const App = (props) => {
         />
         <PrivateRoute
           exact
-          path={`${APP_ROUTE.FILM}/:id${APP_ROUTE.ADD_REVIEW}`}
+          path={`${AppRoute.FILM}/:id${AppRoute.ADD_REVIEW}`}
           render={(propsComponent) => {
             return (
               <AddReviewWrraped
@@ -91,7 +91,7 @@ const App = (props) => {
             );
           }}
         />
-        <Route exact path={`${APP_ROUTE.PLAYER}/:id`}
+        <Route exact path={`${AppRoute.PLAYER}/:id`}
           render={(propsComponent) => (
             <VideoFullScreenWrraped
               {...propsComponent}
