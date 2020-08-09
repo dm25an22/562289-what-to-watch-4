@@ -112,16 +112,30 @@ const withFullVideoPlayer = (Component) => {
 
     componentDidUpdate() {
       const video = this.videoRef.current;
+
       if (this.state.isPlaying) {
-        video.play();
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+          .catch(() => {
+          });
+        }
       } else {
-        video.pause();
+        const pausePromis = video.pause();
+
+        if (pausePromis !== undefined) {
+          pausePromis
+          .catch(() => {
+          });
+        }
       }
     }
 
     componentWillUnmount() {
       const video = this.videoRef.current;
 
+      video.currentTime = null;
       video.ondurationchange = null;
       video.onplay = null;
       video.onpause = null;
@@ -146,11 +160,17 @@ const withFullVideoPlayer = (Component) => {
     onDrugTogglerHandler(evt) {
       event.preventDefault();
 
+      const isPlayingStartState = this.state.isPlaying;
+
       const container = this.containerRef.current;
       const toggler = this.togglerRef.current;
       const video = this.videoRef.current;
 
       const shiftX = evt.clientX - toggler.getBoundingClientRect().left;
+
+      if (isPlayingStartState) {
+        this.onPlayHandler();
+      }
 
       const onMouseMove = (e) => {
         let newLeft = e.clientX - shiftX - container.getBoundingClientRect().left;
@@ -175,6 +195,9 @@ const withFullVideoPlayer = (Component) => {
       };
 
       const onMouseUp = () => {
+        if (isPlayingStartState) {
+          this.onPlayHandler();
+        }
         window.removeEventListener(`mouseup`, onMouseUp);
         window.removeEventListener(`mousemove`, onMouseMove);
       };
@@ -231,7 +254,6 @@ const withFullVideoPlayer = (Component) => {
             );
           }}
         >
-
         </Component>
       );
     }

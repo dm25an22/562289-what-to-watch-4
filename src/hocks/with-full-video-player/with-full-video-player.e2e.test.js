@@ -44,6 +44,7 @@ it(`test withFullVideoPlayer click on player__play work corectly `, () => {
   tree.instance().componentDidMount();
 
   tree.find(`#player__play`).simulate(`click`);
+
   expect(tree.instance().state.isPlaying).toBeFalsy();
 
   tree.find(`#player__play`).simulate(`click`);
