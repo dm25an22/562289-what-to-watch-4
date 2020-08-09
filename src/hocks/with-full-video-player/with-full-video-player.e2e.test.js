@@ -21,11 +21,11 @@ MockComponent.propTypes = {
 const MockComponentwrraped = withFullVideoPlayer(MockComponent);
 
 jest.spyOn(window.HTMLMediaElement.prototype, `play`)
-  .mockImplementation(() => null);
+  .mockImplementation(() => Promise.reject(jest.fn()));
 
 jest
   .spyOn(window.HTMLMediaElement.prototype, `pause`)
-  .mockImplementation(() => null);
+  .mockImplementation(() => Promise.reject(jest.fn()));
 
 it(`test withFullVideoPlayer start play when componentDidMount`, () => {
   const tree = mount(
