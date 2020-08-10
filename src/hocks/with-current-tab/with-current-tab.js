@@ -1,7 +1,7 @@
 import React from "react";
-import OverviewInfo from "../../components/overview-info/overview-info.jsx";
-import DetailsInfo from "../../components/details-info/details-info.jsx";
-import ReviewsInfo from "../../components/reviews-info/reviews-info.jsx";
+import OverviewInfo from "../../components/overview-info/overview-info";
+import DetailsInfo from "../../components/details-info/details-info";
+import ReviewsInfo from "../../components/reviews-info/reviews-info";
 import withLoadStatus from "../with-load-status/with-load-status";
 import {TabName} from "../../enum.js";
 

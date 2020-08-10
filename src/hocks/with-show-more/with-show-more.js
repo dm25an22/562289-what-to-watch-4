@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import LoadMoreButton from '../../components/load-more-button/load-more-button.jsx';
+import LoadMoreButton from '../../components/load-more-button/load-more-button';
 import {getFilmsByGener} from '../../utils';
 
 const START_SHOW_CARDS = 8;
