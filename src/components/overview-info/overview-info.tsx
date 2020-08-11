@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {getRatingWithComma, getDescriptionRating} from "../../utils";
 import {filmType} from "../../types";
 

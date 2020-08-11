@@ -1,6 +1,5 @@
 import * as React from "react";
 import Header from "./header";
-import PropTypes from "prop-types";
 
 interface Props {
   className?: string

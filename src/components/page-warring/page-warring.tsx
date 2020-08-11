@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 
 const containerStyle: React.CSSProperties = {
   width: `100vw`,

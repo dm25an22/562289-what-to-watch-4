@@ -2,7 +2,7 @@ import * as React from "react";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../enum";
 import {history} from "../../history";
-import { filmType } from "../../types";
+import {filmType } from "../../types";
 
 interface Props {
   renderVideoPlayer: () => React.ReactNode,
