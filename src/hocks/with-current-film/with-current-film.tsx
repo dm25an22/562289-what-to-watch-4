@@ -1,8 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {Subtract} from "utility-types";
+import {filmType} from "../../types";
+
+interface InjectingProps {
+  film: filmType
+}
 
 const withCurrentFilm = (Component) => {
-  class WithCurrentFilm extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithCurrentFilm extends React.PureComponent<T> {
 
     _getCurrentFilm(films, id) {
       return films.find((film) => film.id === Number(id));
@@ -19,11 +27,6 @@ const withCurrentFilm = (Component) => {
       );
     }
   }
-
-  WithCurrentFilm.propTypes = {
-    films: PropTypes.arrayOf(PropTypes.object).isRequired,
-    match: PropTypes.object.isRequired
-  };
 
   return WithCurrentFilm;
 };

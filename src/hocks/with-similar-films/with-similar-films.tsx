@@ -1,11 +1,20 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import * as React from 'react';
 import {getFilmsByGener} from '../../utils';
+import {Subtract} from 'utility-types';
+import {filmType} from '../../types';
 
 const MAX_FILIMS_IN_SIMILAR = 4;
 
+
+interface InjectingProps {
+  filmsByFilter: filmType[]
+}
+
 const withSimilarFilms = (Component) => {
-  class WithSimilarFilms extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithSimilarFilms extends React.PureComponent<T> {
 
     _getUniqueList() {
       const {films, genre} = this.props;
@@ -27,12 +36,6 @@ const withSimilarFilms = (Component) => {
       );
     }
   }
-
-  WithSimilarFilms.propTypes = {
-    films: PropTypes.arrayOf(PropTypes.object).isRequired,
-    genre: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
-  };
 
   return WithSimilarFilms;
 };

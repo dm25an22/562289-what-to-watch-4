@@ -1,5 +1,5 @@
-import React, {createRef} from 'react';
-import PropTypes from "prop-types";
+import * as React from 'react';
+import {Subtract} from 'utility-types';
 
 const DELAY = 800;
 
@@ -11,12 +11,28 @@ const Settings = {
   autoPlay: true
 };
 
+interface State {
+  timeoutId: any,
+  isPlaying: boolean
+}
+
+interface InjectingProps {
+  onStartPlayHandler: () => void,
+  onStopPlayHandler: () => void,
+  renderVideoPlayer: () => React.ReactNode
+}
+
 const withSmallVideoPlayer = (Component) => {
-  class WithSmallVideoPlayer extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithSmallVideoPlayer extends React.PureComponent<T, State> {
+    private videoRef: React.RefObject<HTMLVideoElement>
+
     constructor(props) {
       super(props);
 
-      this._videoRef = createRef();
+      this.videoRef = React.createRef();
 
       this.state = {
         timeoutId: null,
@@ -28,7 +44,7 @@ const withSmallVideoPlayer = (Component) => {
     }
 
     onStartPlayHandler() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
       video.src = this.props.film.preview;
       video.muted = true;
 
@@ -43,7 +59,7 @@ const withSmallVideoPlayer = (Component) => {
     }
 
     onStopPlayHandler() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       if (this.state.isPlaying && !video.paused) {
         video.pause();
@@ -68,7 +84,7 @@ const withSmallVideoPlayer = (Component) => {
               width={Settings.width}
               loop={Settings.loop}
               className={Settings.className}
-              ref={this._videoRef}
+              ref={this.videoRef}
             />
           )}
         />
@@ -76,14 +92,6 @@ const withSmallVideoPlayer = (Component) => {
     }
 
   }
-
-  WithSmallVideoPlayer.propTypes = {
-    film: PropTypes.shape({
-      smallCardImg: PropTypes.string,
-      videoLink: PropTypes.string,
-      preview: PropTypes.string
-    }).isRequired
-  };
 
   return WithSmallVideoPlayer;
 };

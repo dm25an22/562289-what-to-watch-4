@@ -10,7 +10,7 @@ import {Operation as UserOperation} from "../../reducer/user/user";
 import {Operation as DataOperation} from "../../reducer/data/data";
 import {AppRoute} from "../../enum";
 import {history} from "../../history";
-import withCurrentFilm from "../../hocks/with-current-film/with-current-film.js";
+import withCurrentFilm from "../../hocks/with-current-film/with-current-film";
 import MyList from "../my-list/my-list";
 import AddReview from '../add-review/add-review';
 import withErrorStyle from "../../hocks/with-error-style/with-error-style";

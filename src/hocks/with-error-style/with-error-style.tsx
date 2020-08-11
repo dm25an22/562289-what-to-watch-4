@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import {Subtract} from "utility-types";
 
 const DELAY = 1700;
 const ERROR_STYLE = {
@@ -6,8 +7,21 @@ const ERROR_STYLE = {
   RED_BORDER: `1px solid red`
 };
 
+interface State {
+  errorStyle: string
+}
+
+interface InjectingProps {
+  showErrorStyle: () => void,
+  hideErrorStyle: () => void,
+  errorStyle: string
+}
+
 const withErrorStyle = (Component) => {
-  class WithErrorStyle extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithErrorStyle extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

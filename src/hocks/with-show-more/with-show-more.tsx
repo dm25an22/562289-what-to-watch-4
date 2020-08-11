@@ -1,13 +1,28 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import * as React from 'react';
 import LoadMoreButton from '../../components/load-more-button/load-more-button';
 import {getFilmsByGener} from '../../utils';
+import { Subtract } from 'utility-types';
+import {filmType} from '../../types';
 
 const START_SHOW_CARDS = 8;
 const SHOW_MORE_STEP = 8;
 
+interface State {
+  showCards: number,
+  films: filmType[]
+  showMoreBtn: boolean
+}
+
+interface InjectingProps {
+  filmsByFilter: filmType[],
+  children: React.ReactNode
+}
+
 const withShowMore = (Component) => {
-  class WithShowMore extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithShowMore extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -53,11 +68,6 @@ const withShowMore = (Component) => {
       );
     }
   }
-
-  WithShowMore.propTypes = {
-    films: PropTypes.arrayOf(PropTypes.object).isRequired,
-    genre: PropTypes.string.isRequired
-  };
 
   return WithShowMore;
 };

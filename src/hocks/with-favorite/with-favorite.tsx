@@ -1,8 +1,15 @@
-import React from "react";
-import PropTepes from "prop-types";
+import * as React from "react";
+import {Subtract} from "utility-types";
+
+interface InjectingProps {
+  status: number,
+}
 
 const withFavorite = (Component) => {
-  class WithFavorite extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithFavorite extends React.PureComponent<T> {
     _checkFilmInFavorite() {
       const {favoriteList, film} = this.props;
       const isFavorite = Boolean(favoriteList.find((it) => it.id === film.id));
@@ -10,25 +17,14 @@ const withFavorite = (Component) => {
     }
 
     render() {
-      const {
-        onMyListBtnClick
-      } = this.props;
-
       return (
         <Component
           {...this.props}
           status={this._checkFilmInFavorite()}
-          onMyListBtnClick={onMyListBtnClick}
         />
       );
     }
   }
-
-  WithFavorite.propTypes = {
-    favoriteList: PropTepes.array.isRequired,
-    film: PropTepes.object.isRequired,
-    onMyListBtnClick: PropTepes.func.isRequired
-  };
 
   return WithFavorite;
 };

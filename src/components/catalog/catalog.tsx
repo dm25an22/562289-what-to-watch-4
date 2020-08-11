@@ -1,7 +1,7 @@
 import * as React from "react";
 import GenresList from "../genres-list/genres-list";
 import MovieList from "../movie-list/movie-list";
-import withShowMore from "../../hocks/with-show-more/with-show-more.js";
+import withShowMore from "../../hocks/with-show-more/with-show-more";
 import {filmType} from "../../types";
 
 const MovieListWrraped = withShowMore(MovieList);

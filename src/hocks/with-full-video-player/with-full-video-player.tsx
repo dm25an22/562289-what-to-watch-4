@@ -1,6 +1,6 @@
-import React, {createRef} from 'react';
-import PropTypes from "prop-types";
+import * as React from 'react';
 import {getTimeForVideoPlayer} from '../../utils';
+import {Subtract} from 'utility-types';
 
 const KEY_CODE = {
   SPACE: 32
@@ -14,8 +14,39 @@ const Settings = {
   height: `100%`
 };
 
+interface State {
+  isPlaying: boolean,
+  timeProgress: string,
+  positionProgress: number,
+  duration: number,
+  isShowConrollerBar: boolean,
+  timeoutId: any
+}
+
+interface InjectingProps {
+  onPrgressBarHandler: () => void,
+  isPlaying: string,
+  timeProgress: string,
+  positionProgress: number,
+  onDrugTogglerHandler: () => void,
+  onToggleFullscreen: () => void,
+  containerRef: React.RefObject<HTMLDivElement>,
+  togglerRef: React.RefObject<HTMLDivElement>,
+  onPlayHandler: () => void,
+  isShowConrollerBar: boolean,
+  renderVideo: () => React.ReactNode,
+}
+
 const withFullVideoPlayer = (Component) => {
-  class WithFullVideoPlayer extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+
+  class WithFullVideoPlayer extends React.PureComponent<T, State> {
+    private videoRef: React.RefObject<HTMLVideoElement>;
+    public containerRef: React.RefObject<HTMLDivElement>
+    public togglerRef: React.RefObject<HTMLDivElement>
+
     constructor(props) {
       super(props);
 
@@ -28,9 +59,9 @@ const withFullVideoPlayer = (Component) => {
         timeoutId: null
       };
 
-      this.videoRef = createRef();
-      this.containerRef = createRef();
-      this.togglerRef = createRef();
+      this.videoRef = React.createRef();
+      this.containerRef = React.createRef();
+      this.togglerRef = React.createRef();
 
       this.onPlayHandler = this.onPlayHandler.bind(this);
       this.onToggleFullscreenHandler = this.onToggleFullscreenHandler.bind(this);
@@ -114,7 +145,7 @@ const withFullVideoPlayer = (Component) => {
       const video = this.videoRef.current;
 
       if (this.state.isPlaying) {
-        const playPromise = video.play();
+        const playPromise: any = video.play();
 
         if (playPromise !== undefined) {
           playPromise
@@ -122,7 +153,7 @@ const withFullVideoPlayer = (Component) => {
           });
         }
       } else {
-        const pausePromis = video.pause();
+        const pausePromis: any = video.pause();
 
         if (pausePromis !== undefined) {
           pausePromis
@@ -215,15 +246,7 @@ const withFullVideoPlayer = (Component) => {
     onToggleFullscreenHandler() {
       const video = this.videoRef.current;
 
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.mozRequestFullScreen) {
-        video.mozRequestFullScreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
-      }
+      video.requestFullscreen();
     }
 
     render() {
@@ -259,13 +282,6 @@ const withFullVideoPlayer = (Component) => {
     }
 
   }
-
-  WithFullVideoPlayer.propTypes = {
-    film: PropTypes.shape({
-      videoLink: PropTypes.string,
-      bigPoster: PropTypes.string
-    }).isRequired
-  };
 
   return WithFullVideoPlayer;
 };

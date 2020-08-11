@@ -1,7 +1,25 @@
-import React from "react";
+import * as React from "react";
+import {Subtract} from "utility-types";
+
+interface State {
+  isLoading: boolean,
+  isLoaded: boolean,
+  errorCode: null | number
+}
+
+interface InjectingProps {
+  onSuccess: () => void,
+  onError:(errCode: number) => void,
+  isLoaded: boolean,
+  errorCode: null | number,
+  isLoading: boolean
+}
 
 const withLoadStatus = (Component) => {
-  class WithLoadStatus extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithLoadStatus extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

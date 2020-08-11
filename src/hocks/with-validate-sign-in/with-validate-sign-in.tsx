@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {history} from "../../history";
+import { Subtract } from "utility-types";
 
 const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
@@ -9,8 +9,34 @@ const CLASS_NAME_FIELDS = {
   ERROR: `sign-in__field--error`
 };
 
+interface State {
+  invalidLogin: boolean,
+  invalidPassword: boolean,
+  loginClass: string,
+  passwordClass: string,
+  badRequest: boolean,
+  loginValue: string,
+  passwordValue: string
+}
+
+interface InjectingProps {
+  onHandleSubmit: () => void,
+  loginClass: string,
+  passwordClass: string
+  onResetLoginClassName: () => void,
+  onResetPasswordClassName: () => void,
+  invalidLogin: boolean,
+  badRequest: boolean,
+  invalidPassword: boolean,
+  onGetLoginValue: (value: string) => void,
+  onGetPasswordValue: (value: string) => void,
+}
+
 const withValidateSignIn = (Component) => {
-  class WithValidateSignIn extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithValidateSignIn extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -138,10 +164,6 @@ const withValidateSignIn = (Component) => {
       );
     }
   }
-
-  WithValidateSignIn.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-  };
 
   return WithValidateSignIn;
 };
