@@ -8,7 +8,7 @@
     "start": "webpack-dev-server",
     "eslint": "npm run eslint.js && npm run eslint.ts",
     "eslint.js": "eslint --ext .jsx --ext .js src/",
-    "eslint.ts": "eslint --config .eslintrc-ts.yml --ext .tsx src/",
+    "eslint.ts": "eslint --config .eslintrc-ts.yml --ext .tsx --ext .ts --ext src/",
     "test": "npm run eslint && npm run test.jest",
     "test.jest": "jest"
   },
@@ -24,6 +24,7 @@
     "@types/jest": "26.0.9",
     "@types/react": "16.9.45",
     "@types/react-test-renderer": "16.9.3",
+    "@types/react-router-dom": "5.1.3",
     "@typescript-eslint/eslint-plugin": "3.9.0",
     "@typescript-eslint/parser": "3.9.0",
     "axios-mock-adapter": "1.18.1",
