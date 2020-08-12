@@ -42,5 +42,4 @@ const getAdaptedUserData = (userData) => {
   };
 };
 
-
 export {getAdaptedFilm, getAdaptedComment, getAdaptedUserData};

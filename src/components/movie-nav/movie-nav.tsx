@@ -6,12 +6,7 @@ interface Props {
   onClickTab: (tabName: string) => void
 }
 
-const MovieNav: React.FC<Props> = (props: Props) => {
-  const {
-    currentTab,
-    onClickTab
-  } = props;
-
+const MovieNav: React.FC<Props> = ({currentTab, onClickTab}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">

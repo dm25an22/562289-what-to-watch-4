@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render ErrorMessage component 1`] = `
+Array [
+  <h1
+    style={
+      Object {
+        "fontSize": "60px",
+      }
+    }
+  >
+    Error loading data from server: 
+    404
+     
+  </h1>,
+  <p
+    style={
+      Object {
+        "fontSize": "40px",
+      }
+    }
+  >
+    Try reloading the page
+  </p>,
+]
+`;

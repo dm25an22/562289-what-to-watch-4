@@ -7,13 +7,7 @@ interface Props {
   genres: string[]
 }
 
-const GenresList: React.FC<Props> = (props) => {
-  const {
-    onGenreClick,
-    currentGenre,
-    genres
-  } = props;
-
+const GenresList: React.FC<Props> = ({onGenreClick, currentGenre, genres}) => {
   return (
     <ul className="catalog__genres-list">
       {genres.map((it) => <Genre

@@ -13,13 +13,7 @@ interface Props {
   authStatus: string
 }
 
-const MovieDetails: React.FC<Props> = (props: Props) => {
-  const {
-    film,
-    films,
-    authStatus
-  } = props;
-
+const MovieDetails: React.FC<Props> = ({film, films, authStatus}) => {
   scrollTo(0, 0);
 
   return (

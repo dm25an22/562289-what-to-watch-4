@@ -12,7 +12,7 @@ const ButtonMyListWrraped = withFavorite(ButtonMyList);
 
 interface Props {
   film: filmType,
-  children: React.ReactNode,
+  children?: React.ReactNode,
   favoriteList: filmType[]
   onMyListBtnClick: () => void,
   authStatus: string

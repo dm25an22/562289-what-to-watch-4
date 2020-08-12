@@ -2,7 +2,7 @@ import * as React from "react";
 import Footer from "../footer/footer";
 import MovieList from "../movie-list/movie-list";
 import {connect} from "react-redux";
-import {getFavorites} from "../../reducer/data/selectors.js";
+import {getFavorites} from "../../reducer/data/selectors";
 import HeaderUser from "../header/header-user";
 import {filmType} from "../../types";
 
@@ -10,9 +10,7 @@ interface Props {
   favorites: filmType[],
 }
 
-const MyList:React.FC<Props> = (props: Props) => {
-  const {favorites: films} = props;
-
+const MyList:React.FC<Props> = ({favorites: films}) => {
     return (
       <div className="user-page">
         <HeaderUser />

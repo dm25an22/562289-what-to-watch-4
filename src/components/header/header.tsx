@@ -37,7 +37,7 @@ const Header: React.FC<Props> = (props: Props) => {
     className,
     authStatus,
     children,
-      userData
+    userData
     } = props;
 
   return (

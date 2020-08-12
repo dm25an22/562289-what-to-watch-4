@@ -6,9 +6,7 @@ interface Props {
   className?: string
 }
 
-const Logo: React.FC<Props> = (props: Props) => {
-  const {className} = props;
-
+const Logo: React.FC<Props> = ({className}) => {
   return (
     <div className="logo">
       <Link to={AppRoute.ROOT} className={`logo__link ${className}`}>

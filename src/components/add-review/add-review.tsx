@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Header from "../header/header";
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../enum.js';
-import {history} from '../../history.js';
+import {AppRoute} from '../../enum';
+import {history} from '../../history';
 import {convertColor} from "../../utils";
 import {filmType, newCommentType} from '../../types';
 

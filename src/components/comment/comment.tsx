@@ -6,7 +6,7 @@ interface Props {
   data: commentType
 }
 
-const Comment = ({data}) => {
+const Comment: React.FC<Props> = ({data}) => {
   const {
     comment,
     date,

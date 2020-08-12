@@ -7,14 +7,11 @@ interface Props {
   film: filmType
 }
 
-const Promo: React.FC<Props> = (props) => {
+const Promo: React.FC<Props> = ({film}) => {
   const {
-    film: {
-      bigPoster,
-      moviePoster
-    },
-    film
-  } = props;
+    bigPoster,
+    moviePoster
+  } = film
 
   return (
     <section className="movie-card">

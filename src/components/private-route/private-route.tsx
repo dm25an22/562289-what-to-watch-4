@@ -12,14 +12,7 @@ interface Props {
   render: (props: RouteComponentProps) => React.ReactNode
 }
 
-const PrivateRoute: React.FC<Props> = (props: Props) => {
-  const {
-    exact,
-    path,
-    authStatus,
-    render
-  } = props;
-
+const PrivateRoute: React.FC<Props> = ({exact, path, authStatus, render}) => {
   return (
     <Route
       exact={exact}

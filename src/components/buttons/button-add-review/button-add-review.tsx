@@ -6,9 +6,7 @@ interface Props {
   id: number
 }
 
-const ButtonAddReview: React.FC<Props> = (props: Props) => {
-  const {id} = props;
-
+const ButtonAddReview: React.FC<Props> = ({id}) => {
   return (
     <Link to={`${AppRoute.FILM}/${id}${AppRoute.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>
   );

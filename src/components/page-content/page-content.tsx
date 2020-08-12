@@ -2,14 +2,10 @@ import * as React from "react";
 import Footer from "../footer/footer";
 
 interface Props {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
-const PageContent: React.FC<Props> = (props: Props) => {
-  const {
-    children
-  } = props;
-
+const PageContent: React.FC<Props> = ({children}) => {
   return (
     <div className="page-content">
       {children}

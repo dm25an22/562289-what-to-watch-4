@@ -13,8 +13,7 @@ interface Props {
   genres: string[]
 }
 
-const Main: React.FC<Props> = (props: Props) => {
-  const {promoFilm, films, genres} = props;
+const Main: React.FC<Props> = ({promoFilm, films, genres}) => {
   scrollTo(0, 0);
 
   return (

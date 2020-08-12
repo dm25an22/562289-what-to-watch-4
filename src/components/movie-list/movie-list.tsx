@@ -10,12 +10,7 @@ interface Props {
 
 const SmallMovieCardWrraped = withSmallVideoPlayer(SmallMovieCard);
 
-const MovieList: React.FC<Props> = (props: Props) => {
-  const {
-    filmsByFilter,
-    children
-  } = props;
-
+const MovieList: React.FC<Props> = ({filmsByFilter, children}) => {
   return (
     <React.Fragment>
       <div className="catalog__movies-list">
