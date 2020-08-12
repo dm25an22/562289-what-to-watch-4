@@ -149,16 +149,14 @@ const withFullVideoPlayer = (Component) => {
 
         if (playPromise !== undefined) {
           playPromise
-          .catch(() => {
-          });
+          .catch(() => null);
         }
       } else {
         const pausePromis: any = video.pause();
 
         if (pausePromis !== undefined) {
           pausePromis
-          .catch(() => {
-          });
+          .catch(() => null);
         }
       }
     }
@@ -210,7 +208,7 @@ const withFullVideoPlayer = (Component) => {
           newLeft = 0;
         }
 
-        let rightEdge = container.offsetWidth;
+        const rightEdge = container.offsetWidth;
         if (newLeft > rightEdge) {
           newLeft = rightEdge;
         }

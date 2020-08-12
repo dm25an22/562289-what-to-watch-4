@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "../../enum";
 import {history} from "../../history";
 import Logo from "../logo/logo";
-import { userDataType } from "../../types";
+import {userDataType} from "../../types";
 
 interface Props {
   authStatus: string,
@@ -38,7 +38,7 @@ const Header: React.FC<Props> = (props: Props) => {
     authStatus,
     children,
     userData
-    } = props;
+  } = props;
 
   return (
     <header className={`page-header ${className}`}>

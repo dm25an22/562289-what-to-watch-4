@@ -5,7 +5,7 @@ import ReviewsInfo from "../../components/reviews-info/reviews-info";
 import withLoadStatus from "../with-load-status/with-load-status";
 import {TabName} from "../../enum.js";
 import {filmType} from "../../types";
-import { Subtract } from "utility-types";
+import {Subtract} from "utility-types";
 
 const ReviewsInfoWrraped = withLoadStatus(ReviewsInfo);
 

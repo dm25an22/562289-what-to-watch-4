@@ -1,7 +1,7 @@
 import * as React from 'react';
 import LoadMoreButton from '../../components/load-more-button/load-more-button';
 import {getFilmsByGener} from '../../utils';
-import { Subtract } from 'utility-types';
+import {Subtract} from 'utility-types';
 import {filmType} from '../../types';
 
 const START_SHOW_CARDS = 8;

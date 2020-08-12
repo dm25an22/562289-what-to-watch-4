@@ -3,7 +3,7 @@ import {mount} from "enzyme";
 import VideoFullScreen from "./video-full-screen";
 import {mockFilms} from "../../mocks/mock-for-tests";
 
-const mockComponent = <video />
+const mockComponent = <video />;
 
 it(`check click event on elements`, () => {
   const playClick = jest.fn();

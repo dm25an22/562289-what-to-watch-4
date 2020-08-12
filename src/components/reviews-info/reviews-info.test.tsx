@@ -4,7 +4,7 @@ import {ReviewsInfo} from "./reviews-info";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
-import {commentsMock, noop} from "../../mocks/mock-for-tests"
+import {commentsMock, noop} from "../../mocks/mock-for-tests";
 
 const mockStore = configureStore({});
 

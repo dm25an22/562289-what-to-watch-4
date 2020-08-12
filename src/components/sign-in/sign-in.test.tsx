@@ -3,7 +3,7 @@ import * as renderer from "react-test-renderer";
 import SignIn from "./sign-in";
 import {Router} from "react-router-dom";
 import {history} from "../../history";
-import {noop} from "../../mocks/mock-for-tests"
+import {noop} from "../../mocks/mock-for-tests";
 
 it(`Render SignIn default`, () => {
   const tree = renderer.create(

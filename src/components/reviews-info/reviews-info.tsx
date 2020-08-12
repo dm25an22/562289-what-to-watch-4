@@ -12,7 +12,7 @@ interface Props {
   setInitialComments: () => void,
   isLoaded: boolean,
   errorCode?: number,
-  onSuccess: () => {},
+  onSuccess: () => void,
   onError: () => void,
   isLoading: boolean,
 }

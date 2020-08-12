@@ -2,7 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import ButtonMyList from "./button-my-list";
 import {mockFilms} from "../../../mocks/mock-for-tests";
-import {noop} from "../../../mocks/mock-for-tests"
+import {noop} from "../../../mocks/mock-for-tests";
 
 const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {history} from '../../history.js';
-import { filmType } from '../../types.js';
+import {filmType} from '../../types.js';
 
 interface Props {
   film: filmType,

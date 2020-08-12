@@ -11,7 +11,7 @@ const Promo: React.FC<Props> = ({film}) => {
   const {
     bigPoster,
     moviePoster
-  } = film
+  } = film;
 
   return (
     <section className="movie-card">

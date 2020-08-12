@@ -2,7 +2,7 @@ import * as React from "react";
 import {shallow} from "enzyme";
 import SmallMovieCard from "./small-movie-card";
 import {mockFilms} from "../../mocks/mock-for-tests";
-import {noop} from "../../mocks/mock-for-tests"
+import {noop} from "../../mocks/mock-for-tests";
 
 describe(`SmallMovieCard`, () => {
   it(`mouseEnter on the card and change isPlaing on true `, () => {

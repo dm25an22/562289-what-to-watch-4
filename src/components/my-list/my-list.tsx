@@ -11,19 +11,19 @@ interface Props {
 }
 
 const MyList:React.FC<Props> = ({favorites: films}) => {
-    return (
-      <div className="user-page">
-        <HeaderUser />
-        <section className="catalog">
-          <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <MovieList
-            filmsByFilter={films}
-          />
-        </section>
-        <Footer />
-      </div>
-    );
-}
+  return (
+    <div className="user-page">
+      <HeaderUser />
+      <section className="catalog">
+        <h2 className="catalog__title visually-hidden">Catalog</h2>
+        <MovieList
+          filmsByFilter={films}
+        />
+      </section>
+      <Footer />
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

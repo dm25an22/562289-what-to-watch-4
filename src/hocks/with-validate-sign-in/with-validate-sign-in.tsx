@@ -1,6 +1,6 @@
 import * as React from "react";
 import {history} from "../../history";
-import { Subtract } from "utility-types";
+import {Subtract} from "utility-types";
 
 const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
